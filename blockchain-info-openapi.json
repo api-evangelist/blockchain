@@ -1,0 +1,254 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Blockchain Info",
+        "description": "Use Blockchain's APIs at no cost to help you start building bitcoin apps.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsblockchain.info"
+    ],
+    "paths": {
+        "\/ticker": {
+            "get": {
+                "summary": "Ticker",
+                "description": "Returns a JSON object with the currency codes as keys. \"15m\" is the 15 minutes delayed market price, \"last\" is the most recent market price, \"symbol\" is the currency symbol.",
+                "operationId": "GetTicker",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/tobtc": {
+            "get": {
+                "summary": "Convert",
+                "description": "Convert x value in the provided currency to btc.",
+                "operationId": "ConvertToBTC",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "A currency code. See list above."
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "description": "Value to convert."
+                    }
+                ]
+            }
+        },
+        "\/stats": {
+            "get": {
+                "summary": "Stats",
+                "description": "This method can be used to get the data behind Blockchain.info's stats.",
+                "operationId": "GetStats",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "The format to return (json,html)."
+                    }
+                ]
+            }
+        },
+        "\/pools": {
+            "get": {
+                "summary": "Pools",
+                "description": "This method can be used to get the data behind Blockchain.info's pools information.",
+                "operationId": "GetPools",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "timespan",
+                        "in": "query",
+                        "description": "Duration over which the data is computed, maximum 10 days, default is 4 days (ie. 5days)"
+                    }
+                ]
+            }
+        },
+        "\/rawblock\/{block_hash}": {
+            "get": {
+                "summary": "Raw Block",
+                "description": "Returns a single raw block.",
+                "operationId": "GetRawBlock",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "block_hash",
+                        "in": "path",
+                        "description": "The block hash."
+                    }
+                ]
+            }
+        },
+        "\/rawtx\/{tx_hash}": {
+            "get": {
+                "summary": "Raw Transaction",
+                "description": "Returns a raw trasaction.",
+                "operationId": "GetRawTransaction",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "tx_hash",
+                        "in": "query",
+                        "description": "The hash."
+                    }
+                ]
+            }
+        },
+        "Blockchain,s": {
+            "get": {
+                "summary": "Chart Type",
+                "description": "Returns chart types.",
+                "operationId": "GetChartType",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "chart",
+                        "in": "path",
+                        "description": "The chart type."
+                    }
+                ]
+            }
+        },
+        "\/block-height\/{block_height}": {
+            "get": {
+                "summary": "Block Height",
+                "description": "Returns the height of block.",
+                "operationId": "GetBlockHeight",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "block_height",
+                        "in": "path",
+                        "description": "The block height."
+                    }
+                ]
+            }
+        },
+        "\/rawaddr\/{bitcoin_address}": {
+            "get": {
+                "summary": "Raw Address",
+                "description": "Returns a single blockchain address.",
+                "operationId": "GetRawAddress",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "bitcoin_address",
+                        "in": "path",
+                        "description": "The bitcoin address."
+                    }
+                ]
+            }
+        },
+        "\/multiaddr": {
+            "get": {
+                "summary": "Multi Adress",
+                "description": "Returns multiple addresses",
+                "operationId": "GetMultipleAddresses",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "Multiple addresses divided by | Address can be base58 or xpub"
+                    }
+                ]
+            }
+        },
+        "\/unspent": {
+            "get": {
+                "summary": "Unspent",
+                "description": "Unspent output.",
+                "operationId": "GetUnspentOutput",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "Multiple addresses divided by | Address can be base58 or xpub"
+                    }
+                ]
+            }
+        },
+        "\/balance": {
+            "get": {
+                "summary": "Balance",
+                "description": "Returns current balance",
+                "operationId": "GetBalance",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/latestblock": {
+            "get": {
+                "summary": "Latest Block",
+                "description": "Gets the latest block.",
+                "operationId": "GetLatestBlock",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "The format to return (json,html)."
+                    }
+                ]
+            }
+        },
+        "\/unconfirmed-transactions": {
+            "get": {
+                "summary": "Unconfirmed Transactions",
+                "description": "Returns unconfirmed transactions.",
+                "operationId": "GetUnconfirmedTransactions",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/blocks\/{time_in_milliseconds}": {
+            "get": {
+                "summary": "Blocks for One Day",
+                "description": "Returns the blocks for one day by the millisecond",
+                "operationId": "GetBlocksOneDay",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "The format to return (json,html)."
+                    },
+                    {
+                        "name": "time_in_milliseconds",
+                        "in": "path",
+                        "description": "The time in milliseconds (ie. 1328830483)"
+                    }
+                ]
+            }
+        },
+        "\/blocks\/{pool_name}": {
+            "get": {
+                "summary": "Blocks by Pool",
+                "description": "Returns the blocks for one pool.",
+                "operationId": "GetPoolBlocks",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "The format to return (json,html)."
+                    },
+                    {
+                        "name": "pool_name",
+                        "in": "path",
+                        "description": "The pool name."
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
