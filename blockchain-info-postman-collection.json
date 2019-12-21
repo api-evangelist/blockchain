@@ -1,5 +1,5 @@
 {
-    "id": "2dba81f18e82389d9e86ba30b6b7ec85",
+    "id": "c708c3816cc4f5532d2d6c53e49b860b",
     "name": "Blockchain Info",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "977c8f6064f55e0f55a1ba601f9c64c6",
+            "id": "aa55eb7e44edf281fcbf12199f65564f",
             "name": "Ticker",
             "url": "httpsblockchain.info\/ticker",
             "description": "Returns a JSON object with the currency codes as keys. \"15m\" is the 15 minutes delayed market price, \"last\" is the most recent market price, \"symbol\" is the currency symbol.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "3e56630823cfdf5d2a1e75def1fae708",
+            "id": "b0205d56d734aefacbada8a023157724",
             "name": "Convert",
             "url": "httpsblockchain.info\/tobtc",
             "description": "Convert x value in the provided currency to btc.",
@@ -67,11 +67,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "44c74ea2a3fd7fabe50fa5f9f6b5d477",
+            "id": "3dffd412eb014e667795e1b625317ee1",
             "name": "Stats",
             "url": "httpsblockchain.info\/stats",
             "description": "This method can be used to get the data behind Blockchain.info's stats.",
@@ -98,11 +98,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "68534b70278c573d3a0ece95c4e972df",
+            "id": "6db6307fb025b6649a4569a8f7dba2ff",
             "name": "Pools",
             "url": "httpsblockchain.info\/pools",
             "description": "This method can be used to get the data behind Blockchain.info's pools information.",
@@ -129,11 +129,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "a290c807d12cdc317941aee949531055",
+            "id": "dce968f103f0502eee8c1bdfeb339d91",
             "name": "Raw Block",
             "url": "httpsblockchain.info\/rawblock\/{block_hash}",
             "description": "Returns a single raw block.",
@@ -160,11 +160,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "c7098ea29baa726f30096aed355143df",
+            "id": "e257ad946ccafbe2ed1180dd06ddcf50",
             "name": "Raw Transaction",
             "url": "httpsblockchain.info\/rawtx\/{tx_hash}",
             "description": "Returns a raw trasaction.",
@@ -191,11 +191,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "842188a62dadb246253950ef09047e78",
+            "id": "03e5c226cef2beb96fcf30518c5ae9c3",
             "name": "Chart Type",
             "url": "httpsblockchain.infoBlockchain,s",
             "description": "Returns chart types.",
@@ -222,11 +222,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "ad6a0ccdceb61db1d7498747f1d9ea8b",
+            "id": "98185eda2150c1473ca715623530feb3",
             "name": "Block Height",
             "url": "httpsblockchain.info\/block-height\/{block_height}",
             "description": "Returns the height of block.",
@@ -253,11 +253,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "41a5490dbc24d199d1699ad495049476",
+            "id": "64a92b5b5a5306bd0723411587f64d0c",
             "name": "Raw Address",
             "url": "httpsblockchain.info\/rawaddr\/{bitcoin_address}",
             "description": "Returns a single blockchain address.",
@@ -284,11 +284,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "a0ee43753ef3a10dae377c1cf18afcb1",
+            "id": "d82b406c88253028d0b143670fe1b8bd",
             "name": "Multi Adress",
             "url": "httpsblockchain.info\/multiaddr",
             "description": "Returns multiple addresses",
@@ -315,11 +315,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "6ef8240ea57d4030f763d5fba16ba207",
+            "id": "44956256d1c667c3c67d285dbf0a6089",
             "name": "Unspent",
             "url": "httpsblockchain.info\/unspent",
             "description": "Unspent output.",
@@ -346,11 +346,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "04e41d5386b50620febecfbebc364da7",
+            "id": "61230207365464b086c6ffed6816bc38",
             "name": "Balance",
             "url": "httpsblockchain.info\/balance",
             "description": "Returns current balance",
@@ -369,11 +369,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "5e94d1669db118a9fb6405a285583aca",
+            "id": "b757bdf3a2392316712e1127e7f13a0e",
             "name": "Latest Block",
             "url": "httpsblockchain.info\/latestblock",
             "description": "Gets the latest block.",
@@ -400,11 +400,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "207b53e00b729dacf20f92065abf002f",
+            "id": "4629a0b94778d44ba37f6a213110b6e9",
             "name": "Unconfirmed Transactions",
             "url": "httpsblockchain.info\/unconfirmed-transactions",
             "description": "Returns unconfirmed transactions.",
@@ -423,11 +423,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "d20846bf5958151b0cfc16c8bc2cb161",
+            "id": "5aca1b10973c14e846a1de212c4fac78",
             "name": "Blocks for One Day",
             "url": "httpsblockchain.info\/blocks\/{time_in_milliseconds}",
             "description": "Returns the blocks for one day by the millisecond",
@@ -461,11 +461,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         },
         {
-            "id": "8a43eb884eeaa02214da95ebebd58899",
+            "id": "94b77b4f12f8dd56c234ecfe5b8fad8b",
             "name": "Blocks by Pool",
             "url": "httpsblockchain.info\/blocks\/{pool_name}",
             "description": "Returns the blocks for one pool.",
@@ -499,7 +499,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "2dba81f18e82389d9e86ba30b6b7ec85",
+            "collectionId": "c708c3816cc4f5532d2d6c53e49b860b",
             "rawModeData": ""
         }
     ]
