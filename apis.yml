@@ -1,0 +1,32 @@
+aid: blockchain
+name: Blockchain
+description: "Bitcoin Payment, Wallet & Transaction Data"
+url: https://www.blockchain.com/api
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Cryptocurrency"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Cryptocurrency
+  - Public APIs
+apis:
+  - name: Blockchain
+    description: "Bitcoin Payment, Wallet & Transaction Data"
+    humanURL: https://www.blockchain.com/api
+    baseURL: https://www.blockchain.com/api
+    tags:
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://www.blockchain.com/api
+common:
+  - type: Website
+    url: https://www.blockchain.com/api
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
