@@ -1,0 +1,9 @@
+{
+  "seqnum": 1,
+  "event": "rejected",
+  "channel": "trading",
+  "text": "example-value",
+  "clOrdID": "21745988181",
+  "ordStatus": "rejected",
+  "action": "example-value"
+}

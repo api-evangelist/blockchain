@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-auth-subscribed-payload-structure.json",
+  "name": "ExchangeAuthSubscribedPayload",
+  "description": "ExchangeAuthSubscribedPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "const": "subscribed"
+    },
+    "channel": {
+      "type": "string",
+      "const": "auth"
+    },
+    "readOnly": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel"
+  ]
+}

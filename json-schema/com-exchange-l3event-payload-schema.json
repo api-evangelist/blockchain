@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-l3event-payload-schema.json",
+  "title": "ExchangeL3EventPayload",
+  "description": "ExchangeL3EventPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "snapshot",
+        "updated"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "const": "l3"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "bids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "px",
+          "qty"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Exchange order id."
+          },
+          "px": {
+            "type": "number"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Order size. 0 means remove the order."
+          }
+        }
+      }
+    },
+    "asks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "px",
+          "qty"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "px": {
+            "type": "number"
+          },
+          "qty": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "bids",
+    "asks"
+  ]
+}

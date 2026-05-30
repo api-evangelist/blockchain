@@ -1,32 +1,231 @@
 aid: blockchain
-name: Blockchain
-description: "Bitcoin Payment, Wallet & Transaction Data"
+name: Blockchain.com
+description: >-
+  Bitcoin block explorer data, network statistics, market data, the Blockchain.com Exchange
+  (REST + WebSocket) trading platform, and the Pay Partner API for crypto purchases.
 url: https://www.blockchain.com/api
 specificationVersion: '0.20'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
 x-source: public-apis/public-apis
-x-category: "Cryptocurrency"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-category: Cryptocurrency
+x-type: company
+x-tier: 2
 tags:
   - Cryptocurrency
+  - Bitcoin
+  - Blockchain Data
+  - Exchange
+  - Market Data
+  - Trading
+  - Payments
   - Public APIs
 apis:
-  - name: Blockchain
-    description: "Bitcoin Payment, Wallet & Transaction Data"
-    humanURL: https://www.blockchain.com/api
-    baseURL: https://www.blockchain.com/api
+
+  - name: Blockchain.com Blockchain Data API
+    description: >-
+      Read-only JSON HTTP API for Bitcoin blockchain data — single block, single transaction,
+      block-by-height, single address, multi-address summary, unspent outputs (UTXOs), latest
+      block, and the simple Query API (difficulty, block count, total supply, ETA, averages).
+    humanURL: https://www.blockchain.com/explorer/api/blockchain_api
+    baseURL: https://blockchain.info
     tags:
       - Cryptocurrency
+      - Bitcoin
+      - Blockchain Data
+      - Explorer
     properties:
       - type: Documentation
-        url: https://www.blockchain.com/api
+        url: https://www.blockchain.com/explorer/api/blockchain_api
+      - type: Documentation
+        title: Simple Query API
+        url: https://www.blockchain.com/explorer/api/q
+      - type: OpenAPI
+        url: openapi/blockchain-data-api-openapi.yml
+
+      - type: NaftikoCapability
+        url: capabilities/data-api-addresses.yaml
+      - type: NaftikoCapability
+        url: capabilities/data-api-blocks.yaml
+      - type: NaftikoCapability
+        url: capabilities/data-api-network.yaml
+      - type: NaftikoCapability
+        url: capabilities/data-api-transactions.yaml
+  - name: Blockchain.com Charts, Stats & Market Data API
+    description: >-
+      Aggregated JSON endpoints for Bitcoin network charts (transactions per second, hash rate,
+      difficulty, miners revenue, mempool, etc.), real-time network statistics, mining pool
+      distribution, the BTC ticker (price by fiat currency) and fiat-to-BTC conversion.
+    humanURL: https://www.blockchain.com/explorer/api/charts_api
+    baseURL: https://api.blockchain.info
+    tags:
+      - Cryptocurrency
+      - Bitcoin
+      - Market Data
+      - Statistics
+      - Charts
+    properties:
+      - type: Documentation
+        url: https://www.blockchain.com/explorer/api/charts_api
+      - type: Documentation
+        title: Exchange Rates / Ticker
+        url: https://www.blockchain.com/explorer/api/exchange_rates_api
+      - type: OpenAPI
+        url: openapi/blockchain-charts-stats-openapi.yml
+
+      - type: NaftikoCapability
+        url: capabilities/charts-stats-charts.yaml
+      - type: NaftikoCapability
+        url: capabilities/charts-stats-market-data.yaml
+      - type: NaftikoCapability
+        url: capabilities/charts-stats-pools.yaml
+      - type: NaftikoCapability
+        url: capabilities/charts-stats-stats.yaml
+  - name: Blockchain.com Exchange REST API
+    description: >-
+      REST trading API for the Blockchain.com Exchange — public market data (symbols, tickers,
+      L2/L3 order books) and authenticated trading (orders, trades, fills, fees), accounts and
+      payments (balances, deposits, withdrawals, whitelist beneficiaries). Authenticates with
+      an `X-API-Token` header.
+    humanURL: https://exchange.blockchain.com/api/
+    baseURL: https://api.blockchain.com/v3/exchange
+    tags:
+      - Cryptocurrency
+      - Exchange
+      - Trading
+      - Market Data
+    properties:
+      - type: Documentation
+        url: https://exchange.blockchain.com/api/
+      - type: Documentation
+        title: REST Reference
+        url: https://api.blockchain.com/v3/
+      - type: OpenAPI
+        url: openapi/blockchain-exchange-openapi.yml
+
+      - type: NaftikoCapability
+        url: capabilities/exchange-market-data.yaml
+      - type: NaftikoCapability
+        url: capabilities/exchange-payments.yaml
+      - type: NaftikoCapability
+        url: capabilities/exchange-trading.yaml
+  - name: Blockchain.com WebSocket APIs
+    description: >-
+      Real-time WebSocket APIs covering two distinct surfaces — the Bitcoin / blockchain.info
+      explorer socket (unconfirmed transactions, new blocks, per-address activity) and the
+      Blockchain.com Exchange mercury-gateway socket (heartbeat, ticker, L2/L3 order books,
+      prices, symbols, trades, plus authenticated balances and trading).
+    humanURL: https://www.blockchain.com/explorer/api/api_websocket
+    baseURL: wss://ws.blockchain.info
+    tags:
+      - Cryptocurrency
+      - Bitcoin
+      - WebSocket
+      - Real-Time
+      - Exchange
+    properties:
+      - type: Documentation
+        title: Explorer WebSocket
+        url: https://www.blockchain.com/explorer/api/api_websocket
+      - type: Documentation
+        title: Exchange WebSocket
+        url: https://exchange.blockchain.com/api/
+      - type: AsyncAPI
+        url: asyncapi/blockchain-com-asyncapi.yml
+
+  - name: Blockchain.com Pay Partner API
+    description: >-
+      Partner API for embedding Blockchain.com crypto purchases. Covers authentication,
+      eligibility (supported currencies / regions), quotes (pricing for crypto transactions),
+      and order state. Rate-limited per partner.
+    humanURL: https://docs.blockchain.com/pay/api
+    baseURL: https://api.blockchain.com/pay
+    tags:
+      - Cryptocurrency
+      - Payments
+      - Partner
+    properties:
+      - type: Documentation
+        url: https://docs.blockchain.com/pay/api
+
 common:
   - type: Website
     url: https://www.blockchain.com/api
+  - type: GitHubOrganization
+    url: https://github.com/blockchain
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - type: TermsOfService
+    url: https://www.blockchain.com/legal/terms
+  - type: Plans
+    url: plans/blockchain-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/blockchain-rate-limits.yml
+  - type: FinOps
+    url: finops/blockchain-finops.yml
+  - type: Vocabulary
+    url: vocabulary/blockchain-vocabulary.yml
+  - type: Rules
+    url: rules/blockchain-rules.yml
+
+  - type: Schemas
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/
+  - type: Examples
+    url: examples/
+features:
+  - name: Bitcoin Block Explorer API
+    description: Look up any Bitcoin block, transaction, or address via blockchain.info JSON endpoints.
+  - name: Unspent Outputs (UTXOs)
+    description: Query unspent outputs for one or more addresses to construct new transactions.
+  - name: Real-Time Streaming
+    description: Subscribe to new blocks, unconfirmed transactions, or per-address activity over WebSocket.
+  - name: Charts & Network Statistics
+    description: Historical charts and real-time stats for hash rate, difficulty, mempool, miners revenue.
+  - name: Mining Pool Distribution
+    description: See which mining pools mined recent blocks via the Pools API.
+  - name: BTC Exchange Rates
+    description: Multi-currency ticker plus fiat-to-BTC conversion endpoints.
+  - name: Spot Trading
+    description: Place, cancel, and query orders on the Blockchain.com Exchange via REST or WebSocket.
+  - name: Custody & Payments
+    description: Deposit, withdraw, and manage whitelisted beneficiaries on the Exchange.
+  - name: Pay Partner Integration
+    description: Embed Blockchain.com crypto purchases into partner applications via Pay API.
+
+useCases:
+  - name: Wallet Backends
+    description: Build a custodial or non-custodial wallet using address lookups, UTXO queries, and broadcast.
+  - name: Block Explorer
+    description: Build a Bitcoin explorer UI on top of the JSON Data API and WebSocket streams.
+  - name: On-Chain Analytics
+    description: Aggregate network stats, charts, and pool distribution for research and dashboards.
+  - name: Algorithmic Trading
+    description: Run trading strategies against the Exchange REST + WebSocket interfaces.
+  - name: Treasury & Settlement
+    description: Programmatically move crypto in and out of custody via the Exchange payments API.
+  - name: Crypto Onboarding
+    description: Partner with Blockchain.com Pay to let users buy crypto inside your app.
+
+integrations:
+  - name: Bitcoin Core
+    description: Blockchain.com surfaces data from Bitcoin Core nodes for explorer endpoints.
+  - name: FIX 4.2
+    description: Exchange WebSocket trading messages use FIX 4.2 field naming.
+  - name: TradingView
+    description: Many Exchange clients integrate charts via TradingView using ticker / candle data.
+
+solutions:
+  - name: Bitcoin Data Infrastructure
+    description: Production-grade read APIs and WebSocket streams for Bitcoin blockchain data.
+  - name: Spot Trading Venue
+    description: Institutional and retail spot trading on a global cryptocurrency exchange.
+  - name: Crypto Payments
+    description: Embedded crypto purchase rails for fintech and consumer partners.
+
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

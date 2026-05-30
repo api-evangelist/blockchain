@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/charts-stats-stats-structure.json",
+  "name": "Stats",
+  "description": "Real-time blockchain statistics snapshot.",
+  "type": "object",
+  "properties": {
+    "market_price_usd": {
+      "type": "double",
+      "description": "BTC price in USD.",
+      "example": 72525.0
+    },
+    "hash_rate": {
+      "type": "double",
+      "description": "Network hash rate (GH/s).",
+      "example": 72525.0
+    },
+    "total_fees_btc": {
+      "type": "int64",
+      "description": "Total fees in Satoshi over the period.",
+      "example": 1
+    },
+    "n_btc_mined": {
+      "type": "int64",
+      "description": "New BTC mined over the period (Satoshi).",
+      "example": 1
+    },
+    "n_tx": {
+      "type": "int32",
+      "description": "Number of transactions over the period.",
+      "example": 1
+    },
+    "n_blocks_mined": {
+      "type": "int32",
+      "description": "Number of blocks mined over the period.",
+      "example": 1
+    },
+    "minutes_between_blocks": {
+      "type": "double",
+      "description": "Average minutes between blocks.",
+      "example": 1.0
+    },
+    "totalbc": {
+      "type": "int64",
+      "description": "Total Bitcoins in circulation (Satoshi).",
+      "example": 1
+    },
+    "n_blocks_total": {
+      "type": "int32",
+      "description": "Chain height.",
+      "example": 1
+    },
+    "estimated_transaction_volume_usd": {
+      "type": "double",
+      "description": "Estimated transaction volume in USD over the period.",
+      "example": 0.5
+    },
+    "miners_revenue_usd": {
+      "type": "double",
+      "description": "Miners revenue in USD over the period.",
+      "example": 1.0
+    },
+    "miners_revenue_btc": {
+      "type": "int64",
+      "description": "Miners revenue in Satoshi over the period.",
+      "example": 1
+    },
+    "difficulty": {
+      "type": "double",
+      "description": "Current difficulty target.",
+      "example": 1.0
+    },
+    "estimated_btc_sent": {
+      "type": "int64",
+      "description": "Estimated BTC sent (Satoshi).",
+      "example": 1
+    },
+    "total_btc_sent": {
+      "type": "int64",
+      "description": "Total BTC sent (Satoshi).",
+      "example": 1
+    },
+    "trade_volume_btc": {
+      "type": "double",
+      "description": "Trading volume in BTC.",
+      "example": 0.5
+    },
+    "trade_volume_usd": {
+      "type": "double",
+      "description": "Trading volume in USD.",
+      "example": 0.5
+    },
+    "nextretarget": {
+      "type": "int32",
+      "description": "Block height of the next difficulty retarget.",
+      "example": 1
+    },
+    "timestamp": {
+      "type": "int64",
+      "description": "Unix timestamp of the snapshot.",
+      "example": 1748609400000
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-order-mass-cancel-request-payload-structure.json",
+  "name": "ExchangeOrderMassCancelRequestPayload",
+  "description": "ExchangeOrderMassCancelRequestPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "OrderMassCancelRequest"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Optional \u2014 restrict mass cancel to a single symbol."
+    }
+  },
+  "required": [
+    "action",
+    "channel"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-trading-snapshot-payload-structure.json",
+  "name": "ExchangeTradingSnapshotPayload",
+  "description": "ExchangeTradingSnapshotPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "const": "snapshot"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Order / execution-report payload using FIX 4.2 field names. Returned in trading channel\nsnapshots and updates.\n",
+        "properties": {
+          "orderID": {
+            "type": "string",
+            "description": "FIX 37 \u2014 unique order id assigned by the exchange."
+          },
+          "clOrdID": {
+            "type": "string",
+            "description": "FIX 11 \u2014 client-supplied order reference."
+          },
+          "symbol": {
+            "type": "string",
+            "description": "FIX 55"
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "buy",
+              "sell"
+            ],
+            "description": "FIX 54"
+          },
+          "ordType": {
+            "type": "string",
+            "enum": [
+              "market",
+              "limit",
+              "stop",
+              "stopLimit"
+            ],
+            "description": "FIX 40"
+          },
+          "orderQty": {
+            "type": "double",
+            "description": "FIX 38"
+          },
+          "leavesQty": {
+            "type": "double",
+            "description": "FIX 151 \u2014 remaining quantity open for execution."
+          },
+          "cumQty": {
+            "type": "double",
+            "description": "FIX 14 \u2014 filled quantity so far."
+          },
+          "avgPx": {
+            "type": "double",
+            "description": "FIX 6 \u2014 volume-weighted average price of fills."
+          },
+          "ordStatus": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "open",
+              "rejected",
+              "cancelled",
+              "filled",
+              "partial",
+              "expired"
+            ],
+            "description": "FIX 39"
+          },
+          "timeInForce": {
+            "type": "string",
+            "enum": [
+              "GTC",
+              "GTD",
+              "IOC",
+              "FOK"
+            ],
+            "description": "FIX 59"
+          },
+          "text": {
+            "type": "string",
+            "description": "Free-form server status text."
+          },
+          "execType": {
+            "type": "string",
+            "description": "FIX 150 \u2014 \"0\" New, \"4\" Canceled, \"8\" Rejected, \"C\" Expired, \"F\" Partial fill,\n\"A\" Pending, \"H\" Trade Break, \"I\" Order Status.\n"
+          },
+          "execID": {
+            "type": "string",
+            "description": "FIX 17 \u2014 unique id for this execution."
+          },
+          "transactTime": {
+            "type": "string",
+            "description": "FIX 60"
+          },
+          "msgType": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "int32"
+              }
+            ],
+            "description": "FIX 35 \u2014 \"8\" ExecutionReport, \"9\" OrderCancelRejected."
+          },
+          "lastPx": {
+            "type": "double",
+            "description": "FIX 31 \u2014 price of last fill."
+          },
+          "lastShares": {
+            "type": "double",
+            "description": "FIX 32 \u2014 quantity of last fill."
+          },
+          "tradeId": {
+            "type": "string",
+            "description": "FIX 1003/1004 \u2014 id of the trade / fill."
+          },
+          "price": {
+            "type": "double",
+            "description": "FIX 44"
+          },
+          "stopPx": {
+            "type": "double",
+            "description": "FIX 99"
+          },
+          "expireDate": {
+            "type": "int32",
+            "description": "FIX 432 \u2014 YYYYMMDD for GTD orders."
+          },
+          "minQty": {
+            "type": "double",
+            "description": "FIX 110"
+          },
+          "fee": {
+            "type": "double"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "orders"
+  ]
+}

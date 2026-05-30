@@ -1,0 +1,239 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://www.blockchain.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Block": "bc:Block",
+    "BlockListResponse": "bc:BlockListResponse",
+    "LatestBlock": "bc:LatestBlock",
+    "Transaction": "bc:Transaction",
+    "TxInput": "bc:TxInput",
+    "TxOutput": "bc:TxOutput",
+    "Address": "bc:Address",
+    "MultiAddressResponse": "bc:MultiAddressResponse",
+    "UnspentResponse": "bc:UnspentResponse",
+    "UnspentOutput": "bc:UnspentOutput",
+    "hash": {
+      "@id": "bc:hash",
+      "@type": "xsd:string"
+    },
+    "ver": {
+      "@id": "bc:ver",
+      "@type": "xsd:integer"
+    },
+    "prevBlock": {
+      "@id": "bc:prev_block",
+      "@type": "xsd:string"
+    },
+    "mrklRoot": {
+      "@id": "bc:mrkl_root",
+      "@type": "xsd:string"
+    },
+    "time": {
+      "@id": "bc:time",
+      "@type": "xsd:integer"
+    },
+    "bits": {
+      "@id": "bc:bits",
+      "@type": "xsd:integer"
+    },
+    "nonce": {
+      "@id": "bc:nonce",
+      "@type": "xsd:integer"
+    },
+    "nTx": {
+      "@id": "bc:n_tx",
+      "@type": "xsd:integer"
+    },
+    "size": {
+      "@id": "bc:size",
+      "@type": "xsd:integer"
+    },
+    "blockIndex": {
+      "@id": "bc:block_index",
+      "@type": "xsd:integer"
+    },
+    "mainChain": {
+      "@id": "bc:main_chain",
+      "@type": "xsd:boolean"
+    },
+    "height": {
+      "@id": "bc:height",
+      "@type": "xsd:integer"
+    },
+    "tx": {
+      "@id": "bc:tx",
+      "@container": "@set"
+    },
+    "blocks": {
+      "@id": "bc:blocks",
+      "@container": "@set"
+    },
+    "txIndexes": {
+      "@id": "bc:txIndexes",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "vinSz": {
+      "@id": "bc:vin_sz",
+      "@type": "xsd:integer"
+    },
+    "voutSz": {
+      "@id": "bc:vout_sz",
+      "@type": "xsd:integer"
+    },
+    "weight": {
+      "@id": "bc:weight",
+      "@type": "xsd:integer"
+    },
+    "fee": {
+      "@id": "bc:fee",
+      "@type": "xsd:integer"
+    },
+    "relayedBy": {
+      "@id": "bc:relayed_by",
+      "@type": "xsd:string"
+    },
+    "lockTime": {
+      "@id": "bc:lock_time",
+      "@type": "xsd:integer"
+    },
+    "txIndex": {
+      "@id": "bc:tx_index",
+      "@type": "xsd:integer"
+    },
+    "doubleSpend": {
+      "@id": "bc:double_spend",
+      "@type": "xsd:boolean"
+    },
+    "blockHeight": {
+      "@id": "bc:block_height",
+      "@type": "xsd:integer"
+    },
+    "inputs": {
+      "@id": "bc:inputs",
+      "@container": "@set"
+    },
+    "out": {
+      "@id": "bc:out",
+      "@container": "@set"
+    },
+    "sequence": {
+      "@id": "bc:sequence",
+      "@type": "xsd:integer"
+    },
+    "witness": {
+      "@id": "bc:witness",
+      "@type": "xsd:string"
+    },
+    "script": {
+      "@id": "bc:script",
+      "@type": "xsd:string"
+    },
+    "prevOut": {
+      "@id": "bc:prev_out"
+    },
+    "type": {
+      "@id": "bc:type",
+      "@type": "xsd:integer"
+    },
+    "spent": {
+      "@id": "bc:spent",
+      "@type": "xsd:boolean"
+    },
+    "value": {
+      "@id": "bc:value",
+      "@type": "xsd:integer"
+    },
+    "spendingOutpoints": {
+      "@id": "bc:spending_outpoints",
+      "@container": "@set"
+    },
+    "n": {
+      "@id": "bc:n",
+      "@type": "xsd:integer"
+    },
+    "addr": {
+      "@id": "bc:addr",
+      "@type": "xsd:string"
+    },
+    "hash160": {
+      "@id": "bc:hash160",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "bc:address",
+      "@type": "xsd:string"
+    },
+    "nUnredeemed": {
+      "@id": "bc:n_unredeemed",
+      "@type": "xsd:integer"
+    },
+    "totalReceived": {
+      "@id": "bc:total_received",
+      "@type": "xsd:integer"
+    },
+    "totalSent": {
+      "@id": "bc:total_sent",
+      "@type": "xsd:integer"
+    },
+    "finalBalance": {
+      "@id": "bc:final_balance",
+      "@type": "xsd:integer"
+    },
+    "txs": {
+      "@id": "bc:txs",
+      "@container": "@set"
+    },
+    "addresses": {
+      "@id": "bc:addresses",
+      "@container": "@set"
+    },
+    "changeIndex": {
+      "@id": "bc:change_index",
+      "@type": "xsd:integer"
+    },
+    "accountIndex": {
+      "@id": "bc:account_index",
+      "@type": "xsd:integer"
+    },
+    "wallet": {
+      "@id": "bc:wallet",
+      "@type": "@id"
+    },
+    "nTxFiltered": {
+      "@id": "bc:n_tx_filtered",
+      "@type": "xsd:integer"
+    },
+    "notice": {
+      "@id": "bc:notice",
+      "@type": "xsd:string"
+    },
+    "unspentOutputs": {
+      "@id": "bc:unspent_outputs",
+      "@container": "@set"
+    },
+    "txHash": {
+      "@id": "bc:tx_hash",
+      "@type": "xsd:string"
+    },
+    "txHashBigEndian": {
+      "@id": "bc:tx_hash_big_endian",
+      "@type": "xsd:string"
+    },
+    "txOutputN": {
+      "@id": "bc:tx_output_n",
+      "@type": "xsd:integer"
+    },
+    "valueHex": {
+      "@id": "bc:value_hex",
+      "@type": "xsd:string"
+    },
+    "confirmations": {
+      "@id": "bc:confirmations",
+      "@type": "xsd:integer"
+    }
+  }
+}

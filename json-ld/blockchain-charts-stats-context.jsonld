@@ -1,0 +1,143 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://www.blockchain.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Chart": "bc:Chart",
+    "ChartPoint": "bc:ChartPoint",
+    "Stats": "bc:Stats",
+    "PoolDistribution": "bc:PoolDistribution",
+    "Ticker": "bc:Ticker",
+    "TickerEntry": "bc:TickerEntry",
+    "status": {
+      "@id": "bc:status",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "unit": {
+      "@id": "bc:unit",
+      "@type": "xsd:string"
+    },
+    "period": {
+      "@id": "bc:period",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "bc:values",
+      "@container": "@set"
+    },
+    "x": {
+      "@id": "bc:x",
+      "@type": "xsd:integer"
+    },
+    "y": {
+      "@id": "bc:y",
+      "@type": "xsd:decimal"
+    },
+    "marketPriceUsd": {
+      "@id": "bc:market_price_usd",
+      "@type": "xsd:decimal"
+    },
+    "hashRate": {
+      "@id": "bc:hash_rate",
+      "@type": "xsd:decimal"
+    },
+    "totalFeesBtc": {
+      "@id": "bc:total_fees_btc",
+      "@type": "xsd:integer"
+    },
+    "nBtcMined": {
+      "@id": "bc:n_btc_mined",
+      "@type": "xsd:integer"
+    },
+    "nTx": {
+      "@id": "bc:n_tx",
+      "@type": "xsd:integer"
+    },
+    "nBlocksMined": {
+      "@id": "bc:n_blocks_mined",
+      "@type": "xsd:integer"
+    },
+    "minutesBetweenBlocks": {
+      "@id": "bc:minutes_between_blocks",
+      "@type": "xsd:decimal"
+    },
+    "totalbc": {
+      "@id": "bc:totalbc",
+      "@type": "xsd:integer"
+    },
+    "nBlocksTotal": {
+      "@id": "bc:n_blocks_total",
+      "@type": "xsd:integer"
+    },
+    "estimatedTransactionVolumeUsd": {
+      "@id": "bc:estimated_transaction_volume_usd",
+      "@type": "xsd:decimal"
+    },
+    "minersRevenueUsd": {
+      "@id": "bc:miners_revenue_usd",
+      "@type": "xsd:decimal"
+    },
+    "minersRevenueBtc": {
+      "@id": "bc:miners_revenue_btc",
+      "@type": "xsd:integer"
+    },
+    "difficulty": {
+      "@id": "bc:difficulty",
+      "@type": "xsd:decimal"
+    },
+    "estimatedBtcSent": {
+      "@id": "bc:estimated_btc_sent",
+      "@type": "xsd:integer"
+    },
+    "totalBtcSent": {
+      "@id": "bc:total_btc_sent",
+      "@type": "xsd:integer"
+    },
+    "tradeVolumeBtc": {
+      "@id": "bc:trade_volume_btc",
+      "@type": "xsd:decimal"
+    },
+    "tradeVolumeUsd": {
+      "@id": "bc:trade_volume_usd",
+      "@type": "xsd:decimal"
+    },
+    "nextretarget": {
+      "@id": "bc:nextretarget",
+      "@type": "xsd:integer"
+    },
+    "timestamp": {
+      "@id": "bc:timestamp",
+      "@type": "xsd:integer"
+    },
+    "15m": {
+      "@id": "bc:15m",
+      "@type": "xsd:decimal"
+    },
+    "last": {
+      "@id": "bc:last",
+      "@type": "xsd:decimal"
+    },
+    "buy": {
+      "@id": "bc:buy",
+      "@type": "xsd:decimal"
+    },
+    "sell": {
+      "@id": "bc:sell",
+      "@type": "xsd:decimal"
+    },
+    "symbol": {
+      "@id": "bc:symbol",
+      "@type": "xsd:string"
+    }
+  }
+}

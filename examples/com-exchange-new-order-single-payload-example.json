@@ -1,0 +1,15 @@
+{
+  "action": "NewOrderSingle",
+  "channel": "trading",
+  "clOrdID": "21745988181",
+  "symbol": "BTC-USD",
+  "ordType": "market",
+  "timeInForce": "GTC",
+  "side": "buy",
+  "orderQty": 1.0,
+  "price": 72525.0,
+  "expireDate": 1,
+  "stopPx": 72525.0,
+  "minQty": 1.0,
+  "execInst": "ALO"
+}

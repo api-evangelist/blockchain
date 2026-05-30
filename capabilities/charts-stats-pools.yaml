@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Blockchain.com Charts, Stats & Market Data API — Pools
+  description: |
+    Blockchain.com Charts, Stats & Market Data API — Pools. 1 operations. Lead operation: Blockchain.com Get Mining Pool Distribution. Self-contained Naftiko capability covering one Blockchain.com business surface.
+  tags:
+    - Blockchain.com
+    - Charts, Stats & Market Data API
+    - Pools
+  created: '2026-05-30'
+  modified: '2026-05-30'
+capability:
+  consumes:
+    - type: http
+      namespace: charts-stats-pools
+      baseUri: https://api.blockchain.info
+      description: Blockchain.com Charts, Stats & Market Data API — Pools business capability. Self-contained, no shared references.
+      resources:
+        - name: pools
+          path: /pools
+          operations:
+            - name: getPools
+              method: GET
+              description: Blockchain.com Get Mining Pool Distribution
+              inputParameters:
+                - name: timespan
+                  in: query
+                  type: string
+                  required: false
+                  description: Duration window in days (max 10, default 4).
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: charts-stats-pools-rest
+      port: 8080
+      description: REST adapter for Blockchain.com Charts, Stats & Market Data API — Pools. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/pools
+          name: pools
+          description: REST surface for pools.
+          operations:
+            - method: GET
+              name: getPools
+              description: Blockchain.com Get Mining Pool Distribution
+              call: charts-stats-pools.getPools
+              with:
+                timespan: rest.timespan
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: charts-stats-pools-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Blockchain.com Charts, Stats & Market Data API — Pools. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-mining-pool-distribution
+          description: Blockchain.com Get Mining Pool Distribution
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: charts-stats-pools.getPools
+          with:
+            timespan: tools.timespan
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,12 @@
+{
+  "clOrdId": "21745988181",
+  "ordType": "limit",
+  "timeInForce": "GTC",
+  "symbol": "BTC-USD",
+  "side": "buy",
+  "orderQty": 0.5,
+  "price": 72525.0,
+  "stopPx": 72525.0,
+  "minQty": 0.5,
+  "expireDate": 1
+}

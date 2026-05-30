@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-prices-update-payload-schema.json",
+  "title": "ExchangePricesUpdatePayload",
+  "description": "ExchangePricesUpdatePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "const": "updated"
+    },
+    "channel": {
+      "type": "string",
+      "const": "prices"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "price": {
+      "type": "array",
+      "description": "[timestamp, open, high, low, close, volume]",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "number"
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "price"
+  ]
+}

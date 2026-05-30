@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-withdrawal-structure.json",
+  "name": "Withdrawal",
+  "description": "A withdrawal record.",
+  "type": "object",
+  "properties": {
+    "withdrawalId": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "amount": {
+      "type": "double"
+    },
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "beneficiary": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "description": "Withdrawal state \u2014 `NONE`, `IN_PROGRESS`, `COMPLETE`, `REJECTED`.",
+      "example": "open"
+    },
+    "timestamp": {
+      "type": "int64",
+      "example": 1748609400000
+    },
+    "fee": {
+      "type": "double"
+    }
+  }
+}

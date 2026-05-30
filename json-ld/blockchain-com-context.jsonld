@@ -1,0 +1,413 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://www.blockchain.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ExchangeOrder": "bc:ExchangeOrder",
+    "BitcoinOpPingPayload": "bc:BitcoinOpPingPayload",
+    "BitcoinOpPingTxPayload": "bc:BitcoinOpPingTxPayload",
+    "BitcoinOpPingBlockPayload": "bc:BitcoinOpPingBlockPayload",
+    "BitcoinOpUnconfirmedSubPayload": "bc:BitcoinOpUnconfirmedSubPayload",
+    "BitcoinOpUnconfirmedUnsubPayload": "bc:BitcoinOpUnconfirmedUnsubPayload",
+    "BitcoinOpBlocksSubPayload": "bc:BitcoinOpBlocksSubPayload",
+    "BitcoinOpBlocksUnsubPayload": "bc:BitcoinOpBlocksUnsubPayload",
+    "BitcoinOpAddrSubPayload": "bc:BitcoinOpAddrSubPayload",
+    "BitcoinOpAddrUnsubPayload": "bc:BitcoinOpAddrUnsubPayload",
+    "BitcoinOpOpReturnSubPayload": "bc:BitcoinOpOpReturnSubPayload",
+    "BitcoinUtxMessagePayload": "bc:BitcoinUtxMessagePayload",
+    "BitcoinBlockMessagePayload": "bc:BitcoinBlockMessagePayload",
+    "ExchangeSubscribeActionPayload": "bc:ExchangeSubscribeActionPayload",
+    "ExchangeSubscribeSymbolActionPayload": "bc:ExchangeSubscribeSymbolActionPayload",
+    "ExchangeSubscribePricesActionPayload": "bc:ExchangeSubscribePricesActionPayload",
+    "ExchangeAdminEventPayload": "bc:ExchangeAdminEventPayload",
+    "ExchangeHeartbeatUpdatePayload": "bc:ExchangeHeartbeatUpdatePayload",
+    "ExchangeL2EventPayload": "bc:ExchangeL2EventPayload",
+    "ExchangeL3EventPayload": "bc:ExchangeL3EventPayload",
+    "ExchangePricesUpdatePayload": "bc:ExchangePricesUpdatePayload",
+    "ExchangeSymbolsSnapshotPayload": "bc:ExchangeSymbolsSnapshotPayload",
+    "ExchangeSymbolUpdatePayload": "bc:ExchangeSymbolUpdatePayload",
+    "ExchangeTickerSnapshotPayload": "bc:ExchangeTickerSnapshotPayload",
+    "ExchangeTradeUpdatePayload": "bc:ExchangeTradeUpdatePayload",
+    "ExchangeAuthSubscribePayload": "bc:ExchangeAuthSubscribePayload",
+    "ExchangeAuthSubscribedPayload": "bc:ExchangeAuthSubscribedPayload",
+    "ExchangeAuthRejectedPayload": "bc:ExchangeAuthRejectedPayload",
+    "ExchangeBalancesSnapshotPayload": "bc:ExchangeBalancesSnapshotPayload",
+    "ExchangeTradingSubscribePayload": "bc:ExchangeTradingSubscribePayload",
+    "ExchangeNewOrderSinglePayload": "bc:ExchangeNewOrderSinglePayload",
+    "ExchangeCancelOrderRequestPayload": "bc:ExchangeCancelOrderRequestPayload",
+    "ExchangeOrderMassCancelRequestPayload": "bc:ExchangeOrderMassCancelRequestPayload",
+    "ExchangeOrderMassStatusRequestPayload": "bc:ExchangeOrderMassStatusRequestPayload",
+    "ExchangeTradingSnapshotPayload": "bc:ExchangeTradingSnapshotPayload",
+    "ExchangeTradingRejectedPayload": "bc:ExchangeTradingRejectedPayload",
+    "orderID": {
+      "@id": "bc:orderID",
+      "@type": "xsd:string"
+    },
+    "clOrdID": {
+      "@id": "bc:clOrdID",
+      "@type": "xsd:string"
+    },
+    "symbol": {
+      "@id": "bc:symbol",
+      "@type": "xsd:string"
+    },
+    "side": {
+      "@id": "bc:side",
+      "@type": "xsd:string"
+    },
+    "ordType": {
+      "@id": "bc:ordType",
+      "@type": "xsd:string"
+    },
+    "orderQty": {
+      "@id": "bc:orderQty",
+      "@type": "xsd:decimal"
+    },
+    "leavesQty": {
+      "@id": "bc:leavesQty",
+      "@type": "xsd:decimal"
+    },
+    "cumQty": {
+      "@id": "bc:cumQty",
+      "@type": "xsd:decimal"
+    },
+    "avgPx": {
+      "@id": "bc:avgPx",
+      "@type": "xsd:decimal"
+    },
+    "ordStatus": {
+      "@id": "bc:ordStatus",
+      "@type": "xsd:string"
+    },
+    "timeInForce": {
+      "@id": "bc:timeInForce",
+      "@type": "xsd:string"
+    },
+    "text": {
+      "@id": "bc:text",
+      "@type": "xsd:string"
+    },
+    "execType": {
+      "@id": "bc:execType",
+      "@type": "xsd:string"
+    },
+    "execID": {
+      "@id": "bc:execID",
+      "@type": "xsd:string"
+    },
+    "transactTime": {
+      "@id": "bc:transactTime",
+      "@type": "xsd:string"
+    },
+    "msgType": {
+      "@id": "bc:msgType"
+    },
+    "lastPx": {
+      "@id": "bc:lastPx",
+      "@type": "xsd:decimal"
+    },
+    "lastShares": {
+      "@id": "bc:lastShares",
+      "@type": "xsd:decimal"
+    },
+    "tradeId": {
+      "@id": "bc:tradeId",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "bc:price",
+      "@type": "xsd:decimal"
+    },
+    "stopPx": {
+      "@id": "bc:stopPx",
+      "@type": "xsd:decimal"
+    },
+    "expireDate": {
+      "@id": "bc:expireDate",
+      "@type": "xsd:integer"
+    },
+    "minQty": {
+      "@id": "bc:minQty",
+      "@type": "xsd:decimal"
+    },
+    "fee": {
+      "@id": "bc:fee",
+      "@type": "xsd:decimal"
+    },
+    "op": {
+      "@id": "bc:op",
+      "@type": "xsd:string"
+    },
+    "addr": {
+      "@id": "bc:addr",
+      "@type": "xsd:string"
+    },
+    "x": {
+      "@id": "bc:x",
+      "@type": "@id"
+    },
+    "lockTime": {
+      "@id": "bc:lock_time",
+      "@type": "xsd:integer"
+    },
+    "ver": {
+      "@id": "bc:ver",
+      "@type": "xsd:integer"
+    },
+    "size": {
+      "@id": "bc:size",
+      "@type": "xsd:integer"
+    },
+    "inputs": {
+      "@id": "bc:inputs",
+      "@container": "@set"
+    },
+    "sequence": {
+      "@id": "bc:sequence",
+      "@type": "xsd:integer"
+    },
+    "prevOut": {
+      "@id": "bc:prev_out",
+      "@type": "@id"
+    },
+    "spent": {
+      "@id": "bc:spent",
+      "@type": "xsd:boolean"
+    },
+    "txIndex": {
+      "@id": "bc:tx_index",
+      "@type": "xsd:integer"
+    },
+    "type": {
+      "@id": "bc:type",
+      "@type": "xsd:integer"
+    },
+    "value": {
+      "@id": "bc:value",
+      "@type": "xsd:integer"
+    },
+    "n": {
+      "@id": "bc:n",
+      "@type": "xsd:integer"
+    },
+    "script": {
+      "@id": "bc:script",
+      "@type": "xsd:string"
+    },
+    "time": {
+      "@id": "bc:time",
+      "@type": "xsd:integer"
+    },
+    "vinSz": {
+      "@id": "bc:vin_sz",
+      "@type": "xsd:integer"
+    },
+    "hash": {
+      "@id": "bc:hash",
+      "@type": "xsd:string"
+    },
+    "voutSz": {
+      "@id": "bc:vout_sz",
+      "@type": "xsd:integer"
+    },
+    "relayedBy": {
+      "@id": "bc:relayed_by",
+      "@type": "xsd:string"
+    },
+    "out": {
+      "@id": "bc:out",
+      "@container": "@set"
+    },
+    "txIndexes": {
+      "@id": "bc:txIndexes",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "nTx": {
+      "@id": "bc:nTx",
+      "@type": "xsd:integer"
+    },
+    "totalBTCSent": {
+      "@id": "bc:totalBTCSent",
+      "@type": "xsd:integer"
+    },
+    "estimatedBTCSent": {
+      "@id": "bc:estimatedBTCSent",
+      "@type": "xsd:integer"
+    },
+    "reward": {
+      "@id": "bc:reward",
+      "@type": "xsd:integer"
+    },
+    "blockIndex": {
+      "@id": "bc:blockIndex",
+      "@type": "xsd:integer"
+    },
+    "prevBlockIndex": {
+      "@id": "bc:prevBlockIndex",
+      "@type": "xsd:integer"
+    },
+    "height": {
+      "@id": "bc:height",
+      "@type": "xsd:integer"
+    },
+    "mrklRoot": {
+      "@id": "bc:mrklRoot",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:integer"
+    },
+    "bits": {
+      "@id": "bc:bits",
+      "@type": "xsd:integer"
+    },
+    "nonce": {
+      "@id": "bc:nonce",
+      "@type": "xsd:integer"
+    },
+    "action": {
+      "@id": "bc:action",
+      "@type": "xsd:string"
+    },
+    "channel": {
+      "@id": "bc:channel",
+      "@type": "xsd:string"
+    },
+    "granularity": {
+      "@id": "bc:granularity",
+      "@type": "xsd:integer"
+    },
+    "seqnum": {
+      "@id": "bc:seqnum",
+      "@type": "xsd:integer"
+    },
+    "event": {
+      "@id": "bc:event",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "bc:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "bids": {
+      "@id": "bc:bids",
+      "@container": "@set"
+    },
+    "px": {
+      "@id": "bc:px",
+      "@type": "xsd:decimal"
+    },
+    "qty": {
+      "@id": "bc:qty",
+      "@type": "xsd:decimal"
+    },
+    "num": {
+      "@id": "bc:num",
+      "@type": "xsd:integer"
+    },
+    "asks": {
+      "@id": "bc:asks",
+      "@container": "@set"
+    },
+    "id": {
+      "@id": "bc:id",
+      "@type": "xsd:string"
+    },
+    "symbols": {
+      "@id": "bc:symbols",
+      "@type": "@id"
+    },
+    "auction-price": {
+      "@id": "bc:auction-price",
+      "@type": "xsd:decimal"
+    },
+    "auction-size": {
+      "@id": "bc:auction-size",
+      "@type": "xsd:decimal"
+    },
+    "auction-time": {
+      "@id": "bc:auction-time",
+      "@type": "xsd:string"
+    },
+    "imbalance": {
+      "@id": "bc:imbalance",
+      "@type": "xsd:decimal"
+    },
+    "status": {
+      "@id": "bc:status",
+      "@type": "xsd:string"
+    },
+    "price24h": {
+      "@id": "bc:price_24h",
+      "@type": "xsd:decimal"
+    },
+    "volume24h": {
+      "@id": "bc:volume_24h",
+      "@type": "xsd:decimal"
+    },
+    "lastTradePrice": {
+      "@id": "bc:last_trade_price",
+      "@type": "xsd:decimal"
+    },
+    "token": {
+      "@id": "bc:token",
+      "@type": "xsd:string"
+    },
+    "readOnly": {
+      "@id": "bc:readOnly",
+      "@type": "xsd:boolean"
+    },
+    "balances": {
+      "@id": "bc:balances",
+      "@container": "@set"
+    },
+    "currency": {
+      "@id": "bc:currency",
+      "@type": "xsd:string"
+    },
+    "balance": {
+      "@id": "bc:balance",
+      "@type": "xsd:decimal"
+    },
+    "available": {
+      "@id": "bc:available",
+      "@type": "xsd:decimal"
+    },
+    "balanceLocal": {
+      "@id": "bc:balance_local",
+      "@type": "xsd:decimal"
+    },
+    "availableLocal": {
+      "@id": "bc:available_local",
+      "@type": "xsd:decimal"
+    },
+    "rate": {
+      "@id": "bc:rate",
+      "@type": "xsd:decimal"
+    },
+    "totalAvailableLocal": {
+      "@id": "bc:total_available_local",
+      "@type": "xsd:decimal"
+    },
+    "totalBalanceLocal": {
+      "@id": "bc:total_balance_local",
+      "@type": "xsd:decimal"
+    },
+    "cancelOnDisconnect": {
+      "@id": "bc:cancelOnDisconnect",
+      "@type": "xsd:boolean"
+    },
+    "execInst": {
+      "@id": "bc:execInst",
+      "@type": "xsd:string"
+    },
+    "orders": {
+      "@id": "bc:orders",
+      "@container": "@set"
+    }
+  }
+}

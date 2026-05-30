@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-l2event-payload-structure.json",
+  "name": "ExchangeL2EventPayload",
+  "description": "ExchangeL2EventPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "snapshot",
+        "updated"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "const": "l2"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "bids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "px",
+          "qty",
+          "num"
+        ],
+        "properties": {
+          "px": {
+            "type": "double"
+          },
+          "qty": {
+            "type": "double",
+            "description": "Aggregated size at this price. 0 means remove level."
+          },
+          "num": {
+            "type": "int32",
+            "description": "Number of orders at this price level."
+          }
+        }
+      }
+    },
+    "asks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "px",
+          "qty",
+          "num"
+        ],
+        "properties": {
+          "px": {
+            "type": "double"
+          },
+          "qty": {
+            "type": "double"
+          },
+          "num": {
+            "type": "int32"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "bids",
+    "asks"
+  ]
+}

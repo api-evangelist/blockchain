@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-bitcoin-utx-message-payload-schema.json",
+  "title": "BitcoinUtxMessagePayload",
+  "description": "BitcoinUtxMessagePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "utx"
+    },
+    "x": {
+      "type": "object",
+      "properties": {
+        "lock_time": {
+          "type": "integer"
+        },
+        "ver": {
+          "type": "integer"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sequence": {
+                "type": "integer"
+              },
+              "prev_out": {
+                "type": "object",
+                "properties": {
+                  "spent": {
+                    "type": "boolean"
+                  },
+                  "tx_index": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "integer"
+                  },
+                  "addr": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "integer",
+                    "description": "Value in satoshis."
+                  },
+                  "n": {
+                    "type": "integer"
+                  },
+                  "script": {
+                    "type": "string"
+                  }
+                }
+              },
+              "script": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "time": {
+          "type": "integer",
+          "description": "Seen-by-relay Unix timestamp."
+        },
+        "tx_index": {
+          "type": "integer"
+        },
+        "vin_sz": {
+          "type": "integer"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "vout_sz": {
+          "type": "integer"
+        },
+        "relayed_by": {
+          "type": "string"
+        },
+        "out": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "spent": {
+                "type": "boolean"
+              },
+              "tx_index": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "addr": {
+                "type": "string"
+              },
+              "value": {
+                "type": "integer"
+              },
+              "n": {
+                "type": "integer"
+              },
+              "script": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-deposit-structure.json",
+  "name": "Deposit",
+  "description": "A deposit record.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "amount": {
+      "type": "double"
+    },
+    "amount_local": {
+      "type": "double"
+    },
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "timestamp": {
+      "type": "int64",
+      "example": 1748609400000
+    },
+    "address": {
+      "type": "string",
+      "example": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    },
+    "txHash": {
+      "type": "string",
+      "example": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21"
+    },
+    "state": {
+      "type": "string",
+      "description": "Deposit state \u2014 `PENDING`, `CONFIRMED`, `REJECTED`.",
+      "example": "open"
+    }
+  }
+}

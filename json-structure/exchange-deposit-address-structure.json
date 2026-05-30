@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-deposit-address-structure.json",
+  "name": "DepositAddress",
+  "description": "A newly generated deposit address.",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "address": {
+      "type": "string",
+      "example": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    }
+  }
+}

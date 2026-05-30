@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-beneficiary-schema.json",
+  "title": "Beneficiary",
+  "description": "A whitelisted withdrawal destination.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "address": {
+      "type": "string",
+      "example": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    },
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "state": {
+      "type": "string",
+      "description": "Beneficiary state \u2014 `ACTIVE`, `PENDING`, `REJECTED`.",
+      "example": "open"
+    },
+    "name": {
+      "type": "string",
+      "example": "My Entry"
+    },
+    "whitelisted": {
+      "type": "boolean",
+      "example": true
+    },
+    "fiat": {
+      "type": "boolean",
+      "example": true
+    },
+    "agent": {
+      "type": "object",
+      "description": "Routing details for fiat beneficiaries.",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "recipient": {
+          "type": "string"
+        },
+        "routingNumber": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

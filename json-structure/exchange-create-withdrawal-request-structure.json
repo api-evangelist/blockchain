@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-create-withdrawal-request-structure.json",
+  "name": "CreateWithdrawalRequest",
+  "description": "Payload for submitting a withdrawal.",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "type": "string",
+      "description": "Currency ticker.",
+      "example": "BTC"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Amount to withdraw (decimal string).",
+      "example": "0.0001"
+    },
+    "beneficiary": {
+      "type": "string",
+      "description": "Beneficiary id (from `/whitelist`)."
+    }
+  },
+  "required": [
+    "currency",
+    "amount",
+    "beneficiary"
+  ]
+}

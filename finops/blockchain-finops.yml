@@ -1,0 +1,109 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Blockchain.com
+providerId: blockchain
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Cryptocurrency
+  - Bitcoin
+  - Exchange
+description: >-
+  FOCUS-aligned FinOps view of Blockchain.com. The Bitcoin data surfaces are free at point of use,
+  so the billable surface is the Exchange (take-rate trading fees + on-chain network fees passed
+  through on withdrawals) plus the partner-priced Pay API. Cost telemetry is reconstructed from
+  the Exchange `/fills`, `/withdrawals`, and `/accounts` endpoints.
+sources:
+  - https://exchange.blockchain.com/fees
+  - https://www.blockchain.com/api
+  - https://docs.blockchain.com/pay/api
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Blockchain Access UK Ltd.
+serviceCategory: Cryptocurrency Exchange & Data
+billingModel:
+  pricingCategory: Take Rate + Pass-Through + Partner Contract
+  billingFrequency: Continuous Settlement
+  billingCurrency: USD (settled in trade currency)
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Adjustment
+    - Refund
+focusColumns:
+  ServiceName: Blockchain.com
+  ServiceCategory: Cryptocurrency Exchange & Data
+  ServiceSubcategory: Spot Trading
+  ProviderName: Blockchain.com
+  PublisherName: Blockchain Access UK Ltd.
+  InvoiceIssuerName: Blockchain Access UK Ltd.
+  BillingCurrency: USD
+meters:
+  - name: spot_trade_fills
+    unit: fill
+    aggregation: count
+    dimensions:
+      - symbol
+      - side
+      - maker_taker
+  - name: spot_trade_volume
+    unit: USD
+    aggregation: sum
+    dimensions:
+      - symbol
+      - side
+  - name: spot_trade_fees
+    unit: USD
+    aggregation: sum
+    dimensions:
+      - symbol
+      - maker_taker
+      - fee_currency
+  - name: withdrawals
+    unit: withdrawal
+    aggregation: count
+    dimensions:
+      - currency
+  - name: withdrawal_network_fees
+    unit: native_unit
+    aggregation: sum
+    dimensions:
+      - currency
+  - name: pay_partner_orders
+    unit: order
+    aggregation: count
+    dimensions:
+      - currency
+      - region
+  - name: api_requests
+    unit: request
+    aggregation: count
+    dimensions:
+      - api_surface
+principles:
+  - name: Visibility
+    description: >-
+      Pull `/fills` and `/withdrawals` daily into the cost ledger to reconstruct per-trade fees and
+      per-withdrawal network costs. The `/accounts` endpoint reconciles ending balances.
+  - name: Allocation
+    description: >-
+      Tag every order with a `clOrdId` that encodes book / strategy / team for downstream chargeback.
+      Maintain a separate Exchange API key per workload so rate-limit and fill data are pre-segmented.
+  - name: Optimization
+    description: >-
+      Climb the 30-day-volume fee tier deliberately — running smaller flows through aggregator
+      strategies can move you across the next maker rebate threshold. Prefer maker-side orders.
+      Batch withdrawals to amortise on-chain network fees.
+  - name: Accountability
+    description: >-
+      Monthly P&L review reconciles Exchange fills + withdrawal network fees against the internal
+      ledger. Pay partner revenue share is reconciled against the Pay Partner statement.

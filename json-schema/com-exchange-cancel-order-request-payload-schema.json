@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-cancel-order-request-payload-schema.json",
+  "title": "ExchangeCancelOrderRequestPayload",
+  "description": "ExchangeCancelOrderRequestPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "CancelOrderRequest"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "orderID": {
+      "type": "string",
+      "description": "Exchange-assigned order id (FIX 37)."
+    }
+  },
+  "required": [
+    "action",
+    "channel",
+    "orderID"
+  ]
+}

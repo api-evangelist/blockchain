@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-fees-schema.json",
+  "title": "Fees",
+  "description": "Maker/taker fee schedule.",
+  "type": "object",
+  "properties": {
+    "makerRate": {
+      "type": "number",
+      "description": "Maker fee rate.",
+      "example": 72525.0
+    },
+    "takerRate": {
+      "type": "number",
+      "description": "Taker fee rate.",
+      "example": 72525.0
+    },
+    "volumeInUSD": {
+      "type": "number",
+      "description": "30-day trading volume in USD used to compute the rate tier.",
+      "example": 0.5
+    }
+  }
+}

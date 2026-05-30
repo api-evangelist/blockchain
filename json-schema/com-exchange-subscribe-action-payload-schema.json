@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-subscribe-action-payload-schema.json",
+  "title": "ExchangeSubscribeActionPayload",
+  "description": "ExchangeSubscribeActionPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "subscribe",
+        "unsubscribe"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "heartbeat",
+        "symbols",
+        "balances"
+      ]
+    }
+  },
+  "required": [
+    "action",
+    "channel"
+  ]
+}

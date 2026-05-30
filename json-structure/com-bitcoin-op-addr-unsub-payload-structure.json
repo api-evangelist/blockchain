@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-op-addr-unsub-payload-structure.json",
+  "name": "BitcoinOpAddrUnsubPayload",
+  "description": "BitcoinOpAddrUnsubPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "addr_unsub"
+    },
+    "addr": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "op",
+    "addr"
+  ]
+}

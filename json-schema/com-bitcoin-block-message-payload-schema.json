@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-bitcoin-block-message-payload-schema.json",
+  "title": "BitcoinBlockMessagePayload",
+  "description": "BitcoinBlockMessagePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "block"
+    },
+    "x": {
+      "type": "object",
+      "properties": {
+        "txIndexes": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "nTx": {
+          "type": "integer"
+        },
+        "totalBTCSent": {
+          "type": "integer",
+          "description": "Total BTC moved",
+          "in satoshis.": null
+        },
+        "estimatedBTCSent": {
+          "type": "integer"
+        },
+        "reward": {
+          "type": "integer"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "blockIndex": {
+          "type": "integer"
+        },
+        "prevBlockIndex": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "mrklRoot": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer"
+        },
+        "time": {
+          "type": "integer"
+        },
+        "bits": {
+          "type": "integer"
+        },
+        "nonce": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

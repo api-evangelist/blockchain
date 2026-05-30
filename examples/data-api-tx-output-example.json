@@ -1,0 +1,15 @@
+{
+  "type": 1,
+  "spent": true,
+  "value": 100000,
+  "spending_outpoints": [
+    {
+      "tx_index": 1,
+      "n": 1
+    }
+  ],
+  "n": 1,
+  "tx_index": 1,
+  "script": "example-value",
+  "addr": "example-value"
+}

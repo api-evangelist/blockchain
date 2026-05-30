@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-create-order-request-structure.json",
+  "name": "CreateOrderRequest",
+  "description": "Payload for submitting a new order.",
+  "type": "object",
+  "properties": {
+    "clOrdId": {
+      "type": "string",
+      "description": "Client-supplied order identifier.",
+      "example": "21745988181"
+    },
+    "ordType": {
+      "type": "string",
+      "enum": [
+        "limit",
+        "market",
+        "stop",
+        "stopLimit"
+      ],
+      "example": "limit"
+    },
+    "timeInForce": {
+      "type": "string",
+      "enum": [
+        "GTC",
+        "IOC",
+        "FOK",
+        "GTD"
+      ],
+      "example": "GTC"
+    },
+    "symbol": {
+      "type": "string",
+      "example": "BTC-USD"
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "buy",
+        "sell"
+      ],
+      "example": "buy"
+    },
+    "orderQty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "price": {
+      "type": "double",
+      "example": 72525.0
+    },
+    "stopPx": {
+      "type": "double"
+    },
+    "minQty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "expireDate": {
+      "type": "int32"
+    }
+  },
+  "required": [
+    "clOrdId",
+    "ordType",
+    "symbol",
+    "side",
+    "orderQty"
+  ]
+}

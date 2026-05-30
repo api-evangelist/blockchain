@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-whitelist-capability-structure.json",
+  "name": "WhitelistCapability",
+  "description": "Per-currency capability flags for the whitelist.",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "address": {
+      "type": "boolean",
+      "example": true
+    },
+    "xpub": {
+      "type": "boolean",
+      "example": true
+    },
+    "existingBeneficiaryOnly": {
+      "type": "boolean",
+      "example": true
+    },
+    "fiat": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

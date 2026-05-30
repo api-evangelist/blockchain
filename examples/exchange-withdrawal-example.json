@@ -1,0 +1,9 @@
+{
+  "withdrawalId": "21745988181",
+  "amount": 1.0,
+  "currency": "BTC",
+  "beneficiary": "example-value",
+  "state": "open",
+  "timestamp": 1748609400000,
+  "fee": 1.0
+}

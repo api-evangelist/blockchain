@@ -1,0 +1,89 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Blockchain.com
+providerId: blockchain
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Cryptocurrency
+  - Bitcoin
+  - Exchange
+description: >-
+  Blockchain.com publishes distinct rate-limit policies for each of its four developer surfaces.
+  The Bitcoin Data API and Simple Query API are throttled per IP; the Charts/Stats family is
+  throttled per IP with sampling guidance for large series; the Exchange REST API is throttled
+  per API key; the Exchange WebSocket caps client-to-server messages at 1200 per minute per
+  connection. Limit-raise requests for the Exchange are handled by support.
+sources:
+  - https://www.blockchain.com/api
+  - https://www.blockchain.com/explorer/api/blockchain_api
+  - https://www.blockchain.com/explorer/api/q
+  - https://exchange.blockchain.com/api/
+  - https://github.com/blockchain/docs-exchange-api
+responseCodes:
+  throttled: 429
+  serverThrottled: 503
+limits:
+  - name: Bitcoin Data API (rawblock, rawtx, rawaddr, multiaddr, unspent, latestblock)
+    scope: IP
+    metric: requests_per_second
+    limit: 'see Blockchain.com Data API docs (per-IP throttle, raise via support)'
+    notes: >-
+      Bulk integrations should batch with multiaddr and prefer the WebSocket for new-block / new-tx
+      streams to avoid polling.
+  - name: Simple Query API (/q/*)
+    scope: IP
+    metric: requests_per_period
+    limit: 1
+    timeFrame: second
+    notes: 'Hard cap: one request per 10 seconds per IP. Heavy users should cache locally.'
+  - name: Charts API (api.blockchain.info/charts/*)
+    scope: IP
+    metric: requests_per_period
+    limit: 'see charts API guidance — use sampled=true and rollingAverage to reduce payloads'
+    notes: >-
+      Large `timespan` requests are expensive. The `sampled=true` flag downsamples to ~1500
+      points and is the recommended default for dashboards.
+  - name: Stats / Pools API
+    scope: IP
+    metric: requests_per_minute
+    limit: 'unpublished — light polling (1/min) is fine'
+  - name: Ticker / tobtc
+    scope: IP
+    metric: requests_per_minute
+    limit: 'unpublished — values cache for ~15 minutes upstream'
+  - name: Exchange REST API
+    scope: key
+    metric: requests_per_second
+    limit: 'see api.blockchain.com/v3/ — per-key throttle; raise via support'
+    notes: >-
+      Concurrent reads + writes are accounted independently. Bulk-cancel via DELETE /orders is
+      cheaper than cancelling individual orders.
+  - name: Exchange WebSocket (mercury-gateway)
+    scope: connection
+    metric: messages_per_minute
+    limit: 1200
+    timeFrame: minute
+    notes: >-
+      Client-to-server message cap. Excess messages return `event: rejected`; resume after one
+      minute. Server-to-client snapshot/update messages are not delayed.
+policies:
+  - name: Sequence numbers
+    description: >-
+      Every Exchange WebSocket message carries a monotonically increasing `seqnum`. Gaps signal
+      dropped messages — reconnect and rebuild state on gap detection.
+  - name: API key whitelisting
+    description: >-
+      Exchange API keys can be scoped to read-only and bound to a specific IP list at creation time.
+      Use separate keys for separate workloads to localise rate-limit incidents.
+  - name: Backoff and caching
+    description: >-
+      Public data endpoints expect callers to cache locally. Use the WebSocket for change-driven
+      updates rather than polling REST endpoints.
+  - name: Raise limits via support
+    description: >-
+      Exchange and Pay partners can request higher rate limits via Blockchain.com Support; public
+      data limits are not raised on request — design around them.

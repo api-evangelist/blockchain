@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-whitelist-schema.json",
+  "title": "Whitelist",
+  "description": "Whitelist response listing capabilities and active beneficiaries.",
+  "type": "object",
+  "properties": {
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Per-currency capability flags for the whitelist.",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "example": "BTC"
+          },
+          "address": {
+            "type": "boolean",
+            "example": true
+          },
+          "xpub": {
+            "type": "boolean",
+            "example": true
+          },
+          "existingBeneficiaryOnly": {
+            "type": "boolean",
+            "example": true
+          },
+          "fiat": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "enabledAt": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-30T14:30:00Z"
+    },
+    "whitelisted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A whitelisted withdrawal destination.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "21745988181"
+          },
+          "address": {
+            "type": "string",
+            "example": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+          },
+          "currency": {
+            "type": "string",
+            "example": "BTC"
+          },
+          "state": {
+            "type": "string",
+            "description": "Beneficiary state \u2014 `ACTIVE`, `PENDING`, `REJECTED`.",
+            "example": "open"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Entry"
+          },
+          "whitelisted": {
+            "type": "boolean",
+            "example": true
+          },
+          "fiat": {
+            "type": "boolean",
+            "example": true
+          },
+          "agent": {
+            "type": "object",
+            "description": "Routing details for fiat beneficiaries.",
+            "properties": {
+              "account": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "recipient": {
+                "type": "string"
+              },
+              "routingNumber": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

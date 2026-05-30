@@ -1,0 +1,21 @@
+{
+  "blocks": [
+    {
+      "hash": "00000000000000000004f4e7a1...",
+      "ver": 536870912,
+      "prev_block": "example-value",
+      "mrkl_root": "example-value",
+      "time": 1748609400000,
+      "bits": 1,
+      "nonce": 1,
+      "n_tx": 1,
+      "size": 1,
+      "block_index": 1,
+      "main_chain": true,
+      "height": 851234,
+      "tx": [
+        null
+      ]
+    }
+  ]
+}

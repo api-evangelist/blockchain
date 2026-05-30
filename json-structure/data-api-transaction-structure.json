@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/data-api-transaction-structure.json",
+  "name": "Transaction",
+  "description": "A Bitcoin transaction with its inputs and outputs.",
+  "type": "object",
+  "properties": {
+    "hash": {
+      "type": "string",
+      "description": "Transaction hash.",
+      "example": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21"
+    },
+    "ver": {
+      "type": "int32",
+      "description": "Transaction version.",
+      "example": 1
+    },
+    "vin_sz": {
+      "type": "int32",
+      "description": "Number of inputs.",
+      "example": 1
+    },
+    "vout_sz": {
+      "type": "int32",
+      "description": "Number of outputs.",
+      "example": 1
+    },
+    "size": {
+      "type": "int32",
+      "description": "Serialized transaction size in bytes.",
+      "example": 1
+    },
+    "weight": {
+      "type": "int32",
+      "description": "Transaction weight (BIP141).",
+      "example": 1
+    },
+    "fee": {
+      "type": "int64",
+      "description": "Fee paid in Satoshi.",
+      "example": 1
+    },
+    "relayed_by": {
+      "type": "string",
+      "description": "IP address that relayed the transaction."
+    },
+    "lock_time": {
+      "type": "int64",
+      "description": "Lock time (block height or Unix seconds).",
+      "example": 1748609400000
+    },
+    "tx_index": {
+      "type": "int64",
+      "description": "Internal transaction index.",
+      "example": 1
+    },
+    "double_spend": {
+      "type": "boolean",
+      "description": "True if the transaction is a known double-spend.",
+      "example": true
+    },
+    "time": {
+      "type": "int64",
+      "description": "First-seen time (Unix seconds).",
+      "example": 1748609400000
+    },
+    "block_index": {
+      "type": "int64",
+      "description": "Block index containing the transaction (null if unconfirmed).",
+      "example": 1
+    },
+    "block_height": {
+      "type": "int32",
+      "description": "Block height containing the transaction (null if unconfirmed).",
+      "example": 851234
+    },
+    "inputs": {
+      "type": "array",
+      "description": "Transaction inputs.",
+      "items": {
+        "type": "object",
+        "description": "A single Bitcoin transaction input.",
+        "properties": {
+          "sequence": {
+            "type": "int64",
+            "description": "Sequence number.",
+            "example": 1
+          },
+          "witness": {
+            "type": "string",
+            "description": "SegWit witness data."
+          },
+          "script": {
+            "type": "string",
+            "description": "Input script (scriptSig) as hex."
+          },
+          "prev_out": {
+            "$ref": "#/components/schemas/TxOutput"
+          }
+        }
+      }
+    },
+    "out": {
+      "type": "array",
+      "description": "Transaction outputs.",
+      "items": {
+        "type": "object",
+        "description": "A single Bitcoin transaction output (a UTXO before it is spent).",
+        "properties": {
+          "type": {
+            "type": "int32",
+            "description": "Output type indicator.",
+            "example": 1
+          },
+          "spent": {
+            "type": "boolean",
+            "description": "True if the output has been spent.",
+            "example": true
+          },
+          "value": {
+            "type": "int64",
+            "description": "Value in Satoshi.",
+            "example": 100000
+          },
+          "spending_outpoints": {
+            "type": "array",
+            "description": "Outpoints that spent this output (when spent).",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tx_index": {
+                  "type": "int64"
+                },
+                "n": {
+                  "type": "int32"
+                }
+              }
+            }
+          },
+          "n": {
+            "type": "int32",
+            "description": "Output index within the transaction.",
+            "example": 1
+          },
+          "tx_index": {
+            "type": "int64",
+            "description": "Internal transaction index.",
+            "example": 1
+          },
+          "script": {
+            "type": "string",
+            "description": "Output script (scriptPubKey) as hex."
+          },
+          "addr": {
+            "type": "string",
+            "description": "Destination address (when derivable)."
+          }
+        }
+      }
+    }
+  }
+}

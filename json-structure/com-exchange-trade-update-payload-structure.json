@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-trade-update-payload-structure.json",
+  "name": "ExchangeTradeUpdatePayload",
+  "description": "ExchangeTradeUpdatePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "const": "updated"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trades"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "datetime"
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "buy",
+        "sell"
+      ]
+    },
+    "qty": {
+      "type": "double"
+    },
+    "price": {
+      "type": "double"
+    },
+    "trade_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "timestamp",
+    "side",
+    "qty",
+    "price",
+    "trade_id"
+  ]
+}

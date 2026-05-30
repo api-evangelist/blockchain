@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-subscribe-prices-action-payload-schema.json",
+  "title": "ExchangeSubscribePricesActionPayload",
+  "description": "ExchangeSubscribePricesActionPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "subscribe",
+        "unsubscribe"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "const": "prices"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "granularity": {
+      "type": "integer",
+      "enum": [
+        60,
+        300,
+        900,
+        3600,
+        21600,
+        86400
+      ],
+      "description": "Candle bucket size in seconds."
+    }
+  },
+  "required": [
+    "action",
+    "channel",
+    "symbol",
+    "granularity"
+  ]
+}

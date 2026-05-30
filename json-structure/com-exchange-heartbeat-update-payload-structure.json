@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-heartbeat-update-payload-structure.json",
+  "name": "ExchangeHeartbeatUpdatePayload",
+  "description": "ExchangeHeartbeatUpdatePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "const": "updated"
+    },
+    "channel": {
+      "type": "string",
+      "const": "heartbeat"
+    },
+    "timestamp": {
+      "type": "datetime"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "timestamp"
+  ]
+}

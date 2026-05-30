@@ -1,0 +1,107 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Blockchain.com Charts, Stats & Market Data API — Charts
+  description: |
+    Blockchain.com Charts, Stats & Market Data API — Charts. 1 operations. Lead operation: Blockchain.com Get a Chart Time-series. Self-contained Naftiko capability covering one Blockchain.com business surface.
+  tags:
+    - Blockchain.com
+    - Charts, Stats & Market Data API
+    - Charts
+  created: '2026-05-30'
+  modified: '2026-05-30'
+capability:
+  consumes:
+    - type: http
+      namespace: charts-stats-charts
+      baseUri: https://api.blockchain.info
+      description: Blockchain.com Charts, Stats & Market Data API — Charts business capability. Self-contained, no shared references.
+      resources:
+        - name: charts-chartname
+          path: /charts/{chartName}
+          operations:
+            - name: getChart
+              method: GET
+              description: Blockchain.com Get a Chart Time-series
+              inputParameters:
+                - name: chartName
+                  in: path
+                  type: string
+                  required: true
+                  description: Chart identifier (kebab-case).
+                - name: timespan
+                  in: query
+                  type: string
+                  required: false
+                  description: Duration spanned by the dataset (e.g. `5weeks`, `1year`, `all`). Default `1year`.
+                - name: rollingAverage
+                  in: query
+                  type: string
+                  required: false
+                  description: Smoothing window applied to the time series (e.g. `8hours`, `7days`).
+                - name: start
+                  in: query
+                  type: string
+                  required: false
+                  description: Custom start date in `YYYY-MM-DD` format.
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: Response format (`json` or `csv`). Default `json`.
+                - name: sampled
+                  in: query
+                  type: boolean
+                  required: false
+                  description: If true, downsample to ~1.5k points for performance.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: charts-stats-charts-rest
+      port: 8080
+      description: REST adapter for Blockchain.com Charts, Stats & Market Data API — Charts. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/charts/{chartName}
+          name: charts-chartname
+          description: REST surface for charts-chartname.
+          operations:
+            - method: GET
+              name: getChart
+              description: Blockchain.com Get a Chart Time-series
+              call: charts-stats-charts.getChart
+              with:
+                chartName: rest.chartName
+                timespan: rest.timespan
+                rollingAverage: rest.rollingAverage
+                start: rest.start
+                format: rest.format
+                sampled: rest.sampled
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: charts-stats-charts-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Blockchain.com Charts, Stats & Market Data API — Charts. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-chart-time-series
+          description: Blockchain.com Get a Chart Time-series
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: charts-stats-charts.getChart
+          with:
+            chartName: tools.chartName
+            timespan: tools.timespan
+            rollingAverage: tools.rollingAverage
+            start: tools.start
+            format: tools.format
+            sampled: tools.sampled
+          outputParameters:
+            - type: object
+              mapping: $.

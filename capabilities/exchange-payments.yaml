@@ -1,0 +1,459 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Blockchain.com Exchange REST API — Payments
+  description: |
+    Blockchain.com Exchange REST API — Payments. 10 operations. Lead operation: Blockchain.com List Account Balances. Self-contained Naftiko capability covering one Blockchain.com business surface.
+  tags:
+    - Blockchain.com
+    - Exchange REST API
+    - Payments
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+  - namespace: env
+    keys:
+      BLOCKCHAIN_EXCHANGE_KEY: BLOCKCHAIN_EXCHANGE_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: exchange-payments
+      baseUri: https://api.blockchain.com/v3/exchange
+      description: Blockchain.com Exchange REST API — Payments business capability. Self-contained, no shared references.
+      resources:
+        - name: accounts
+          path: /accounts
+          operations:
+            - name: listAccounts
+              method: GET
+              description: Blockchain.com List Account Balances
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: accounts-account-currency
+          path: /accounts/{account}/{currency}
+          operations:
+            - name: getAccountBalance
+              method: GET
+              description: Blockchain.com Get Account Balance
+              inputParameters:
+                - name: account
+                  in: path
+                  type: string
+                  required: true
+                  description: Account type (e.g. `primary`).
+                - name: currency
+                  in: path
+                  type: string
+                  required: true
+                  description: Currency ticker (e.g. `BTC`).
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: deposits
+          path: /deposits
+          operations:
+            - name: listDeposits
+              method: GET
+              description: Blockchain.com List Deposits
+              inputParameters:
+                - name: from
+                  in: query
+                  type: integer
+                  required: false
+                  description: ''
+                - name: to
+                  in: query
+                  type: integer
+                  required: false
+                  description: ''
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: deposits-depositid
+          path: /deposits/{depositId}
+          operations:
+            - name: getDeposit
+              method: GET
+              description: Blockchain.com Get a Single Deposit
+              inputParameters:
+                - name: depositId
+                  in: path
+                  type: string
+                  required: true
+                  description: ''
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: deposits-currency-address
+          path: /deposits/{currency}/address
+          operations:
+            - name: createDepositAddress
+              method: POST
+              description: Blockchain.com Create a Deposit Address
+              inputParameters:
+                - name: currency
+                  in: path
+                  type: string
+                  required: true
+                  description: Currency ticker (e.g. `BTC`).
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: withdrawals
+          path: /withdrawals
+          operations:
+            - name: listWithdrawals
+              method: GET
+              description: Blockchain.com List Withdrawals
+              inputParameters:
+                - name: from
+                  in: query
+                  type: integer
+                  required: false
+                  description: ''
+                - name: to
+                  in: query
+                  type: integer
+                  required: false
+                  description: ''
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: createWithdrawal
+              method: POST
+              description: Blockchain.com Create a Withdrawal
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: withdrawals-withdrawalid
+          path: /withdrawals/{withdrawalId}
+          operations:
+            - name: getWithdrawal
+              method: GET
+              description: Blockchain.com Get a Single Withdrawal
+              inputParameters:
+                - name: withdrawalId
+                  in: path
+                  type: string
+                  required: true
+                  description: ''
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: whitelist
+          path: /whitelist
+          operations:
+            - name: listWhitelist
+              method: GET
+              description: Blockchain.com List Whitelisted Beneficiaries
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: whitelist-currency
+          path: /whitelist/{currency}
+          operations:
+            - name: listWhitelistByCurrency
+              method: GET
+              description: Blockchain.com List Whitelist by Currency
+              inputParameters:
+                - name: currency
+                  in: path
+                  type: string
+                  required: true
+                  description: ''
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+      authentication:
+        type: apikey
+        key: X-API-Token
+        value: '{{env.BLOCKCHAIN_EXCHANGE_KEY}}'
+        placement: header
+  exposes:
+    - type: rest
+      namespace: exchange-payments-rest
+      port: 8080
+      description: REST adapter for Blockchain.com Exchange REST API — Payments. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/accounts
+          name: accounts
+          description: REST surface for accounts.
+          operations:
+            - method: GET
+              name: listAccounts
+              description: Blockchain.com List Account Balances
+              call: exchange-payments.listAccounts
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/accounts/{account}/{currency}
+          name: accounts-account-currency
+          description: REST surface for accounts-account-currency.
+          operations:
+            - method: GET
+              name: getAccountBalance
+              description: Blockchain.com Get Account Balance
+              call: exchange-payments.getAccountBalance
+              with:
+                account: rest.account
+                currency: rest.currency
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/deposits
+          name: deposits
+          description: REST surface for deposits.
+          operations:
+            - method: GET
+              name: listDeposits
+              description: Blockchain.com List Deposits
+              call: exchange-payments.listDeposits
+              with:
+                from: rest.from
+                to: rest.to
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/deposits/{depositId}
+          name: deposits-depositid
+          description: REST surface for deposits-depositid.
+          operations:
+            - method: GET
+              name: getDeposit
+              description: Blockchain.com Get a Single Deposit
+              call: exchange-payments.getDeposit
+              with:
+                depositId: rest.depositId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/deposits/{currency}/address
+          name: deposits-currency-address
+          description: REST surface for deposits-currency-address.
+          operations:
+            - method: POST
+              name: createDepositAddress
+              description: Blockchain.com Create a Deposit Address
+              call: exchange-payments.createDepositAddress
+              with:
+                currency: rest.currency
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/withdrawals
+          name: withdrawals
+          description: REST surface for withdrawals.
+          operations:
+            - method: GET
+              name: listWithdrawals
+              description: Blockchain.com List Withdrawals
+              call: exchange-payments.listWithdrawals
+              with:
+                from: rest.from
+                to: rest.to
+              outputParameters:
+                - type: object
+                  mapping: $.
+            - method: POST
+              name: createWithdrawal
+              description: Blockchain.com Create a Withdrawal
+              call: exchange-payments.createWithdrawal
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/withdrawals/{withdrawalId}
+          name: withdrawals-withdrawalid
+          description: REST surface for withdrawals-withdrawalid.
+          operations:
+            - method: GET
+              name: getWithdrawal
+              description: Blockchain.com Get a Single Withdrawal
+              call: exchange-payments.getWithdrawal
+              with:
+                withdrawalId: rest.withdrawalId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/whitelist
+          name: whitelist
+          description: REST surface for whitelist.
+          operations:
+            - method: GET
+              name: listWhitelist
+              description: Blockchain.com List Whitelisted Beneficiaries
+              call: exchange-payments.listWhitelist
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/whitelist/{currency}
+          name: whitelist-currency
+          description: REST surface for whitelist-currency.
+          operations:
+            - method: GET
+              name: listWhitelistByCurrency
+              description: Blockchain.com List Whitelist by Currency
+              call: exchange-payments.listWhitelistByCurrency
+              with:
+                currency: rest.currency
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: exchange-payments-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Blockchain.com Exchange REST API — Payments. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: list-account-balances
+          description: Blockchain.com List Account Balances
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.listAccounts
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-account-balance
+          description: Blockchain.com Get Account Balance
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.getAccountBalance
+          with:
+            account: tools.account
+            currency: tools.currency
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-deposits
+          description: Blockchain.com List Deposits
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.listDeposits
+          with:
+            from: tools.from
+            to: tools.to
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-single-deposit
+          description: Blockchain.com Get a Single Deposit
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.getDeposit
+          with:
+            depositId: tools.depositId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: create-deposit-address
+          description: Blockchain.com Create a Deposit Address
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: exchange-payments.createDepositAddress
+          with:
+            currency: tools.currency
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-withdrawals
+          description: Blockchain.com List Withdrawals
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.listWithdrawals
+          with:
+            from: tools.from
+            to: tools.to
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: create-withdrawal
+          description: Blockchain.com Create a Withdrawal
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: exchange-payments.createWithdrawal
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-single-withdrawal
+          description: Blockchain.com Get a Single Withdrawal
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.getWithdrawal
+          with:
+            withdrawalId: tools.withdrawalId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-whitelisted-beneficiaries
+          description: Blockchain.com List Whitelisted Beneficiaries
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.listWhitelist
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-whitelist-currency
+          description: Blockchain.com List Whitelist by Currency
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: exchange-payments.listWhitelistByCurrency
+          with:
+            currency: tools.currency
+          outputParameters:
+            - type: object
+              mapping: $.

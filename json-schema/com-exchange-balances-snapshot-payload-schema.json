@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-balances-snapshot-payload-schema.json",
+  "title": "ExchangeBalancesSnapshotPayload",
+  "description": "ExchangeBalancesSnapshotPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "const": "snapshot"
+    },
+    "channel": {
+      "type": "string",
+      "const": "balances"
+    },
+    "balances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number"
+          },
+          "available": {
+            "type": "number"
+          },
+          "balance_local": {
+            "type": "number"
+          },
+          "available_local": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "total_available_local": {
+      "type": "number"
+    },
+    "total_balance_local": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "balances"
+  ]
+}

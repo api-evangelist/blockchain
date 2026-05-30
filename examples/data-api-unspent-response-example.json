@@ -1,0 +1,15 @@
+{
+  "notice": "example-value",
+  "unspent_outputs": [
+    {
+      "tx_hash": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+      "tx_hash_big_endian": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+      "tx_output_n": 1,
+      "script": "example-value",
+      "value": 100000,
+      "value_hex": "example-value",
+      "confirmations": 1,
+      "tx_index": 1
+    }
+  ]
+}

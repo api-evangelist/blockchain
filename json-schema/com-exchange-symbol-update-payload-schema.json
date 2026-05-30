@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-symbol-update-payload-schema.json",
+  "title": "ExchangeSymbolUpdatePayload",
+  "description": "ExchangeSymbolUpdatePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "const": "updated"
+    },
+    "channel": {
+      "type": "string",
+      "const": "symbols"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "auction-price": {
+      "type": "number"
+    },
+    "auction-size": {
+      "type": "number"
+    },
+    "auction-time": {
+      "type": "string",
+      "description": "Opening time in HHMM format when symbol is halted."
+    },
+    "imbalance": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "close",
+        "closed",
+        "suspend",
+        "halt",
+        "halt-freeze"
+      ]
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "status"
+  ]
+}

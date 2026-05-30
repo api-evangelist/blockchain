@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-trade-schema.json",
+  "title": "Trade",
+  "description": "A filled order or partial fill.",
+  "type": "object",
+  "properties": {
+    "exOrdId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "clOrdId": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "symbol": {
+      "type": "string",
+      "example": "BTC-USD"
+    },
+    "side": {
+      "type": "string",
+      "example": "buy"
+    },
+    "price": {
+      "type": "number",
+      "example": 72525.0
+    },
+    "qty": {
+      "type": "number",
+      "example": 0.5
+    },
+    "fee": {
+      "type": "number"
+    },
+    "timestamp": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1748609400000
+    }
+  }
+}

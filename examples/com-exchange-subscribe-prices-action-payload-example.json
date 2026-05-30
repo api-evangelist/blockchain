@@ -1,0 +1,6 @@
+{
+  "action": "subscribe",
+  "channel": "prices",
+  "symbol": "BTC-USD",
+  "granularity": 60
+}

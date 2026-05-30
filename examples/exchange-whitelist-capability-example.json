@@ -1,0 +1,7 @@
+{
+  "currency": "BTC",
+  "address": true,
+  "xpub": true,
+  "existingBeneficiaryOnly": true,
+  "fiat": true
+}

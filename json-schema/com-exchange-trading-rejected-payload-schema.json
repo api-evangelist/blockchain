@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-trading-rejected-payload-schema.json",
+  "title": "ExchangeTradingRejectedPayload",
+  "description": "ExchangeTradingRejectedPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "const": "rejected"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "text": {
+      "type": "string"
+    },
+    "clOrdID": {
+      "type": "string"
+    },
+    "ordStatus": {
+      "type": "string",
+      "const": "rejected"
+    },
+    "action": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel"
+  ]
+}

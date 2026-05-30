@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-account-schema.json",
+  "title": "Account",
+  "description": "Balance for a single account/currency.",
+  "type": "object",
+  "properties": {
+    "primary": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "example": "My Entry"
+    },
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "balance": {
+      "type": "number"
+    },
+    "available": {
+      "type": "number"
+    },
+    "balance_local": {
+      "type": "number"
+    },
+    "available_local": {
+      "type": "number"
+    },
+    "rate": {
+      "type": "number",
+      "example": 72525.0
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

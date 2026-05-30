@@ -1,0 +1,33 @@
+{
+  "seqnum": 1,
+  "event": "snapshot",
+  "channel": "trading",
+  "orders": [
+    {
+      "orderID": "21745988181",
+      "clOrdID": "21745988181",
+      "symbol": "BTC-USD",
+      "side": "buy",
+      "ordType": "market",
+      "orderQty": 1.0,
+      "leavesQty": 1.0,
+      "cumQty": 1.0,
+      "avgPx": 72525.0,
+      "ordStatus": "pending",
+      "timeInForce": "GTC",
+      "text": "example-value",
+      "execType": "example-value",
+      "execID": "21745988181",
+      "transactTime": "example-value",
+      "msgType": null,
+      "lastPx": 72525.0,
+      "lastShares": 1.0,
+      "tradeId": "21745988181",
+      "price": 72525.0,
+      "stopPx": 72525.0,
+      "expireDate": 1,
+      "minQty": 1.0,
+      "fee": 1.0
+    }
+  ]
+}

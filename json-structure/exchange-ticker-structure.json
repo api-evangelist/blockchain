@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-ticker-structure.json",
+  "name": "Ticker",
+  "description": "Current price and 24-hour metrics for a single trading pair.",
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string",
+      "example": "BTC-USD"
+    },
+    "price_24h": {
+      "type": "double",
+      "description": "24-hour reference price.",
+      "example": 72525.0
+    },
+    "volume_24h": {
+      "type": "double",
+      "description": "Trading volume over the last 24 hours.",
+      "example": 0.5
+    },
+    "last_trade_price": {
+      "type": "double",
+      "description": "Most recent trade price.",
+      "example": 72525.0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/data-api-tx-output-structure.json",
+  "name": "TxOutput",
+  "description": "A single Bitcoin transaction output (a UTXO before it is spent).",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "int32",
+      "description": "Output type indicator.",
+      "example": 1
+    },
+    "spent": {
+      "type": "boolean",
+      "description": "True if the output has been spent.",
+      "example": true
+    },
+    "value": {
+      "type": "int64",
+      "description": "Value in Satoshi.",
+      "example": 100000
+    },
+    "spending_outpoints": {
+      "type": "array",
+      "description": "Outpoints that spent this output (when spent).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tx_index": {
+            "type": "int64"
+          },
+          "n": {
+            "type": "int32"
+          }
+        }
+      }
+    },
+    "n": {
+      "type": "int32",
+      "description": "Output index within the transaction.",
+      "example": 1
+    },
+    "tx_index": {
+      "type": "int64",
+      "description": "Internal transaction index.",
+      "example": 1
+    },
+    "script": {
+      "type": "string",
+      "description": "Output script (scriptPubKey) as hex."
+    },
+    "addr": {
+      "type": "string",
+      "description": "Destination address (when derivable)."
+    }
+  }
+}

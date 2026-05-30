@@ -1,0 +1,163 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Blockchain.com Blockchain Data API — Blocks
+  description: |
+    Blockchain.com Blockchain Data API — Blocks. 3 operations. Lead operation: Blockchain.com Get a Single Block. Self-contained Naftiko capability covering one Blockchain.com business surface.
+  tags:
+    - Blockchain.com
+    - Blockchain Data API
+    - Blocks
+  created: '2026-05-30'
+  modified: '2026-05-30'
+capability:
+  consumes:
+    - type: http
+      namespace: data-api-blocks
+      baseUri: https://blockchain.info
+      description: Blockchain.com Blockchain Data API — Blocks business capability. Self-contained, no shared references.
+      resources:
+        - name: rawblock-block-hash
+          path: /rawblock/{block_hash}
+          operations:
+            - name: getBlock
+              method: GET
+              description: Blockchain.com Get a Single Block
+              inputParameters:
+                - name: block_hash
+                  in: path
+                  type: string
+                  required: true
+                  description: Bitcoin block hash (64-character hex).
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: If set to `hex`, returns the raw block as a binary hex string.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: block-height-block-height
+          path: /block-height/{block_height}
+          operations:
+            - name: getBlocksByHeight
+              method: GET
+              description: Blockchain.com Get Blocks at a Height
+              inputParameters:
+                - name: block_height
+                  in: path
+                  type: integer
+                  required: true
+                  description: Block height (non-negative integer).
+                - name: format
+                  in: query
+                  type: string
+                  required: true
+                  description: Must be `json` to return JSON.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: latestblock
+          path: /latestblock
+          operations:
+            - name: getLatestBlock
+              method: GET
+              description: Blockchain.com Get the Latest Block
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: data-api-blocks-rest
+      port: 8080
+      description: REST adapter for Blockchain.com Blockchain Data API — Blocks. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/rawblock/{block_hash}
+          name: rawblock-block-hash
+          description: REST surface for rawblock-block-hash.
+          operations:
+            - method: GET
+              name: getBlock
+              description: Blockchain.com Get a Single Block
+              call: data-api-blocks.getBlock
+              with:
+                block_hash: rest.block_hash
+                format: rest.format
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/block-height/{block_height}
+          name: block-height-block-height
+          description: REST surface for block-height-block-height.
+          operations:
+            - method: GET
+              name: getBlocksByHeight
+              description: Blockchain.com Get Blocks at a Height
+              call: data-api-blocks.getBlocksByHeight
+              with:
+                block_height: rest.block_height
+                format: rest.format
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/latestblock
+          name: latestblock
+          description: REST surface for latestblock.
+          operations:
+            - method: GET
+              name: getLatestBlock
+              description: Blockchain.com Get the Latest Block
+              call: data-api-blocks.getLatestBlock
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: data-api-blocks-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Blockchain.com Blockchain Data API — Blocks. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-single-block
+          description: Blockchain.com Get a Single Block
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-blocks.getBlock
+          with:
+            block_hash: tools.block_hash
+            format: tools.format
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-blocks-height
+          description: Blockchain.com Get Blocks at a Height
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-blocks.getBlocksByHeight
+          with:
+            block_height: tools.block_height
+            format: tools.format
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-latest-block
+          description: Blockchain.com Get the Latest Block
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-blocks.getLatestBlock
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

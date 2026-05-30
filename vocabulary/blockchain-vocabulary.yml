@@ -1,0 +1,373 @@
+vocabulary: 1.0.0
+info:
+  provider: Blockchain.com
+  description: Unified taxonomy for the Blockchain.com Bitcoin Data, Charts/Stats, Exchange REST, and WebSocket APIs, plus their Naftiko capability adapters.
+  created: '2026-05-30'
+  modified: '2026-05-30'
+operational:
+  apis:
+    - name: Blockchain.com Charts, Stats & Market Data API
+      namespace: blockchain-charts-stats-openapi
+      version: '1.0.0'
+      baseUrl: https://api.blockchain.info
+      status: active
+    - name: Blockchain.com Blockchain Data API
+      namespace: blockchain-data-api-openapi
+      version: '1.0.0'
+      baseUrl: https://blockchain.info
+      status: active
+    - name: Blockchain.com Exchange REST API
+      namespace: blockchain-exchange-openapi
+      version: '3.0.0'
+      baseUrl: https://api.blockchain.com/v3/exchange
+      status: active
+  resources:
+    - name: addresses
+      api: Blockchain.com Blockchain Data API
+      actions:
+        - get
+    - name: blocks
+      api: Blockchain.com Blockchain Data API
+      actions:
+        - get
+    - name: charts
+      api: Blockchain.com Charts, Stats & Market Data API
+      actions:
+        - get
+    - name: market_data
+      api: Blockchain.com Charts, Stats & Market Data API
+      actions:
+        - convert
+        - get
+        - list
+    - name: network
+      api: Blockchain.com Blockchain Data API
+      actions:
+        - get
+    - name: payments
+      api: Blockchain.com Exchange REST API
+      actions:
+        - create
+        - get
+        - list
+    - name: pools
+      api: Blockchain.com Charts, Stats & Market Data API
+      actions:
+        - get
+    - name: stats
+      api: Blockchain.com Charts, Stats & Market Data API
+      actions:
+        - get
+    - name: trading
+      api: Blockchain.com Exchange REST API
+      actions:
+        - cancel
+        - create
+        - get
+        - list
+    - name: transactions
+      api: Blockchain.com Blockchain Data API
+      actions:
+        - get
+  actions:
+    - name: cancel
+      method: DELETE
+      pattern: destructive
+    - name: convert
+      method: GET
+      pattern: read
+    - name: create
+      method: POST
+      pattern: write
+    - name: get
+      method: GET
+      pattern: read
+    - name: list
+      method: GET
+      pattern: read
+  schemas:
+    Core: []
+    Blockchain:
+      - Block
+      - BlockListResponse
+      - LatestBlock
+      - Transaction
+      - TxInput
+      - TxOutput
+      - Address
+      - MultiAddressResponse
+      - UnspentResponse
+      - UnspentOutput
+    Market Data:
+      - Chart
+      - ChartPoint
+      - Stats
+      - PoolDistribution
+      - Ticker
+      - TickerEntry
+      - Symbol
+      - PriceLevel
+    Trading:
+      - OrderBook
+      - Fees
+      - Order
+      - CreateOrderRequest
+      - Trade
+      - Fill
+    Payments:
+      - Account
+      - Deposit
+      - DepositAddress
+      - Withdrawal
+      - CreateWithdrawalRequest
+      - Beneficiary
+      - Whitelist
+      - WhitelistCapability
+  parameters:
+    pagination:
+      - limit
+      - offset
+      - n
+      - from
+      - to
+    identifiers:
+      - currency
+      - block_hash
+      - block_height
+      - tx_hash
+      - bitcoin_address
+      - symbol
+      - depositId
+      - withdrawalId
+    filters:
+      - timespan
+      - rollingAverage
+      - format
+      - sampled
+      - cors
+      - active
+      - confirmations
+      - status
+  enums:
+    OrderType:
+      - limit
+      - market
+      - stop
+      - stopLimit
+    OrderSide:
+      - buy
+      - sell
+    TimeInForce:
+      - GTC
+      - IOC
+      - FOK
+      - GTD
+    OrderStatus:
+      - pending
+      - open
+      - filled
+      - partial
+      - cancelled
+      - rejected
+      - expired
+    DepositState:
+      - PENDING
+      - CONFIRMED
+      - REJECTED
+    WithdrawalState:
+      - NONE
+      - IN_PROGRESS
+      - COMPLETE
+      - REJECTED
+    SymbolStatus:
+      - open
+      - close
+    WebSocketEvent:
+      - subscribed
+      - unsubscribed
+      - rejected
+      - snapshot
+      - updated
+  authentication:
+    schemes:
+      - name: Exchange API Token
+        type: apiKey
+        in: header
+        header: X-API-Token
+        apis:
+          - Blockchain.com Exchange REST API
+      - name: Exchange WebSocket Auth
+        type: websocket-message
+        field: token
+        apis:
+          - Blockchain.com WebSocket APIs (Exchange)
+      - name: Public
+        type: none
+        apis:
+          - Blockchain.com Blockchain Data API
+          - Blockchain.com Charts, Stats & Market Data API
+          - Blockchain.com WebSocket APIs (Bitcoin)
+capability:
+  workflows:
+    - name: Blockchain.com Charts, Stats & Market Data API — Charts
+      file: capabilities/charts-stats-charts.yaml
+      description: 'Blockchain.com Charts, Stats & Market Data API — Charts. 1 operations. Lead operation: Blockchain.com Get a Chart Time-series. Self-contained Naftiko capability'
+      tools: 1
+    - name: Blockchain.com Charts, Stats & Market Data API — Market Data
+      file: capabilities/charts-stats-market-data.yaml
+      description: 'Blockchain.com Charts, Stats & Market Data API — Market Data. 2 operations. Lead operation: Blockchain.com Get Exchange-rate Ticker. Self-contained Naftiko capa'
+      tools: 2
+    - name: Blockchain.com Charts, Stats & Market Data API — Pools
+      file: capabilities/charts-stats-pools.yaml
+      description: 'Blockchain.com Charts, Stats & Market Data API — Pools. 1 operations. Lead operation: Blockchain.com Get Mining Pool Distribution. Self-contained Naftiko capabi'
+      tools: 1
+    - name: Blockchain.com Charts, Stats & Market Data API — Stats
+      file: capabilities/charts-stats-stats.yaml
+      description: 'Blockchain.com Charts, Stats & Market Data API — Stats. 1 operations. Lead operation: Blockchain.com Get Bitcoin Network Statistics. Self-contained Naftiko capa'
+      tools: 1
+    - name: Blockchain.com Blockchain Data API — Addresses
+      file: capabilities/data-api-addresses.yaml
+      description: 'Blockchain.com Blockchain Data API — Addresses. 3 operations. Lead operation: Blockchain.com Get a Single Address. Self-contained Naftiko capability covering on'
+      tools: 3
+    - name: Blockchain.com Blockchain Data API — Blocks
+      file: capabilities/data-api-blocks.yaml
+      description: 'Blockchain.com Blockchain Data API — Blocks. 3 operations. Lead operation: Blockchain.com Get a Single Block. Self-contained Naftiko capability covering one Blo'
+      tools: 3
+    - name: Blockchain.com Blockchain Data API — Network
+      file: capabilities/data-api-network.yaml
+      description: 'Blockchain.com Blockchain Data API — Network. 13 operations. Lead operation: Blockchain.com Get Current Difficulty. Self-contained Naftiko capability covering o'
+      tools: 13
+    - name: Blockchain.com Blockchain Data API — Transactions
+      file: capabilities/data-api-transactions.yaml
+      description: 'Blockchain.com Blockchain Data API — Transactions. 1 operations. Lead operation: Blockchain.com Get a Single Transaction. Self-contained Naftiko capability cove'
+      tools: 1
+    - name: Blockchain.com Exchange REST API — Market Data
+      file: capabilities/exchange-market-data.yaml
+      description: 'Blockchain.com Exchange REST API — Market Data. 6 operations. Lead operation: Blockchain.com List Trading Symbols. Self-contained Naftiko capability covering on'
+      tools: 6
+    - name: Blockchain.com Exchange REST API — Payments
+      file: capabilities/exchange-payments.yaml
+      description: 'Blockchain.com Exchange REST API — Payments. 10 operations. Lead operation: Blockchain.com List Account Balances. Self-contained Naftiko capability covering one'
+      tools: 10
+    - name: Blockchain.com Exchange REST API — Trading
+      file: capabilities/exchange-trading.yaml
+      description: 'Blockchain.com Exchange REST API — Trading. 8 operations. Lead operation: Blockchain.com Get Maker/taker Fees. Self-contained Naftiko capability covering one Bl'
+      tools: 8
+  personas:
+    - id: bitcoin-developer
+      name: Bitcoin Developer
+      description: Builds wallets, explorers, or analytics on top of Bitcoin chain data.
+    - id: market-analyst
+      name: Market Analyst
+      description: Tracks BTC pricing, network stats, and mining pool distribution.
+    - id: exchange-trader
+      name: Exchange Trader
+      description: Trades spot pairs on the Blockchain.com Exchange via REST or WebSocket.
+    - id: treasury-operator
+      name: Treasury Operator
+      description: Manages crypto deposits, withdrawals, and whitelisted beneficiaries.
+  domains:
+    - id: blockchain
+      name: Blockchain Data
+      resources:
+        - blocks
+        - transactions
+        - addresses
+        - network
+    - id: market_data
+      name: Market Data
+      resources:
+        - charts
+        - stats
+        - pools
+        - market data
+        - tickers
+        - symbols
+    - id: trading
+      name: Trading
+      resources:
+        - orders
+        - trades
+        - fills
+        - fees
+    - id: payments
+      name: Payments
+      resources:
+        - accounts
+        - deposits
+        - withdrawals
+        - whitelist
+  namespaces:
+    - consumed: data-api-blocks
+      rest: data-api-blocks-rest
+      mcp: data-api-blocks-mcp
+    - consumed: exchange-trading
+      rest: exchange-trading-rest
+      mcp: exchange-trading-mcp
+  binds:
+    - env: BLOCKCHAIN_EXCHANGE_KEY
+      purpose: Exchange REST API X-API-Token header.
+      workflows:
+        - exchange-trading
+        - exchange-payments
+    - env: BLOCKCHAIN_EXCHANGE_WS_SECRET
+      purpose: Exchange WebSocket `auth` channel token payload.
+      workflows:
+        - websocket-exchange-auth
+crossReference:
+  - resource: blocks
+    operations:
+      - getBlock
+      - getBlocksByHeight
+      - getLatestBlock
+    workflows:
+      - data-api-blocks
+    personas:
+      - bitcoin-developer
+  - resource: transactions
+    operations:
+      - getTransaction
+    workflows:
+      - data-api-transactions
+    personas:
+      - bitcoin-developer
+  - resource: addresses
+    operations:
+      - getAddress
+      - getMultiAddress
+      - getUnspentOutputs
+    workflows:
+      - data-api-addresses
+    personas:
+      - bitcoin-developer
+      - treasury-operator
+  - resource: orders
+    operations:
+      - listOrders
+      - createOrder
+      - getOrder
+      - cancelOrder
+      - cancelAllOrders
+    workflows:
+      - exchange-trading
+    personas:
+      - exchange-trader
+  - resource: tickers
+    operations:
+      - listTickers
+      - getTicker
+    workflows:
+      - exchange-market-data
+      - charts-stats-market-data
+    personas:
+      - market-analyst
+      - exchange-trader
+  - resource: withdrawals
+    operations:
+      - listWithdrawals
+      - createWithdrawal
+      - getWithdrawal
+    workflows:
+      - exchange-payments
+    personas:
+      - treasury-operator

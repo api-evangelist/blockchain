@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-new-order-single-payload-structure.json",
+  "name": "ExchangeNewOrderSinglePayload",
+  "description": "ExchangeNewOrderSinglePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "NewOrderSingle"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "clOrdID": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "FIX 11 \u2014 client reference for the order."
+    },
+    "symbol": {
+      "type": "string",
+      "description": "FIX 55"
+    },
+    "ordType": {
+      "type": "string",
+      "enum": [
+        "market",
+        "limit",
+        "stop",
+        "stopLimit"
+      ],
+      "description": "FIX 40"
+    },
+    "timeInForce": {
+      "type": "string",
+      "enum": [
+        "GTC",
+        "GTD",
+        "IOC",
+        "FOK"
+      ],
+      "description": "FIX 59 \u2014 required for limit, stop, stopLimit."
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "buy",
+        "sell"
+      ],
+      "description": "FIX 54"
+    },
+    "orderQty": {
+      "type": "double",
+      "description": "FIX 38 \u2014 size in base currency."
+    },
+    "price": {
+      "type": "double",
+      "description": "FIX 44 \u2014 required for limit and stopLimit."
+    },
+    "expireDate": {
+      "type": "int32",
+      "description": "FIX 432 \u2014 YYYYMMDD; required for GTD orders."
+    },
+    "stopPx": {
+      "type": "double",
+      "description": "FIX 99 \u2014 required for stop and stopLimit."
+    },
+    "minQty": {
+      "type": "double",
+      "description": "FIX 110 \u2014 optional minimum quantity for IOC fills."
+    },
+    "execInst": {
+      "type": "string",
+      "enum": [
+        "ALO"
+      ],
+      "description": "FIX 18 \u2014 Add Liquidity Only / post-only flag."
+    }
+  },
+  "required": [
+    "action",
+    "channel",
+    "clOrdID",
+    "symbol",
+    "ordType",
+    "side",
+    "orderQty"
+  ]
+}

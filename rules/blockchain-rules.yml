@@ -1,0 +1,262 @@
+extends: [[spectral:oas, all]]
+
+functions: []
+
+rules:
+
+  # ── INFO / METADATA ───────────────────────────────────────────────────────
+  info-blockchain-title:
+    description: "Info title MUST start with `Blockchain.com `."
+    message: "{{property}} value `{{value}}` should start with `Blockchain.com `."
+    severity: error
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: '^Blockchain\.com '
+  info-description-required:
+    description: "Info description MUST be present and at least 80 characters."
+    severity: error
+    given: $.info
+    then:
+      - field: description
+        function: truthy
+      - field: description
+        function: length
+        functionOptions:
+          min: 80
+  info-version-required:
+    description: "Info version MUST be present."
+    severity: error
+    given: $.info
+    then:
+      - field: version
+        function: truthy
+  info-contact-required:
+    description: "Info contact block SHOULD be present."
+    severity: warn
+    given: $.info
+    then:
+      - field: contact
+        function: truthy
+  info-license-required:
+    description: "Info license SHOULD be present."
+    severity: warn
+    given: $.info
+    then:
+      - field: license
+        function: truthy
+
+  # ── OPENAPI VERSION ──────────────────────────────────────────────────────
+  openapi-version-3:
+    description: "OpenAPI version MUST be 3.0.x or 3.1.x."
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3\.'
+
+  # ── SERVERS ──────────────────────────────────────────────────────────────
+  servers-defined:
+    description: "Servers array MUST be defined."
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+  servers-https:
+    description: "Server URLs MUST use HTTPS or WSS."
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(https://|wss://)'
+  servers-description:
+    description: "Each server SHOULD have a description."
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: description
+      function: truthy
+
+  # ── PATHS — NAMING CONVENTIONS ───────────────────────────────────────────
+  paths-no-trailing-slash:
+    description: "Paths MUST NOT have trailing slashes."
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '/$'
+  paths-no-query-string:
+    description: "Paths MUST NOT contain query strings."
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '\?'
+
+  # ── OPERATIONS ───────────────────────────────────────────────────────────
+  operation-operationid-required:
+    description: "Every operation MUST have an operationId."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  operation-operationid-camelcase:
+    description: "operationId MUST be camelCase."
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+  operation-summary-required:
+    description: "Every operation MUST have a summary."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+  operation-summary-blockchain-prefix:
+    description: "Operation summary SHOULD begin with `Blockchain.com `."
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^Blockchain\.com '
+  operation-description-required:
+    description: "Every operation SHOULD have a description."
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+  operation-tags-required:
+    description: "Every operation MUST have at least one tag."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  operation-microcks-extension:
+    description: "Every operation SHOULD declare `x-microcks-operation` for mock-server compatibility."
+    severity: info
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ── PARAMETERS ───────────────────────────────────────────────────────────
+  parameter-description-required:
+    description: "Every parameter SHOULD have a description."
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete].parameters[*]
+    then:
+      field: description
+      function: truthy
+  parameter-schema-required:
+    description: "Every parameter MUST have a schema with a type."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].parameters[*]
+    then:
+      field: schema
+      function: truthy
+
+  # ── REQUEST BODIES ───────────────────────────────────────────────────────
+  request-body-json-content-type:
+    description: "Request bodies SHOULD use `application/json`."
+    severity: warn
+    given: $.paths.*[post,put,patch].requestBody.content
+    then:
+      field: application/json
+      function: truthy
+
+  # ── RESPONSES ────────────────────────────────────────────────────────────
+  response-success-required:
+    description: "Every operation MUST have a 2xx success response."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].responses
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[2]\d\d$'
+        property: '@key'
+  response-description-required:
+    description: "Every response MUST have a description."
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].responses.*
+    then:
+      field: description
+      function: truthy
+
+  # ── SCHEMAS — PROPERTY NAMING ────────────────────────────────────────────
+  schema-property-snake-or-camel-case:
+    description: "Schema properties MUST use snake_case or camelCase (the two conventions Blockchain.com uses)."
+    severity: warn
+    given: $.components.schemas[*].properties[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9_]*$'
+  schema-object-description:
+    description: "Top-level component schemas SHOULD have descriptions."
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy
+  schema-type-required:
+    description: "Component schemas MUST declare a type."
+    severity: error
+    given: $.components.schemas[*]
+    then:
+      - field: type
+        function: truthy
+
+  # ── SECURITY ─────────────────────────────────────────────────────────────
+  security-schemes-defined:
+    description: "Security schemes SHOULD be defined when the API has authenticated endpoints."
+    severity: info
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # ── HTTP METHOD CONVENTIONS ──────────────────────────────────────────────
+  get-no-request-body:
+    description: "GET operations MUST NOT define a request body."
+    severity: error
+    given: $.paths.*.get
+    then:
+      field: requestBody
+      function: falsy
+  delete-no-request-body:
+    description: "DELETE operations MUST NOT define a request body."
+    severity: error
+    given: $.paths.*.delete
+    then:
+      field: requestBody
+      function: falsy
+
+  # ── TAGS ─────────────────────────────────────────────────────────────────
+  tags-global-defined:
+    description: "Top-level `tags` array SHOULD be defined and described."
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: truthy
+  tags-title-case:
+    description: "Tag names SHOULD use Title Case."
+    severity: info
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][a-zA-Z0-9 &/-]*$'

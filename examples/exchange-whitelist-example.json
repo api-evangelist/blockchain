@@ -1,0 +1,33 @@
+{
+  "capabilities": [
+    {
+      "currency": "BTC",
+      "address": true,
+      "xpub": true,
+      "existingBeneficiaryOnly": true,
+      "fiat": true
+    }
+  ],
+  "enabled": true,
+  "enabledAt": "2026-05-30T14:30:00Z",
+  "whitelisted": [
+    {
+      "id": "21745988181",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "currency": "BTC",
+      "state": "open",
+      "name": "My Entry",
+      "whitelisted": true,
+      "fiat": true,
+      "agent": {
+        "account": "example-value",
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "code": "example-value",
+        "country": "example-value",
+        "name": "example-value",
+        "recipient": "example-value",
+        "routingNumber": "example-value"
+      }
+    }
+  ]
+}

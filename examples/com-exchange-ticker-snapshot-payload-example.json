@@ -1,0 +1,9 @@
+{
+  "seqnum": 1,
+  "event": "snapshot",
+  "channel": "ticker",
+  "symbol": "BTC-USD",
+  "price_24h": 72525.0,
+  "volume_24h": 1.0,
+  "last_trade_price": 72525.0
+}

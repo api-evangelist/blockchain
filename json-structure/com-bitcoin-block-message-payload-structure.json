@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-block-message-payload-structure.json",
+  "name": "BitcoinBlockMessagePayload",
+  "description": "BitcoinBlockMessagePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "block"
+    },
+    "x": {
+      "type": "object",
+      "properties": {
+        "txIndexes": {
+          "type": "array",
+          "items": {
+            "type": "int32"
+          }
+        },
+        "nTx": {
+          "type": "int32"
+        },
+        "totalBTCSent": {
+          "type": "int32",
+          "description": "Total BTC moved",
+          "in satoshis.": null
+        },
+        "estimatedBTCSent": {
+          "type": "int32"
+        },
+        "reward": {
+          "type": "int32"
+        },
+        "size": {
+          "type": "int32"
+        },
+        "blockIndex": {
+          "type": "int32"
+        },
+        "prevBlockIndex": {
+          "type": "int32"
+        },
+        "height": {
+          "type": "int32"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "mrklRoot": {
+          "type": "string"
+        },
+        "version": {
+          "type": "int32"
+        },
+        "time": {
+          "type": "int32"
+        },
+        "bits": {
+          "type": "int32"
+        },
+        "nonce": {
+          "type": "int32"
+        }
+      }
+    }
+  }
+}

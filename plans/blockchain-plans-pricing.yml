@@ -1,0 +1,159 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Blockchain.com
+providerId: blockchain
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - Cryptocurrency
+  - Bitcoin
+  - Exchange
+  - Trading
+  - Blockchain Data
+description: >-
+  Blockchain.com's developer surface is split across three commercial profiles. The Blockchain Data,
+  Charts/Stats, Exchange Rates, and explorer WebSocket APIs are free to use under the public API
+  Terms of Service, with a single rate-limit policy. The Exchange REST + WebSocket API is free for
+  account-holders (live and test mode are differentiated only by trading limits) but every executed
+  trade pays a venue maker/taker fee that follows a 30-day-volume tiered schedule. The Pay Partner
+  API is a contract-priced partner programme — pricing is negotiated per partner and not published.
+sources:
+  - https://www.blockchain.com/api
+  - https://www.blockchain.com/legal/terms
+  - https://exchange.blockchain.com/fees
+  - https://docs.blockchain.com/pay/api
+plans:
+
+  - id: blockchain-public-data
+    name: Public Data APIs (Free)
+    type: freemium
+    description: >-
+      Free, key-less access to the Blockchain.com block explorer JSON API, simple Query API, Charts
+      API, Stats API, Pools API, Ticker, fiat-to-BTC conversion, and the blockchain.info WebSocket.
+    entries:
+      - label: HTTP requests
+        name: http_requests
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: WebSocket subscriptions
+        name: ws_subscriptions
+        type: metered
+        metric: subscription
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full block / transaction / address JSON
+      - name: Unspent outputs (UTXOs)
+      - name: Charts and statistics
+      - name: Mining pool distribution
+      - name: Multi-currency BTC ticker
+      - name: Real-time WebSocket streams (blocks, unconfirmed txs, address activity)
+
+  - id: blockchain-exchange-trading
+    name: Exchange Trading (Tiered Fees)
+    type: tiered
+    description: >-
+      Spot trading on the Blockchain.com Exchange. API access is free; every executed trade pays
+      a maker/taker fee determined by the user's trailing 30-day USD-equivalent volume tier.
+    entries:
+      - label: Taker fee — Tier 1 (0 – 10,000 USD 30d volume)
+        name: taker_fee_tier_1
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.40%'
+        userMultiplied: false
+      - label: Maker fee — Tier 1
+        name: maker_fee_tier_1
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.20%'
+        userMultiplied: false
+      - label: Taker fee — Tier 2 (10,000 – 100,000)
+        name: taker_fee_tier_2
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.24%'
+        userMultiplied: false
+      - label: Maker fee — Tier 2
+        name: maker_fee_tier_2
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.14%'
+        userMultiplied: false
+      - label: Taker fee — Tier 3+ (institutional)
+        name: taker_fee_institutional
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: see exchange.blockchain.com/fees
+        userMultiplied: false
+      - label: API requests
+        name: api_requests
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: REST trading (orders, trades, fills, fees)
+      - name: REST payments (accounts, deposits, withdrawals, whitelist)
+      - name: WebSocket market data (heartbeat, L2/L3, ticker, prices, symbols, trades)
+      - name: Authenticated WebSocket (auth, balances, trading)
+      - name: API-key IP whitelisting
+
+  - id: blockchain-pay-partner
+    name: Pay Partner API (Contract)
+    type: enterprise
+    description: >-
+      Embedded crypto purchase rails for partner applications. Pricing is negotiated bilaterally;
+      partner share of spread/fee depends on integration scope, geo coverage, and volume commit.
+    entries:
+      - label: Partner integration
+        name: partner_integration
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact partnerships@blockchain.com
+        userMultiplied: false
+    elements:
+      - name: Authentication
+      - name: Eligibility (currencies + regions)
+      - name: Quotes
+      - name: Order state callbacks

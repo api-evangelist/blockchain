@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/charts-stats-chart-schema.json",
+  "title": "Chart",
+  "description": "Time-series dataset returned by the Charts API.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Response status (e.g. `ok`).",
+      "example": "ok"
+    },
+    "name": {
+      "type": "string",
+      "description": "Chart name.",
+      "example": "Market Price (USD)"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measure for `y` values.",
+      "example": "USD"
+    },
+    "period": {
+      "type": "string",
+      "description": "Sampling period (e.g. `day`)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what the chart represents."
+    },
+    "values": {
+      "type": "array",
+      "description": "Time-series data points.",
+      "items": {
+        "type": "object",
+        "description": "Single time-series sample.",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp in Unix seconds.",
+            "example": 1
+          },
+          "y": {
+            "type": "number",
+            "description": "Measured value at `x`.",
+            "example": 1.0
+          }
+        }
+      }
+    }
+  }
+}

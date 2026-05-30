@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-bitcoin-op-unconfirmed-unsub-payload-schema.json",
+  "title": "BitcoinOpUnconfirmedUnsubPayload",
+  "description": "BitcoinOpUnconfirmedUnsubPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "unconfirmed_unsub"
+    }
+  },
+  "required": [
+    "op"
+  ]
+}

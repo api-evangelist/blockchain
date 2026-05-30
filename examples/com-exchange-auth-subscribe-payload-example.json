@@ -1,0 +1,5 @@
+{
+  "token": "example-value",
+  "action": "subscribe",
+  "channel": "auth"
+}

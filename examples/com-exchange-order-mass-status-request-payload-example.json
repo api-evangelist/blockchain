@@ -1,0 +1,4 @@
+{
+  "action": "OrderMassStatusRequest",
+  "channel": "trading"
+}

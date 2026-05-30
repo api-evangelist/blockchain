@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Blockchain.com Blockchain Data API — Addresses
+  description: |
+    Blockchain.com Blockchain Data API — Addresses. 3 operations. Lead operation: Blockchain.com Get a Single Address. Self-contained Naftiko capability covering one Blockchain.com business surface.
+  tags:
+    - Blockchain.com
+    - Blockchain Data API
+    - Addresses
+  created: '2026-05-30'
+  modified: '2026-05-30'
+capability:
+  consumes:
+    - type: http
+      namespace: data-api-addresses
+      baseUri: https://blockchain.info
+      description: Blockchain.com Blockchain Data API — Addresses business capability. Self-contained, no shared references.
+      resources:
+        - name: rawaddr-bitcoin-address
+          path: /rawaddr/{bitcoin_address}
+          operations:
+            - name: getAddress
+              method: GET
+              description: Blockchain.com Get a Single Address
+              inputParameters:
+                - name: bitcoin_address
+                  in: path
+                  type: string
+                  required: true
+                  description: Bitcoin address (Base58 or Bech32).
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: Maximum number of transactions to return (default 50).
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: Number of transactions to skip for pagination (multiples of 50).
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: multiaddr
+          path: /multiaddr
+          operations:
+            - name: getMultiAddress
+              method: GET
+              description: Blockchain.com Get Multi-address Summary
+              inputParameters:
+                - name: active
+                  in: query
+                  type: string
+                  required: true
+                  description: Pipe-delimited Bitcoin addresses (e.g. `addr1|addr2|addr3`).
+                - name: n
+                  in: query
+                  type: integer
+                  required: false
+                  description: Number of recent transactions to return across all addresses (max 100).
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: Number of transactions to skip for pagination.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: unspent
+          path: /unspent
+          operations:
+            - name: getUnspentOutputs
+              method: GET
+              description: Blockchain.com Get Unspent Outputs
+              inputParameters:
+                - name: active
+                  in: query
+                  type: string
+                  required: true
+                  description: Pipe-delimited Bitcoin addresses.
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: Maximum number of UTXOs to return (default 250, max 1000).
+                - name: confirmations
+                  in: query
+                  type: integer
+                  required: false
+                  description: Minimum confirmations a UTXO must have to be returned.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: data-api-addresses-rest
+      port: 8080
+      description: REST adapter for Blockchain.com Blockchain Data API — Addresses. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/rawaddr/{bitcoin_address}
+          name: rawaddr-bitcoin-address
+          description: REST surface for rawaddr-bitcoin-address.
+          operations:
+            - method: GET
+              name: getAddress
+              description: Blockchain.com Get a Single Address
+              call: data-api-addresses.getAddress
+              with:
+                bitcoin_address: rest.bitcoin_address
+                limit: rest.limit
+                offset: rest.offset
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/multiaddr
+          name: multiaddr
+          description: REST surface for multiaddr.
+          operations:
+            - method: GET
+              name: getMultiAddress
+              description: Blockchain.com Get Multi-address Summary
+              call: data-api-addresses.getMultiAddress
+              with:
+                active: rest.active
+                n: rest.n
+                offset: rest.offset
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/unspent
+          name: unspent
+          description: REST surface for unspent.
+          operations:
+            - method: GET
+              name: getUnspentOutputs
+              description: Blockchain.com Get Unspent Outputs
+              call: data-api-addresses.getUnspentOutputs
+              with:
+                active: rest.active
+                limit: rest.limit
+                confirmations: rest.confirmations
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: data-api-addresses-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Blockchain.com Blockchain Data API — Addresses. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-single-address
+          description: Blockchain.com Get a Single Address
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-addresses.getAddress
+          with:
+            bitcoin_address: tools.bitcoin_address
+            limit: tools.limit
+            offset: tools.offset
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-multi-address-summary
+          description: Blockchain.com Get Multi-address Summary
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-addresses.getMultiAddress
+          with:
+            active: tools.active
+            n: tools.n
+            offset: tools.offset
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-unspent-outputs
+          description: Blockchain.com Get Unspent Outputs
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: data-api-addresses.getUnspentOutputs
+          with:
+            active: tools.active
+            limit: tools.limit
+            confirmations: tools.confirmations
+          outputParameters:
+            - type: object
+              mapping: $.

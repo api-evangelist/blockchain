@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-ticker-snapshot-payload-schema.json",
+  "title": "ExchangeTickerSnapshotPayload",
+  "description": "ExchangeTickerSnapshotPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "const": "snapshot"
+    },
+    "channel": {
+      "type": "string",
+      "const": "ticker"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "price_24h": {
+      "type": "number"
+    },
+    "volume_24h": {
+      "type": "number"
+    },
+    "last_trade_price": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol"
+  ]
+}

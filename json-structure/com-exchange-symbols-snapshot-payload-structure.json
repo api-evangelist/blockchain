@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-symbols-snapshot-payload-structure.json",
+  "name": "ExchangeSymbolsSnapshotPayload",
+  "description": "ExchangeSymbolsSnapshotPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "int32"
+    },
+    "event": {
+      "type": "string",
+      "const": "snapshot"
+    },
+    "channel": {
+      "type": "string",
+      "const": "symbols"
+    },
+    "symbols": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "base_currency": {
+            "type": "string"
+          },
+          "base_currency_scale": {
+            "type": "integer"
+          },
+          "counter_currency": {
+            "type": "string"
+          },
+          "counter_currency_scale": {
+            "type": "integer"
+          },
+          "min_price_increment": {
+            "type": "integer"
+          },
+          "min_price_increment_scale": {
+            "type": "integer"
+          },
+          "min_order_size": {
+            "type": "integer"
+          },
+          "min_order_size_scale": {
+            "type": "integer"
+          },
+          "max_order_size": {
+            "type": "integer"
+          },
+          "max_order_size_scale": {
+            "type": "integer"
+          },
+          "lot_size": {
+            "type": "integer"
+          },
+          "lot_size_scale": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "close",
+              "closed",
+              "suspend",
+              "halt",
+              "halt-freeze"
+            ]
+          },
+          "id": {
+            "type": "integer"
+          },
+          "auction_price": {
+            "type": "number"
+          },
+          "auction_size": {
+            "type": "number"
+          },
+          "auction_time": {
+            "type": "string"
+          },
+          "imbalance": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbols"
+  ]
+}

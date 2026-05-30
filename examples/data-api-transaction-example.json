@@ -1,0 +1,41 @@
+{
+  "hash": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+  "ver": 1,
+  "vin_sz": 1,
+  "vout_sz": 1,
+  "size": 1,
+  "weight": 1,
+  "fee": 1,
+  "relayed_by": "example-value",
+  "lock_time": 1748609400000,
+  "tx_index": 1,
+  "double_spend": true,
+  "time": 1748609400000,
+  "block_index": 1,
+  "block_height": 851234,
+  "inputs": [
+    {
+      "sequence": 1,
+      "witness": "example-value",
+      "script": "example-value",
+      "prev_out": null
+    }
+  ],
+  "out": [
+    {
+      "type": 1,
+      "spent": true,
+      "value": 100000,
+      "spending_outpoints": [
+        {
+          "tx_index": 1,
+          "n": 1
+        }
+      ],
+      "n": 1,
+      "tx_index": 1,
+      "script": "example-value",
+      "addr": "example-value"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-admin-event-payload-schema.json",
+  "title": "ExchangeAdminEventPayload",
+  "description": "ExchangeAdminEventPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "subscribed",
+        "unsubscribed",
+        "rejected"
+      ]
+    },
+    "channel": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "description": "Reason text (provided when `event: rejected`)."
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel"
+  ]
+}

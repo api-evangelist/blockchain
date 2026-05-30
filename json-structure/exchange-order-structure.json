@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-order-structure.json",
+  "name": "Order",
+  "description": "An order submitted to the matching engine.",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "int64"
+    },
+    "gwOrderId": {
+      "type": "int64"
+    },
+    "clOrdId": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "symbol": {
+      "type": "string",
+      "example": "BTC-USD"
+    },
+    "ordType": {
+      "type": "string",
+      "description": "Order type \u2014 `limit`, `market`, `stop`, `stopLimit`."
+    },
+    "timeInForce": {
+      "type": "string",
+      "description": "Time in force \u2014 `GTC`, `IOC`, `FOK`, `GTD`."
+    },
+    "side": {
+      "type": "string",
+      "description": "`buy` or `sell`.",
+      "example": "buy"
+    },
+    "orderQty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "minQty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "cumQty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "price": {
+      "type": "double",
+      "example": 72525.0
+    },
+    "stopPx": {
+      "type": "double"
+    },
+    "ordStatus": {
+      "type": "string",
+      "description": "Status \u2014 `pending`, `open`, `filled`, `partial`, `cancelled`, `rejected`, `expired`.",
+      "example": "open"
+    },
+    "expireDate": {
+      "type": "int32"
+    },
+    "execID": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "avgPx": {
+      "type": "double"
+    }
+  }
+}

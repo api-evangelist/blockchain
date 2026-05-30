@@ -1,0 +1,9 @@
+{
+  "seqnum": 1,
+  "event": "updated",
+  "channel": "prices",
+  "symbol": "BTC-USD",
+  "price": [
+    72525.0
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-op-op-return-sub-payload-structure.json",
+  "name": "BitcoinOpOpReturnSubPayload",
+  "description": "BitcoinOpOpReturnSubPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "op_return_sub"
+    }
+  },
+  "required": [
+    "op"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/data-api-unspent-output-structure.json",
+  "name": "UnspentOutput",
+  "description": "A single UTXO owned by one of the requested addresses.",
+  "type": "object",
+  "properties": {
+    "tx_hash": {
+      "type": "string",
+      "description": "Hash of the funding transaction (little-endian).",
+      "example": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21"
+    },
+    "tx_hash_big_endian": {
+      "type": "string",
+      "description": "Hash of the funding transaction (big-endian).",
+      "example": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21"
+    },
+    "tx_output_n": {
+      "type": "int32",
+      "description": "Output index within the funding transaction.",
+      "example": 1
+    },
+    "script": {
+      "type": "string",
+      "description": "Output script (scriptPubKey) as hex."
+    },
+    "value": {
+      "type": "int64",
+      "description": "Output value in Satoshi.",
+      "example": 100000
+    },
+    "value_hex": {
+      "type": "string",
+      "description": "Output value in hex."
+    },
+    "confirmations": {
+      "type": "int32",
+      "description": "Number of confirmations.",
+      "example": 1
+    },
+    "tx_index": {
+      "type": "int64",
+      "description": "Internal transaction index.",
+      "example": 1
+    }
+  }
+}

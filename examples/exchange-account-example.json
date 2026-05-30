@@ -1,0 +1,11 @@
+{
+  "primary": "example-value",
+  "name": "My Entry",
+  "currency": "BTC",
+  "balance": 1.0,
+  "available": 1.0,
+  "balance_local": 1.0,
+  "available_local": 1.0,
+  "rate": 72525.0,
+  "type": "example-value"
+}

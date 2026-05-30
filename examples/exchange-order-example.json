@@ -1,0 +1,18 @@
+{
+  "orderId": 1,
+  "gwOrderId": 1,
+  "clOrdId": "21745988181",
+  "symbol": "BTC-USD",
+  "ordType": "example-value",
+  "timeInForce": "example-value",
+  "side": "buy",
+  "orderQty": 0.5,
+  "minQty": 0.5,
+  "cumQty": 0.5,
+  "price": 72525.0,
+  "stopPx": 72525.0,
+  "ordStatus": "open",
+  "expireDate": 1,
+  "execID": "21745988181",
+  "avgPx": 72525.0
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/exchange-symbol-schema.json",
+  "title": "Symbol",
+  "description": "Metadata describing one trading pair on the Exchange.",
+  "type": "object",
+  "properties": {
+    "base_currency": {
+      "type": "string",
+      "description": "Base currency ticker.",
+      "example": "BTC"
+    },
+    "base_currency_scale": {
+      "type": "integer",
+      "description": "Decimal precision of the base currency.",
+      "example": 8
+    },
+    "counter_currency": {
+      "type": "string",
+      "description": "Counter currency ticker.",
+      "example": "USD"
+    },
+    "counter_currency_scale": {
+      "type": "integer",
+      "description": "Decimal precision of the counter currency.",
+      "example": 2
+    },
+    "min_price_increment": {
+      "type": "number",
+      "description": "Smallest price increment allowed.",
+      "example": 72525.0
+    },
+    "min_price_increment_scale": {
+      "type": "integer",
+      "example": 8
+    },
+    "min_order_size": {
+      "type": "integer",
+      "description": "Minimum order size (in counter currency minor units)."
+    },
+    "min_order_size_scale": {
+      "type": "integer",
+      "example": 8
+    },
+    "max_order_size": {
+      "type": "integer"
+    },
+    "max_order_size_scale": {
+      "type": "integer",
+      "example": 8
+    },
+    "lot_size": {
+      "type": "integer",
+      "description": "Lot size for orders."
+    },
+    "lot_size_scale": {
+      "type": "integer",
+      "example": 8
+    },
+    "status": {
+      "type": "string",
+      "description": "Symbol status (`open` or `close`).",
+      "example": "open"
+    },
+    "id": {
+      "type": "integer",
+      "description": "Internal symbol identifier."
+    },
+    "auction_price": {
+      "type": "number",
+      "example": 72525.0
+    },
+    "auction_size": {
+      "type": "number"
+    },
+    "auction_time": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1748609400000
+    },
+    "imbalance": {
+      "type": "number"
+    }
+  }
+}

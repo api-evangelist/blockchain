@@ -1,0 +1,5 @@
+{
+  "action": "subscribe",
+  "channel": "trading",
+  "cancelOnDisconnect": true
+}

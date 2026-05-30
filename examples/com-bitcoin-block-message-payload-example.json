@@ -1,0 +1,22 @@
+{
+  "op": "block",
+  "x": {
+    "txIndexes": [
+      1
+    ],
+    "nTx": 1,
+    "totalBTCSent": 1,
+    "estimatedBTCSent": 1,
+    "reward": 1,
+    "size": 1,
+    "blockIndex": 1,
+    "prevBlockIndex": 1,
+    "height": 851234,
+    "hash": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+    "mrklRoot": "example-value",
+    "version": 1,
+    "time": 1748609400000,
+    "bits": 1,
+    "nonce": 1
+  }
+}

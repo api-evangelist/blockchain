@@ -1,0 +1,11 @@
+{
+  "execId": "21745988181",
+  "orderId": 1,
+  "symbol": "BTC-USD",
+  "side": "buy",
+  "price": 72525.0,
+  "qty": 0.5,
+  "fee": 1.0,
+  "feeCurrency": "BTC",
+  "timestamp": 1748609400000
+}

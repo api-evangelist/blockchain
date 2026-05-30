@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/charts-stats-pool-distribution-structure.json",
+  "name": "PoolDistribution",
+  "description": "Mapping of mining pool name to block count over the requested window.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "integer"
+  }
+}

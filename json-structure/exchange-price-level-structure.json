@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-price-level-structure.json",
+  "name": "PriceLevel",
+  "description": "One side of the order book at a single price.",
+  "type": "object",
+  "properties": {
+    "px": {
+      "type": "double",
+      "description": "Price.",
+      "example": 72525.0
+    },
+    "qty": {
+      "type": "double",
+      "description": "Quantity available at this price.",
+      "example": 0.5
+    },
+    "num": {
+      "type": "int32",
+      "description": "Number of orders at this price (L2 only)."
+    }
+  }
+}

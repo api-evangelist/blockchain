@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-utx-message-payload-structure.json",
+  "name": "BitcoinUtxMessagePayload",
+  "description": "BitcoinUtxMessagePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "utx"
+    },
+    "x": {
+      "type": "object",
+      "properties": {
+        "lock_time": {
+          "type": "int32"
+        },
+        "ver": {
+          "type": "int32"
+        },
+        "size": {
+          "type": "int32"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sequence": {
+                "type": "int32"
+              },
+              "prev_out": {
+                "type": "object",
+                "properties": {
+                  "spent": {
+                    "type": "boolean"
+                  },
+                  "tx_index": {
+                    "type": "int32"
+                  },
+                  "type": {
+                    "type": "int32"
+                  },
+                  "addr": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "int32",
+                    "description": "Value in satoshis."
+                  },
+                  "n": {
+                    "type": "int32"
+                  },
+                  "script": {
+                    "type": "string"
+                  }
+                }
+              },
+              "script": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "time": {
+          "type": "int32",
+          "description": "Seen-by-relay Unix timestamp."
+        },
+        "tx_index": {
+          "type": "int32"
+        },
+        "vin_sz": {
+          "type": "int32"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "vout_sz": {
+          "type": "int32"
+        },
+        "relayed_by": {
+          "type": "string"
+        },
+        "out": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "spent": {
+                "type": "boolean"
+              },
+              "tx_index": {
+                "type": "int32"
+              },
+              "type": {
+                "type": "int32"
+              },
+              "addr": {
+                "type": "string"
+              },
+              "value": {
+                "type": "int32"
+              },
+              "n": {
+                "type": "int32"
+              },
+              "script": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

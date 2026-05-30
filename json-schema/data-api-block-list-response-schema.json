@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/data-api-block-list-response-schema.json",
+  "title": "BlockListResponse",
+  "description": "Wrapper used by `block-height/{height}` returning an array of `Block` objects.",
+  "type": "object",
+  "properties": {
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A Bitcoin block including its transactions, header, and chain status.",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "description": "Block hash.",
+            "example": "00000000000000000004f4e7a1..."
+          },
+          "ver": {
+            "type": "integer",
+            "description": "Block version.",
+            "example": 536870912
+          },
+          "prev_block": {
+            "type": "string",
+            "description": "Previous block hash."
+          },
+          "mrkl_root": {
+            "type": "string",
+            "description": "Merkle root."
+          },
+          "time": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Block timestamp (Unix seconds).",
+            "example": 1748609400000
+          },
+          "bits": {
+            "type": "integer",
+            "description": "Difficulty bits.",
+            "example": 1
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Nonce used to mine the block.",
+            "example": 1
+          },
+          "n_tx": {
+            "type": "integer",
+            "description": "Number of transactions in the block.",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "description": "Block size in bytes.",
+            "example": 1
+          },
+          "block_index": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Internal block index.",
+            "example": 1
+          },
+          "main_chain": {
+            "type": "boolean",
+            "description": "True if this block is part of the main chain.",
+            "example": true
+          },
+          "height": {
+            "type": "integer",
+            "description": "Block height.",
+            "example": 851234
+          },
+          "tx": {
+            "type": "array",
+            "description": "List of transactions included in the block.",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            }
+          }
+        }
+      }
+    }
+  }
+}

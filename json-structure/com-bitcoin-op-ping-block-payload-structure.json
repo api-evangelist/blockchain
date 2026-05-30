@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-op-ping-block-payload-structure.json",
+  "name": "BitcoinOpPingBlockPayload",
+  "description": "BitcoinOpPingBlockPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "ping_block"
+    }
+  },
+  "required": [
+    "op"
+  ]
+}

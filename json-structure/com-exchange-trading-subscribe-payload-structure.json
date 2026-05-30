@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-trading-subscribe-payload-structure.json",
+  "name": "ExchangeTradingSubscribePayload",
+  "description": "ExchangeTradingSubscribePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "subscribe",
+        "unsubscribe"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    },
+    "cancelOnDisconnect": {
+      "type": "boolean",
+      "description": "When true, cancels all live orders when the connection drops. Cannot be turned off once enabled."
+    }
+  },
+  "required": [
+    "action",
+    "channel"
+  ]
+}

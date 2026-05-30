@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-fill-structure.json",
+  "name": "Fill",
+  "description": "A single execution leg, including fees.",
+  "type": "object",
+  "properties": {
+    "execId": {
+      "type": "string",
+      "example": "21745988181"
+    },
+    "orderId": {
+      "type": "int64"
+    },
+    "symbol": {
+      "type": "string",
+      "example": "BTC-USD"
+    },
+    "side": {
+      "type": "string",
+      "example": "buy"
+    },
+    "price": {
+      "type": "double",
+      "example": 72525.0
+    },
+    "qty": {
+      "type": "double",
+      "example": 0.5
+    },
+    "fee": {
+      "type": "double"
+    },
+    "feeCurrency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "timestamp": {
+      "type": "int64",
+      "example": 1748609400000
+    }
+  }
+}

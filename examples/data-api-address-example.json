@@ -1,0 +1,33 @@
+{
+  "hash160": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+  "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "n_tx": 1,
+  "n_unredeemed": 1,
+  "total_received": 1,
+  "total_sent": 1,
+  "final_balance": 100000,
+  "txs": [
+    {
+      "hash": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+      "ver": 1,
+      "vin_sz": 1,
+      "vout_sz": 1,
+      "size": 1,
+      "weight": 1,
+      "fee": 1,
+      "relayed_by": "example-value",
+      "lock_time": 1748609400000,
+      "tx_index": 1,
+      "double_spend": true,
+      "time": 1748609400000,
+      "block_index": 1,
+      "block_height": 851234,
+      "inputs": [
+        null
+      ],
+      "out": [
+        null
+      ]
+    }
+  ]
+}

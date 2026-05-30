@@ -1,0 +1,11 @@
+{
+  "seqnum": 1,
+  "event": "updated",
+  "channel": "trades",
+  "symbol": "BTC-USD",
+  "timestamp": "2026-05-30T14:30:00Z",
+  "side": "buy",
+  "qty": 1.0,
+  "price": 72525.0,
+  "trade_id": "21745988181"
+}

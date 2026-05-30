@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-bitcoin-op-unconfirmed-sub-payload-structure.json",
+  "name": "BitcoinOpUnconfirmedSubPayload",
+  "description": "BitcoinOpUnconfirmedSubPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "op": {
+      "type": "string",
+      "const": "unconfirmed_sub"
+    }
+  },
+  "required": [
+    "op"
+  ]
+}

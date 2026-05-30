@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/charts-stats-chart-point-schema.json",
+  "title": "ChartPoint",
+  "description": "Single time-series sample.",
+  "type": "object",
+  "properties": {
+    "x": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Timestamp in Unix seconds.",
+      "example": 1
+    },
+    "y": {
+      "type": "number",
+      "description": "Measured value at `x`.",
+      "example": 1.0
+    }
+  }
+}

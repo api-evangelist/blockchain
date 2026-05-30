@@ -1,0 +1,5 @@
+{
+  "action": "OrderMassCancelRequest",
+  "channel": "trading",
+  "symbol": "BTC-USD"
+}

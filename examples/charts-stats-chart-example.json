@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "name": "Market Price (USD)",
+  "unit": "USD",
+  "period": "example-value",
+  "description": "example-value",
+  "values": [
+    {
+      "x": 1,
+      "y": 1.0
+    }
+  ]
+}

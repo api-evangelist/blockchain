@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/charts-stats-ticker-entry-structure.json",
+  "name": "TickerEntry",
+  "description": "Current BTC pricing in a single fiat currency.",
+  "type": "object",
+  "properties": {
+    "15m": {
+      "type": "double",
+      "description": "15-minute delayed market price.",
+      "example": 1.0
+    },
+    "last": {
+      "type": "double",
+      "description": "Most recent market price.",
+      "example": 1.0
+    },
+    "buy": {
+      "type": "double",
+      "description": "Current buy price.",
+      "example": 1.0
+    },
+    "sell": {
+      "type": "double",
+      "description": "Current sell price.",
+      "example": 1.0
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Currency symbol (e.g. `$`, `\u20ac`, `\u00a3`).",
+      "example": "BTC-USD"
+    }
+  }
+}

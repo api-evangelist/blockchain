@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/com-exchange-order-mass-status-request-payload-structure.json",
+  "name": "ExchangeOrderMassStatusRequestPayload",
+  "description": "ExchangeOrderMassStatusRequestPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "OrderMassStatusRequest"
+    },
+    "channel": {
+      "type": "string",
+      "const": "trading"
+    }
+  },
+  "required": [
+    "action",
+    "channel"
+  ]
+}

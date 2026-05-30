@@ -1,0 +1,11 @@
+{
+  "seqnum": 1,
+  "event": "updated",
+  "channel": "symbols",
+  "symbol": "BTC-USD",
+  "auction-price": 72525.0,
+  "auction-size": 1.0,
+  "auction-time": "example-value",
+  "imbalance": 1.0,
+  "status": "open"
+}

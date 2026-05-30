@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-auth-subscribe-payload-schema.json",
+  "title": "ExchangeAuthSubscribePayload",
+  "description": "ExchangeAuthSubscribePayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "description": "API secret token."
+    },
+    "action": {
+      "type": "string",
+      "const": "subscribe"
+    },
+    "channel": {
+      "type": "string",
+      "const": "auth"
+    }
+  },
+  "required": [
+    "token",
+    "action",
+    "channel"
+  ]
+}

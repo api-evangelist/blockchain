@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/exchange-account-structure.json",
+  "name": "Account",
+  "description": "Balance for a single account/currency.",
+  "type": "object",
+  "properties": {
+    "primary": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "example": "My Entry"
+    },
+    "currency": {
+      "type": "string",
+      "example": "BTC"
+    },
+    "balance": {
+      "type": "double"
+    },
+    "available": {
+      "type": "double"
+    },
+    "balance_local": {
+      "type": "double"
+    },
+    "available_local": {
+      "type": "double"
+    },
+    "rate": {
+      "type": "double",
+      "example": 72525.0
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

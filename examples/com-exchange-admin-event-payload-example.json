@@ -1,0 +1,7 @@
+{
+  "seqnum": 1,
+  "event": "subscribed",
+  "channel": "example-value",
+  "symbol": "BTC-USD",
+  "text": "example-value"
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/com-exchange-l2event-payload-schema.json",
+  "title": "ExchangeL2EventPayload",
+  "description": "ExchangeL2EventPayload schema from Blockchain.com WebSocket APIs",
+  "type": "object",
+  "properties": {
+    "seqnum": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "snapshot",
+        "updated"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "const": "l2"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "bids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "px",
+          "qty",
+          "num"
+        ],
+        "properties": {
+          "px": {
+            "type": "number"
+          },
+          "qty": {
+            "type": "number",
+            "description": "Aggregated size at this price. 0 means remove level."
+          },
+          "num": {
+            "type": "integer",
+            "description": "Number of orders at this price level."
+          }
+        }
+      }
+    },
+    "asks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "px",
+          "qty",
+          "num"
+        ],
+        "properties": {
+          "px": {
+            "type": "number"
+          },
+          "qty": {
+            "type": "number"
+          },
+          "num": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "seqnum",
+    "event",
+    "channel",
+    "symbol",
+    "bids",
+    "asks"
+  ]
+}

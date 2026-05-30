@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-structure/data-api-block-structure.json",
+  "name": "Block",
+  "description": "A Bitcoin block including its transactions, header, and chain status.",
+  "type": "object",
+  "properties": {
+    "hash": {
+      "type": "string",
+      "description": "Block hash.",
+      "example": "00000000000000000004f4e7a1..."
+    },
+    "ver": {
+      "type": "int32",
+      "description": "Block version.",
+      "example": 536870912
+    },
+    "prev_block": {
+      "type": "string",
+      "description": "Previous block hash."
+    },
+    "mrkl_root": {
+      "type": "string",
+      "description": "Merkle root."
+    },
+    "time": {
+      "type": "int64",
+      "description": "Block timestamp (Unix seconds).",
+      "example": 1748609400000
+    },
+    "bits": {
+      "type": "int32",
+      "description": "Difficulty bits.",
+      "example": 1
+    },
+    "nonce": {
+      "type": "int64",
+      "description": "Nonce used to mine the block.",
+      "example": 1
+    },
+    "n_tx": {
+      "type": "int32",
+      "description": "Number of transactions in the block.",
+      "example": 1
+    },
+    "size": {
+      "type": "int32",
+      "description": "Block size in bytes.",
+      "example": 1
+    },
+    "block_index": {
+      "type": "int64",
+      "description": "Internal block index.",
+      "example": 1
+    },
+    "main_chain": {
+      "type": "boolean",
+      "description": "True if this block is part of the main chain.",
+      "example": true
+    },
+    "height": {
+      "type": "int32",
+      "description": "Block height.",
+      "example": 851234
+    },
+    "tx": {
+      "type": "array",
+      "description": "List of transactions included in the block.",
+      "items": {
+        "type": "object",
+        "description": "A Bitcoin transaction with its inputs and outputs.",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "description": "Transaction hash.",
+            "example": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21"
+          },
+          "ver": {
+            "type": "int32",
+            "description": "Transaction version.",
+            "example": 1
+          },
+          "vin_sz": {
+            "type": "int32",
+            "description": "Number of inputs.",
+            "example": 1
+          },
+          "vout_sz": {
+            "type": "int32",
+            "description": "Number of outputs.",
+            "example": 1
+          },
+          "size": {
+            "type": "int32",
+            "description": "Serialized transaction size in bytes.",
+            "example": 1
+          },
+          "weight": {
+            "type": "int32",
+            "description": "Transaction weight (BIP141).",
+            "example": 1
+          },
+          "fee": {
+            "type": "int64",
+            "description": "Fee paid in Satoshi.",
+            "example": 1
+          },
+          "relayed_by": {
+            "type": "string",
+            "description": "IP address that relayed the transaction."
+          },
+          "lock_time": {
+            "type": "int64",
+            "description": "Lock time (block height or Unix seconds).",
+            "example": 1748609400000
+          },
+          "tx_index": {
+            "type": "int64",
+            "description": "Internal transaction index.",
+            "example": 1
+          },
+          "double_spend": {
+            "type": "boolean",
+            "description": "True if the transaction is a known double-spend.",
+            "example": true
+          },
+          "time": {
+            "type": "int64",
+            "description": "First-seen time (Unix seconds).",
+            "example": 1748609400000
+          },
+          "block_index": {
+            "type": "int64",
+            "description": "Block index containing the transaction (null if unconfirmed).",
+            "example": 1
+          },
+          "block_height": {
+            "type": "int32",
+            "description": "Block height containing the transaction (null if unconfirmed).",
+            "example": 851234
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Transaction inputs.",
+            "items": {
+              "$ref": "#/components/schemas/TxInput"
+            }
+          },
+          "out": {
+            "type": "array",
+            "description": "Transaction outputs.",
+            "items": {
+              "$ref": "#/components/schemas/TxOutput"
+            }
+          }
+        }
+      }
+    }
+  }
+}

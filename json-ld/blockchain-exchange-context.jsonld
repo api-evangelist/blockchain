@@ -1,0 +1,342 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://www.blockchain.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Symbol": "bc:Symbol",
+    "Ticker": "bc:Ticker",
+    "OrderBook": "bc:OrderBook",
+    "PriceLevel": "bc:PriceLevel",
+    "Fees": "bc:Fees",
+    "Order": "bc:Order",
+    "CreateOrderRequest": "bc:CreateOrderRequest",
+    "Trade": "bc:Trade",
+    "Fill": "bc:Fill",
+    "Account": "bc:Account",
+    "Deposit": "bc:Deposit",
+    "DepositAddress": "bc:DepositAddress",
+    "Withdrawal": "bc:Withdrawal",
+    "CreateWithdrawalRequest": "bc:CreateWithdrawalRequest",
+    "Beneficiary": "bc:Beneficiary",
+    "Whitelist": "bc:Whitelist",
+    "WhitelistCapability": "bc:WhitelistCapability",
+    "baseCurrency": {
+      "@id": "bc:base_currency",
+      "@type": "xsd:string"
+    },
+    "baseCurrencyScale": {
+      "@id": "bc:base_currency_scale",
+      "@type": "xsd:integer"
+    },
+    "counterCurrency": {
+      "@id": "bc:counter_currency",
+      "@type": "xsd:string"
+    },
+    "counterCurrencyScale": {
+      "@id": "bc:counter_currency_scale",
+      "@type": "xsd:integer"
+    },
+    "minPriceIncrement": {
+      "@id": "bc:min_price_increment",
+      "@type": "xsd:decimal"
+    },
+    "minPriceIncrementScale": {
+      "@id": "bc:min_price_increment_scale",
+      "@type": "xsd:integer"
+    },
+    "minOrderSize": {
+      "@id": "bc:min_order_size",
+      "@type": "xsd:integer"
+    },
+    "minOrderSizeScale": {
+      "@id": "bc:min_order_size_scale",
+      "@type": "xsd:integer"
+    },
+    "maxOrderSize": {
+      "@id": "bc:max_order_size",
+      "@type": "xsd:integer"
+    },
+    "maxOrderSizeScale": {
+      "@id": "bc:max_order_size_scale",
+      "@type": "xsd:integer"
+    },
+    "lotSize": {
+      "@id": "bc:lot_size",
+      "@type": "xsd:integer"
+    },
+    "lotSizeScale": {
+      "@id": "bc:lot_size_scale",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "bc:status",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "bc:id",
+      "@type": "xsd:integer"
+    },
+    "auctionPrice": {
+      "@id": "bc:auction_price",
+      "@type": "xsd:decimal"
+    },
+    "auctionSize": {
+      "@id": "bc:auction_size",
+      "@type": "xsd:decimal"
+    },
+    "auctionTime": {
+      "@id": "bc:auction_time",
+      "@type": "xsd:integer"
+    },
+    "imbalance": {
+      "@id": "bc:imbalance",
+      "@type": "xsd:decimal"
+    },
+    "symbol": {
+      "@id": "bc:symbol",
+      "@type": "xsd:string"
+    },
+    "price24h": {
+      "@id": "bc:price_24h",
+      "@type": "xsd:decimal"
+    },
+    "volume24h": {
+      "@id": "bc:volume_24h",
+      "@type": "xsd:decimal"
+    },
+    "lastTradePrice": {
+      "@id": "bc:last_trade_price",
+      "@type": "xsd:decimal"
+    },
+    "bids": {
+      "@id": "bc:bids",
+      "@container": "@set"
+    },
+    "asks": {
+      "@id": "bc:asks",
+      "@container": "@set"
+    },
+    "px": {
+      "@id": "bc:px",
+      "@type": "xsd:decimal"
+    },
+    "qty": {
+      "@id": "bc:qty",
+      "@type": "xsd:decimal"
+    },
+    "num": {
+      "@id": "bc:num",
+      "@type": "xsd:integer"
+    },
+    "makerRate": {
+      "@id": "bc:makerRate",
+      "@type": "xsd:decimal"
+    },
+    "takerRate": {
+      "@id": "bc:takerRate",
+      "@type": "xsd:decimal"
+    },
+    "volumeInUSD": {
+      "@id": "bc:volumeInUSD",
+      "@type": "xsd:decimal"
+    },
+    "orderId": {
+      "@id": "bc:orderId",
+      "@type": "xsd:integer"
+    },
+    "gwOrderId": {
+      "@id": "bc:gwOrderId",
+      "@type": "xsd:integer"
+    },
+    "clOrdId": {
+      "@id": "bc:clOrdId",
+      "@type": "xsd:string"
+    },
+    "ordType": {
+      "@id": "bc:ordType",
+      "@type": "xsd:string"
+    },
+    "timeInForce": {
+      "@id": "bc:timeInForce",
+      "@type": "xsd:string"
+    },
+    "side": {
+      "@id": "bc:side",
+      "@type": "xsd:string"
+    },
+    "orderQty": {
+      "@id": "bc:orderQty",
+      "@type": "xsd:decimal"
+    },
+    "minQty": {
+      "@id": "bc:minQty",
+      "@type": "xsd:decimal"
+    },
+    "cumQty": {
+      "@id": "bc:cumQty",
+      "@type": "xsd:decimal"
+    },
+    "price": {
+      "@id": "bc:price",
+      "@type": "xsd:decimal"
+    },
+    "stopPx": {
+      "@id": "bc:stopPx",
+      "@type": "xsd:decimal"
+    },
+    "ordStatus": {
+      "@id": "bc:ordStatus",
+      "@type": "xsd:string"
+    },
+    "expireDate": {
+      "@id": "bc:expireDate",
+      "@type": "xsd:integer"
+    },
+    "execID": {
+      "@id": "bc:execID",
+      "@type": "xsd:string"
+    },
+    "avgPx": {
+      "@id": "bc:avgPx",
+      "@type": "xsd:decimal"
+    },
+    "exOrdId": {
+      "@id": "bc:exOrdId",
+      "@type": "xsd:integer"
+    },
+    "fee": {
+      "@id": "bc:fee",
+      "@type": "xsd:decimal"
+    },
+    "timestamp": {
+      "@id": "bc:timestamp",
+      "@type": "xsd:integer"
+    },
+    "execId": {
+      "@id": "bc:execId",
+      "@type": "xsd:string"
+    },
+    "feeCurrency": {
+      "@id": "bc:feeCurrency",
+      "@type": "xsd:string"
+    },
+    "primary": {
+      "@id": "bc:primary",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "bc:currency",
+      "@type": "xsd:string"
+    },
+    "balance": {
+      "@id": "bc:balance",
+      "@type": "xsd:decimal"
+    },
+    "available": {
+      "@id": "bc:available",
+      "@type": "xsd:decimal"
+    },
+    "balanceLocal": {
+      "@id": "bc:balance_local",
+      "@type": "xsd:decimal"
+    },
+    "availableLocal": {
+      "@id": "bc:available_local",
+      "@type": "xsd:decimal"
+    },
+    "rate": {
+      "@id": "bc:rate",
+      "@type": "xsd:decimal"
+    },
+    "type": {
+      "@id": "bc:type",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "bc:amount",
+      "@type": "xsd:decimal"
+    },
+    "amountLocal": {
+      "@id": "bc:amount_local",
+      "@type": "xsd:decimal"
+    },
+    "address": {
+      "@id": "bc:address",
+      "@type": "xsd:string"
+    },
+    "txHash": {
+      "@id": "bc:txHash",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "bc:state",
+      "@type": "xsd:string"
+    },
+    "withdrawalId": {
+      "@id": "bc:withdrawalId",
+      "@type": "xsd:string"
+    },
+    "beneficiary": {
+      "@id": "bc:beneficiary",
+      "@type": "xsd:string"
+    },
+    "whitelisted": {
+      "@id": "bc:whitelisted",
+      "@type": "xsd:boolean"
+    },
+    "fiat": {
+      "@id": "bc:fiat",
+      "@type": "xsd:boolean"
+    },
+    "agent": {
+      "@id": "bc:agent",
+      "@type": "@id"
+    },
+    "account": {
+      "@id": "bc:account",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "bc:code",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "bc:country",
+      "@type": "xsd:string"
+    },
+    "recipient": {
+      "@id": "bc:recipient",
+      "@type": "xsd:string"
+    },
+    "routingNumber": {
+      "@id": "bc:routingNumber",
+      "@type": "xsd:string"
+    },
+    "capabilities": {
+      "@id": "bc:capabilities",
+      "@container": "@set"
+    },
+    "enabled": {
+      "@id": "bc:enabled",
+      "@type": "xsd:boolean"
+    },
+    "enabledAt": {
+      "@id": "bc:enabledAt",
+      "@type": "xsd:dateTime"
+    },
+    "xpub": {
+      "@id": "bc:xpub",
+      "@type": "xsd:boolean"
+    },
+    "existingBeneficiaryOnly": {
+      "@id": "bc:existingBeneficiaryOnly",
+      "@type": "xsd:boolean"
+    }
+  }
+}

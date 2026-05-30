@@ -1,0 +1,40 @@
+{
+  "op": "utx",
+  "x": {
+    "lock_time": 1748609400000,
+    "ver": 1,
+    "size": 1,
+    "inputs": [
+      {
+        "sequence": 1,
+        "prev_out": {
+          "spent": true,
+          "tx_index": 1,
+          "type": 1,
+          "addr": "example-value",
+          "value": 100000,
+          "n": 1,
+          "script": "example-value"
+        },
+        "script": "example-value"
+      }
+    ],
+    "time": 1748609400000,
+    "tx_index": 1,
+    "vin_sz": 1,
+    "hash": "00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21",
+    "vout_sz": 1,
+    "relayed_by": "example-value",
+    "out": [
+      {
+        "spent": true,
+        "tx_index": 1,
+        "type": 1,
+        "addr": "example-value",
+        "value": 100000,
+        "n": 1,
+        "script": "example-value"
+      }
+    ]
+  }
+}

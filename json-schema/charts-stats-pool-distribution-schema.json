@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blockchain/refs/heads/main/json-schema/charts-stats-pool-distribution-schema.json",
+  "title": "PoolDistribution",
+  "description": "Mapping of mining pool name to block count over the requested window.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "integer"
+  }
+}
