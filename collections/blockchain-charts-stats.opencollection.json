@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Chart Time-series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/charts/:chartName",
+            "params": [
+              {
+                "name": "chartName",
+                "value": "",
+                "type": "path",
+                "description": "Chart identifier (kebab-case)."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "Duration spanned by the dataset (e.g. `5weeks`, `1year`, `all`). Default `1year`."
+              },
+              {
+                "name": "rollingAverage",
+                "value": "",
+                "type": "query",
+                "description": "Smoothing window applied to the time series (e.g. `8hours`, `7days`)."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Custom start date in `YYYY-MM-DD` format."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format (`json` or `csv`). Default `json`."
+              },
+              {
+                "name": "sampled",
+                "value": "",
+                "type": "query",
+                "description": "If true, downsample to ~1.5k points for performance."
+              }
+            ]
+          },
+          "docs": "Returns a time-series dataset for the requested chart name. Common chart names include\n`transactions-per-second`, `market-price`, `hash-rate`, `difficulty`, `miners-revenue`,\n`mempool-size`, `n-transactions`, `total-bitcoins`, `avg-block-size`, `mempool-count`,\n`cost-per-transaction`, and many others.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Bitcoin Network Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/stats"
+          },
+          "docs": "Real-time blockchain statistics — price, hash rate, transaction counts, mining economics."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Mining Pool Distribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/pools",
+            "params": [
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "Duration window in days (max 10, default 4)."
+              }
+            ]
+          },
+          "docs": "Returns block counts attributed to known mining pools over a rolling window."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Exchange-rate Ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/ticker",
+            "params": [
+              {
+                "name": "cors",
+                "value": "",
+                "type": "query",
+                "description": "If true, the response will include CORS headers."
+              }
+            ]
+          },
+          "docs": "Returns a map of currency codes to current Bitcoin price data."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Convert Fiat to BTC",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/tobtc",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "ISO currency code (e.g. `USD`, `EUR`, `GBP`)."
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "Amount of fiat to convert."
+              }
+            ]
+          },
+          "docs": "Converts a fiat amount to its current BTC equivalent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

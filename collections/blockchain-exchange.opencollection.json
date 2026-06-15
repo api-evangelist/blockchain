@@ -1,0 +1,508 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Exchange REST API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Token",
+      "value": "{{X-API-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com List Trading Symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/symbols"
+          },
+          "docs": "Returns the full set of trading symbols and their metadata."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/symbols/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific trading symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Tickers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/tickers"
+          },
+          "docs": "Returns current price and 24-hour metrics for all trading pairs."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/tickers/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the current price and 24-hour metrics for one trading pair."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Level-2 Order Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/l2/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the aggregated price-level order book for a symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Level-3 Order Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/l3/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the full per-order book for a symbol."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trading",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Maker/taker Fees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/fees"
+          },
+          "docs": "Returns the current maker and taker fee rates for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/orders",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "Trading symbol filter."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter by orders created on or after this Unix timestamp (ms)."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter by orders created on or before this Unix timestamp (ms)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status filter (e.g. `open`, `filled`, `cancelled`)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              }
+            ]
+          },
+          "docs": "Returns live and historic orders filtered by symbol, status, and time range."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.com/v3/exchange/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a new order. Supports LIMIT, MARKET, STOP, and STOPLIMIT order types.\n"
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Cancel All Open Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blockchain.com/v3/exchange/orders",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, only cancel orders for this symbol."
+              }
+            ]
+          },
+          "docs": "Cancels every open order, optionally filtered by symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Order identifier."
+              }
+            ]
+          },
+          "docs": "Returns the current state of one order."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Cancel a Single Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blockchain.com/v3/exchange/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Order identifier."
+              }
+            ]
+          },
+          "docs": "Cancels an open order."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/trades",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical filled orders (including partial fills)."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Fills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/fills",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns individual fill executions including fees."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com List Account Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/accounts"
+          },
+          "docs": "Returns balances across all currencies and account types."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Account Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/accounts/:account/:currency",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path",
+                "description": "Account type (e.g. `primary`)."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency ticker (e.g. `BTC`)."
+              }
+            ]
+          },
+          "docs": "Returns the balance for a specific account type and currency."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Deposits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/deposits",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns deposit history."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/deposits/:depositId",
+            "params": [
+              {
+                "name": "depositId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status of one deposit."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a Deposit Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.com/v3/exchange/deposits/:currency/address",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency ticker (e.g. `BTC`)."
+              }
+            ]
+          },
+          "docs": "Generates a new deposit address for the specified currency."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Withdrawals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/withdrawals",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns withdrawal history."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a Withdrawal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.com/v3/exchange/withdrawals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a withdrawal to a whitelisted beneficiary."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Withdrawal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/withdrawals/:withdrawalId",
+            "params": [
+              {
+                "name": "withdrawalId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status of one withdrawal."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Whitelisted Beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/whitelist"
+          },
+          "docs": "Returns the user's whitelisted withdrawal beneficiaries."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Whitelist by Currency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.com/v3/exchange/whitelist/:currency",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the user's whitelisted beneficiaries for a specific currency."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

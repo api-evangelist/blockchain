@@ -1,0 +1,557 @@
+{
+  "item": [
+    {
+      "id": "cc9d685f-2bc0-434f-9e8d-016c83bb116f",
+      "name": "Charts",
+      "description": {
+        "content": "Historical time-series datasets for Bitcoin network metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d40e5498-4388-43ae-b6ad-95b784245bd1",
+          "name": "Blockchain.com Get a Chart Time-series",
+          "request": {
+            "name": "Blockchain.com Get a Chart Time-series",
+            "description": {
+              "content": "Returns a time-series dataset for the requested chart name. Common chart names include\n`transactions-per-second`, `market-price`, `hash-rate`, `difficulty`, `miners-revenue`,\n`mempool-size`, `n-transactions`, `total-bitcoins`, `avg-block-size`, `mempool-count`,\n`cost-per-transaction`, and many others.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "charts",
+                ":chartName"
+              ],
+              "host": [
+                "api",
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "1year",
+                  "description": "Duration spanned by the dataset (e.g. `5weeks`, `1year`, `all`). Default `1year`."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollingAverage",
+                  "value": "<string>",
+                  "description": "Smoothing window applied to the time series (e.g. `8hours`, `7days`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<date>",
+                  "description": "Custom start date in `YYYY-MM-DD` format."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format (`json` or `csv`). Default `json`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sampled",
+                  "value": "false",
+                  "description": "If true, downsample to ~1.5k points for performance."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chartName",
+                  "description": "(Required) Chart identifier (kebab-case)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52c8373e-dd82-462f-aa20-a81420d846ef",
+              "name": "Chart time-series.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "charts",
+                    ":chartName"
+                  ],
+                  "host": [
+                    "api",
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "1year"
+                    },
+                    {
+                      "key": "rollingAverage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "sampled",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chartName",
+                      "description": "(Required) Chart identifier (kebab-case)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"name\": \"Market Price (USD)\",\n  \"unit\": \"USD\",\n  \"period\": \"string\",\n  \"description\": \"string\",\n  \"values\": [\n    {\n      \"x\": 1,\n      \"y\": 1\n    },\n    {\n      \"x\": 1,\n      \"y\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4a8fc4f7-f5f4-43a8-9f0d-8137a8e1aaed",
+      "name": "Stats",
+      "description": {
+        "content": "Real-time blockchain statistics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95d6b773-0f6e-4a1b-8c8e-285e8494586f",
+          "name": "Blockchain.com Get Bitcoin Network Statistics",
+          "request": {
+            "name": "Blockchain.com Get Bitcoin Network Statistics",
+            "description": {
+              "content": "Real-time blockchain statistics — price, hash rate, transaction counts, mining economics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "stats"
+              ],
+              "host": [
+                "api",
+                "blockchain",
+                "info"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fa104cf-ad23-4baf-8f76-0d7d4e948d36",
+              "name": "Network statistics snapshot.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "stats"
+                  ],
+                  "host": [
+                    "api",
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"market_price_usd\": 72525,\n  \"hash_rate\": 72525,\n  \"total_fees_btc\": 1,\n  \"n_btc_mined\": 1,\n  \"n_tx\": 1,\n  \"n_blocks_mined\": 1,\n  \"minutes_between_blocks\": 1,\n  \"totalbc\": 1,\n  \"n_blocks_total\": 1,\n  \"estimated_transaction_volume_usd\": 0.5,\n  \"miners_revenue_usd\": 1,\n  \"miners_revenue_btc\": 1,\n  \"difficulty\": 1,\n  \"estimated_btc_sent\": 1,\n  \"total_btc_sent\": 1,\n  \"trade_volume_btc\": 0.5,\n  \"trade_volume_usd\": 0.5,\n  \"nextretarget\": 1,\n  \"timestamp\": 1748609400000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9065d880-8223-40dc-acea-b9c92f1c29e9",
+      "name": "Pools",
+      "description": {
+        "content": "Mining pool distribution.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9512ca3-9cf4-41c8-9547-0ce95db6631c",
+          "name": "Blockchain.com Get Mining Pool Distribution",
+          "request": {
+            "name": "Blockchain.com Get Mining Pool Distribution",
+            "description": {
+              "content": "Returns block counts attributed to known mining pools over a rolling window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "pools"
+              ],
+              "host": [
+                "api",
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "4days",
+                  "description": "Duration window in days (max 10, default 4)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "879d8c9a-9228-45a1-95a6-b0e8735c02a2",
+              "name": "Mapping of pool name to block count.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "pools"
+                  ],
+                  "host": [
+                    "api",
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "4days"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 7425,\n  \"key_1\": 8317,\n  \"key_2\": 6403,\n  \"key_3\": 2016\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "22786517-3837-4bfa-b630-1626d24e0ebf",
+      "name": "Market Data",
+      "description": {
+        "content": "Bitcoin exchange rates and fiat conversion.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0923363e-ecc0-4619-bd92-288be07fdb9c",
+          "name": "Blockchain.com Get Exchange-rate Ticker",
+          "request": {
+            "name": "Blockchain.com Get Exchange-rate Ticker",
+            "description": {
+              "content": "Returns a map of currency codes to current Bitcoin price data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ticker"
+              ],
+              "host": [
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cors",
+                  "value": "<boolean>",
+                  "description": "If true, the response will include CORS headers."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "171a7f71-6656-447b-b9b0-2601d96ca155",
+              "name": "Ticker map keyed by ISO currency code.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ticker"
+                  ],
+                  "host": [
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "cors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  },\n  \"key_1\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  },\n  \"key_2\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "235ee79f-8965-466f-9684-4e29c85ec3f8",
+          "name": "Blockchain.com Convert Fiat to BTC",
+          "request": {
+            "name": "Blockchain.com Convert Fiat to BTC",
+            "description": {
+              "content": "Converts a fiat amount to its current BTC equivalent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "tobtc"
+              ],
+              "host": [
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "(Required) ISO currency code (e.g. `USD`, `EUR`, `GBP`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<number>",
+                  "description": "(Required) Amount of fiat to convert."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5938c1a-f219-41f6-a69b-efc211b7d119",
+              "name": "BTC equivalent value.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "tobtc"
+                  ],
+                  "host": [
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "value",
+                      "value": "500"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "0.00702345",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2d6011ae-384a-45b0-852b-4d132ad78904",
+    "name": "Blockchain.com Charts, Stats & Market Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

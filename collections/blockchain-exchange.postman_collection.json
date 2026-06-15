@@ -1,0 +1,2352 @@
+{
+  "item": [
+    {
+      "id": "d1a00e25-ffba-4384-bffd-d89f25992240",
+      "name": "Market Data",
+      "description": {
+        "content": "Public market data — symbols, tickers, order books.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dde16edb-953e-413a-af01-8fc1326948f9",
+          "name": "Blockchain.com List Trading Symbols",
+          "request": {
+            "name": "Blockchain.com List Trading Symbols",
+            "description": {
+              "content": "Returns the full set of trading symbols and their metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00c5a207-7858-4a77-9f8b-738a56adb230",
+              "name": "Map of symbol code to symbol metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"base_currency\": \"BTC\",\n    \"base_currency_scale\": 8,\n    \"counter_currency\": \"USD\",\n    \"counter_currency_scale\": 2,\n    \"min_price_increment\": 72525,\n    \"min_price_increment_scale\": 8,\n    \"min_order_size\": 5663,\n    \"min_order_size_scale\": 8,\n    \"max_order_size\": 5858,\n    \"max_order_size_scale\": 8,\n    \"lot_size\": 3476,\n    \"lot_size_scale\": 8,\n    \"status\": \"open\",\n    \"id\": 2019,\n    \"auction_price\": 72525,\n    \"auction_size\": 9955.217137420592,\n    \"auction_time\": 1748609400000,\n    \"imbalance\": 1097.3346284171537\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d70d428-d853-43f8-95c8-a08b38c0ea5a",
+          "name": "Blockchain.com Get a Single Symbol",
+          "request": {
+            "name": "Blockchain.com Get a Single Symbol",
+            "description": {
+              "content": "Returns metadata for a specific trading symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01ae316b-7fa1-4ba7-94e3-8b417bab38c2",
+              "name": "Symbol metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base_currency\": \"BTC\",\n  \"base_currency_scale\": 8,\n  \"counter_currency\": \"USD\",\n  \"counter_currency_scale\": 2,\n  \"min_price_increment\": 72525,\n  \"min_price_increment_scale\": 8,\n  \"min_order_size\": 4458,\n  \"min_order_size_scale\": 8,\n  \"max_order_size\": 7190,\n  \"max_order_size_scale\": 8,\n  \"lot_size\": 8761,\n  \"lot_size_scale\": 8,\n  \"status\": \"open\",\n  \"id\": 3544,\n  \"auction_price\": 72525,\n  \"auction_size\": 5830.683420653694,\n  \"auction_time\": 1748609400000,\n  \"imbalance\": 1347.7427984124436\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11855de2-1b16-4d00-becd-847019a06aea",
+          "name": "Blockchain.com List Tickers",
+          "request": {
+            "name": "Blockchain.com List Tickers",
+            "description": {
+              "content": "Returns current price and 24-hour metrics for all trading pairs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3639e3d-f823-4656-9cf7-f642133ed577",
+              "name": "Array of tickers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"symbol\": \"BTC-USD\",\n    \"price_24h\": 72525,\n    \"volume_24h\": 0.5,\n    \"last_trade_price\": 72525\n  },\n  {\n    \"symbol\": \"BTC-USD\",\n    \"price_24h\": 72525,\n    \"volume_24h\": 0.5,\n    \"last_trade_price\": 72525\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "449deebb-435d-40ff-a47c-bdb46431521c",
+          "name": "Blockchain.com Get a Single Ticker",
+          "request": {
+            "name": "Blockchain.com Get a Single Ticker",
+            "description": {
+              "content": "Returns the current price and 24-hour metrics for one trading pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickers",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fee3ce0a-990c-452f-8227-d20377641586",
+              "name": "Single ticker.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickers",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"price_24h\": 72525,\n  \"volume_24h\": 0.5,\n  \"last_trade_price\": 72525\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa376240-0985-42a4-a2fc-50ba580ce48d",
+          "name": "Blockchain.com Get Level-2 Order Book",
+          "request": {
+            "name": "Blockchain.com Get Level-2 Order Book",
+            "description": {
+              "content": "Returns the aggregated price-level order book for a symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "l2",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49788c7f-cb00-4a61-9076-386d404a26b2",
+              "name": "L2 order book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "l2",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"bids\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 8747\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 713\n    }\n  ],\n  \"asks\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 1449\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 9673\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d31828ab-ac39-4e3e-9a1b-d10171e2dcd6",
+          "name": "Blockchain.com Get Level-3 Order Book",
+          "request": {
+            "name": "Blockchain.com Get Level-3 Order Book",
+            "description": {
+              "content": "Returns the full per-order book for a symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "l3",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a58c829-156b-4b94-b327-120d42dc406a",
+              "name": "L3 order book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "l3",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"bids\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 1011\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 7449\n    }\n  ],\n  \"asks\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 1615\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 2448\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4a0167b2-5c76-4343-b4de-c7c16f640492",
+      "name": "Trading",
+      "description": {
+        "content": "Authenticated order management and trade history.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ce7d317-b6c1-4efc-a475-f84cdbc3e308",
+          "name": "Blockchain.com Get Maker/taker Fees",
+          "request": {
+            "name": "Blockchain.com Get Maker/taker Fees",
+            "description": {
+              "content": "Returns the current maker and taker fee rates for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e51740ed-fafb-4100-90ec-0062431a7b08",
+              "name": "Fee schedule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"makerRate\": 72525,\n  \"takerRate\": 72525,\n  \"volumeInUSD\": 0.5\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "038061be-d8f2-418e-841c-c44d8ea48308",
+          "name": "Blockchain.com List Orders",
+          "request": {
+            "name": "Blockchain.com List Orders",
+            "description": {
+              "content": "Returns live and historic orders filtered by symbol, status, and time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>",
+                  "description": "Trading symbol filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>",
+                  "description": "Filter by orders created on or after this Unix timestamp (ms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "Filter by orders created on or before this Unix timestamp (ms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Order status filter (e.g. `open`, `filled`, `cancelled`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of results to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19e9662f-f8fe-41b2-9c24-7f9e56ef4ef5",
+              "name": "Orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"orderId\": 179,\n    \"gwOrderId\": 3265,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"ordType\": \"string\",\n    \"timeInForce\": \"string\",\n    \"side\": \"buy\",\n    \"orderQty\": 0.5,\n    \"minQty\": 0.5,\n    \"cumQty\": 0.5,\n    \"price\": 72525,\n    \"stopPx\": 2446.17289198229,\n    \"ordStatus\": \"open\",\n    \"expireDate\": 6247,\n    \"execID\": \"21745988181\",\n    \"avgPx\": 4399.848205976462\n  },\n  {\n    \"orderId\": 47,\n    \"gwOrderId\": 82,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"ordType\": \"string\",\n    \"timeInForce\": \"string\",\n    \"side\": \"buy\",\n    \"orderQty\": 0.5,\n    \"minQty\": 0.5,\n    \"cumQty\": 0.5,\n    \"price\": 72525,\n    \"stopPx\": 6607.59912129443,\n    \"ordStatus\": \"open\",\n    \"expireDate\": 7653,\n    \"execID\": \"21745988181\",\n    \"avgPx\": 7359.989822073272\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bae5ab5c-7ca7-49c6-bdda-2bc73d904b98",
+          "name": "Blockchain.com Create a New Order",
+          "request": {
+            "name": "Blockchain.com Create a New Order",
+            "description": {
+              "content": "Submits a new order. Supports LIMIT, MARKET, STOP, and STOPLIMIT order types.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clOrdId\": \"<string>\",\n  \"ordType\": \"<string>\",\n  \"symbol\": \"<string>\",\n  \"side\": \"<string>\",\n  \"orderQty\": \"<number>\",\n  \"timeInForce\": \"<string>\",\n  \"price\": \"<number>\",\n  \"stopPx\": \"<number>\",\n  \"minQty\": \"<number>\",\n  \"expireDate\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6d05b6c-630e-4c49-9326-7ff23c342765",
+              "name": "Order accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clOrdId\": \"21745988181\",\n  \"ordType\": \"limit\",\n  \"symbol\": \"BTC-USD\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"timeInForce\": \"GTC\",\n  \"price\": 72525,\n  \"stopPx\": \"<number>\",\n  \"minQty\": 0.5,\n  \"expireDate\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": 1400,\n  \"gwOrderId\": 2089,\n  \"clOrdId\": \"21745988181\",\n  \"symbol\": \"BTC-USD\",\n  \"ordType\": \"string\",\n  \"timeInForce\": \"string\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"minQty\": 0.5,\n  \"cumQty\": 0.5,\n  \"price\": 72525,\n  \"stopPx\": 4107.608728237625,\n  \"ordStatus\": \"open\",\n  \"expireDate\": 7205,\n  \"execID\": \"21745988181\",\n  \"avgPx\": 8070.643275469619\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6af1befb-1b4d-461f-a071-d951ae4bd9bd",
+          "name": "Blockchain.com Cancel All Open Orders",
+          "request": {
+            "name": "Blockchain.com Cancel All Open Orders",
+            "description": {
+              "content": "Cancels every open order, optionally filtered by symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>",
+                  "description": "If supplied, only cancel orders for this symbol."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb10f9ad-4424-4995-87b2-af9ad2c2f70e",
+              "name": "Cancellation accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebcf250b-b531-4448-8b39-48e74afe9798",
+          "name": "Blockchain.com Get a Single Order",
+          "request": {
+            "name": "Blockchain.com Get a Single Order",
+            "description": {
+              "content": "Returns the current state of one order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Order identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cadca62-1dc8-4da2-be78-95de49abd971",
+              "name": "Order detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Order identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": 1400,\n  \"gwOrderId\": 2089,\n  \"clOrdId\": \"21745988181\",\n  \"symbol\": \"BTC-USD\",\n  \"ordType\": \"string\",\n  \"timeInForce\": \"string\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"minQty\": 0.5,\n  \"cumQty\": 0.5,\n  \"price\": 72525,\n  \"stopPx\": 4107.608728237625,\n  \"ordStatus\": \"open\",\n  \"expireDate\": 7205,\n  \"execID\": \"21745988181\",\n  \"avgPx\": 8070.643275469619\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dedb89c7-44ad-45f8-b197-55583f81dd2d",
+          "name": "Blockchain.com Cancel a Single Order",
+          "request": {
+            "name": "Blockchain.com Cancel a Single Order",
+            "description": {
+              "content": "Cancels an open order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Order identifier."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "624521de-6726-49e5-8678-b404889595cf",
+              "name": "Cancellation accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Order identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ceb7867-ac7e-4e75-85f9-d83e07b6731c",
+          "name": "Blockchain.com List Trades",
+          "request": {
+            "name": "Blockchain.com List Trades",
+            "description": {
+              "content": "Returns historical filled orders (including partial fills).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e350a99-631a-409f-b48b-2359965635c8",
+              "name": "Trades.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"exOrdId\": 7761,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 527.5444891001424,\n    \"timestamp\": 1748609400000\n  },\n  {\n    \"exOrdId\": 3635,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 6970.668058934859,\n    \"timestamp\": 1748609400000\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab71273b-acef-4852-ba20-5cb61a035f4a",
+          "name": "Blockchain.com List Fills",
+          "request": {
+            "name": "Blockchain.com List Fills",
+            "description": {
+              "content": "Returns individual fill executions including fees.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2da0337c-3b59-44ce-84cc-beefe22f650e",
+              "name": "Fills.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"execId\": \"21745988181\",\n    \"orderId\": 3250,\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 9954.212296834017,\n    \"feeCurrency\": \"BTC\",\n    \"timestamp\": 1748609400000\n  },\n  {\n    \"execId\": \"21745988181\",\n    \"orderId\": 877,\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 5461.437456191095,\n    \"feeCurrency\": \"BTC\",\n    \"timestamp\": 1748609400000\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e8989b12-fc55-4e30-88e4-8c772e159d30",
+      "name": "Payments",
+      "description": {
+        "content": "Authenticated account balances, deposits, withdrawals, beneficiaries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e2172ec8-1820-48c3-95c5-78c6cbfbbf46",
+          "name": "Blockchain.com List Account Balances",
+          "request": {
+            "name": "Blockchain.com List Account Balances",
+            "description": {
+              "content": "Returns balances across all currencies and account types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb2bae57-ce05-4933-842b-8b146ddb3904",
+              "name": "Account balances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"primary\": \"string\",\n    \"name\": \"My Entry\",\n    \"currency\": \"BTC\",\n    \"balance\": 5489.806274973963,\n    \"available\": 9233.424546068029,\n    \"balance_local\": 1577.165971777107,\n    \"available_local\": 5477.59572094284,\n    \"rate\": 72525,\n    \"type\": \"string\"\n  },\n  {\n    \"primary\": \"string\",\n    \"name\": \"My Entry\",\n    \"currency\": \"BTC\",\n    \"balance\": 5834.831023201319,\n    \"available\": 3132.55658270294,\n    \"balance_local\": 4064.5284463270805,\n    \"available_local\": 3684.760648019112,\n    \"rate\": 72525,\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "943328f8-fe9d-4bf4-9d89-f07b2be5ffc3",
+          "name": "Blockchain.com Get Account Balance",
+          "request": {
+            "name": "Blockchain.com Get Account Balance",
+            "description": {
+              "content": "Returns the balance for a specific account type and currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) Account type (e.g. `primary`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) Currency ticker (e.g. `BTC`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64f4fe56-b36d-456e-a5ad-ad30f40fad07",
+              "name": "Account balance.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) Account type (e.g. `primary`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency ticker (e.g. `BTC`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primary\": \"string\",\n  \"name\": \"My Entry\",\n  \"currency\": \"BTC\",\n  \"balance\": 4412.391636102011,\n  \"available\": 5249.62035021047,\n  \"balance_local\": 7209.687685096254,\n  \"available_local\": 1405.292313053147,\n  \"rate\": 72525,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cd729c6-e795-4747-97ec-2320aa013714",
+          "name": "Blockchain.com List Deposits",
+          "request": {
+            "name": "Blockchain.com List Deposits",
+            "description": {
+              "content": "Returns deposit history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58364e2d-8dc6-4782-8b22-b1d631e71ea0",
+              "name": "Deposits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"21745988181\",\n    \"amount\": 6535.818035271428,\n    \"amount_local\": 9942.925430267564,\n    \"currency\": \"BTC\",\n    \"timestamp\": 1748609400000,\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n    \"state\": \"open\"\n  },\n  {\n    \"id\": \"21745988181\",\n    \"amount\": 9994.59766106507,\n    \"amount_local\": 5743.200388663045,\n    \"currency\": \"BTC\",\n    \"timestamp\": 1748609400000,\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n    \"state\": \"open\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71ec8102-e9e9-4e11-9932-d097715bd04d",
+          "name": "Blockchain.com Get a Single Deposit",
+          "request": {
+            "name": "Blockchain.com Get a Single Deposit",
+            "description": {
+              "content": "Returns the status of one deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits",
+                ":depositId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "depositId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7692633-b8d1-4e15-9b43-8422156c0a9f",
+              "name": "Deposit detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits",
+                    ":depositId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "depositId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"21745988181\",\n  \"amount\": 3017.2470626775703,\n  \"amount_local\": 3054.5711027012644,\n  \"currency\": \"BTC\",\n  \"timestamp\": 1748609400000,\n  \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n  \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n  \"state\": \"open\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "579612b4-b0d5-4073-aa97-28fcb956c947",
+          "name": "Blockchain.com Create a Deposit Address",
+          "request": {
+            "name": "Blockchain.com Create a Deposit Address",
+            "description": {
+              "content": "Generates a new deposit address for the specified currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits",
+                ":currency",
+                "address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) Currency ticker (e.g. `BTC`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e51c7d16-62eb-4e62-bcfd-c142f783844a",
+              "name": "New deposit address.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits",
+                    ":currency",
+                    "address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency ticker (e.g. `BTC`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"BTC\",\n  \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ccf3feb-9a7c-4005-aa3b-d2358feeb5f5",
+          "name": "Blockchain.com List Withdrawals",
+          "request": {
+            "name": "Blockchain.com List Withdrawals",
+            "description": {
+              "content": "Returns withdrawal history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7903521-8ba4-4eb8-b0ba-6e8145566eef",
+              "name": "Withdrawals.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"withdrawalId\": \"21745988181\",\n    \"amount\": 8114.044772240712,\n    \"currency\": \"BTC\",\n    \"beneficiary\": \"string\",\n    \"state\": \"open\",\n    \"timestamp\": 1748609400000,\n    \"fee\": 270.3719588335596\n  },\n  {\n    \"withdrawalId\": \"21745988181\",\n    \"amount\": 6221.576637766,\n    \"currency\": \"BTC\",\n    \"beneficiary\": \"string\",\n    \"state\": \"open\",\n    \"timestamp\": 1748609400000,\n    \"fee\": 232.20025385480736\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c4a7b8e-94e4-4193-92e1-848c78739320",
+          "name": "Blockchain.com Create a Withdrawal",
+          "request": {
+            "name": "Blockchain.com Create a Withdrawal",
+            "description": {
+              "content": "Submits a withdrawal to a whitelisted beneficiary.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"beneficiary\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "054a3566-f650-4ac8-affd-667c39050661",
+              "name": "Withdrawal accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"BTC\",\n  \"amount\": \"0.0001\",\n  \"beneficiary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"withdrawalId\": \"21745988181\",\n  \"amount\": 8018.505633846833,\n  \"currency\": \"BTC\",\n  \"beneficiary\": \"string\",\n  \"state\": \"open\",\n  \"timestamp\": 1748609400000,\n  \"fee\": 5694.792873252648\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6c2fc3c-e5f3-41e8-ae38-dc5a02e8dc6d",
+          "name": "Blockchain.com Get a Single Withdrawal",
+          "request": {
+            "name": "Blockchain.com Get a Single Withdrawal",
+            "description": {
+              "content": "Returns the status of one withdrawal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals",
+                ":withdrawalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "withdrawalId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a0c45dd-5f93-469f-9d39-7d520c1d99cb",
+              "name": "Withdrawal detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals",
+                    ":withdrawalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "withdrawalId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"withdrawalId\": \"21745988181\",\n  \"amount\": 8018.505633846833,\n  \"currency\": \"BTC\",\n  \"beneficiary\": \"string\",\n  \"state\": \"open\",\n  \"timestamp\": 1748609400000,\n  \"fee\": 5694.792873252648\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a7d9b2f-b7d9-4c40-95ec-e77c84fd20ab",
+          "name": "Blockchain.com List Whitelisted Beneficiaries",
+          "request": {
+            "name": "Blockchain.com List Whitelisted Beneficiaries",
+            "description": {
+              "content": "Returns the user's whitelisted withdrawal beneficiaries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "whitelist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79d72178-15b8-481c-aced-14370d0738e6",
+              "name": "Whitelist entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "whitelist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilities\": [\n    {\n      \"currency\": \"BTC\",\n      \"address\": true,\n      \"xpub\": true,\n      \"existingBeneficiaryOnly\": true,\n      \"fiat\": true\n    },\n    {\n      \"currency\": \"BTC\",\n      \"address\": true,\n      \"xpub\": true,\n      \"existingBeneficiaryOnly\": true,\n      \"fiat\": true\n    }\n  ],\n  \"enabled\": true,\n  \"enabledAt\": \"2026-05-30T14:30:00Z\",\n  \"whitelisted\": [\n    {\n      \"id\": \"21745988181\",\n      \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n      \"currency\": \"BTC\",\n      \"state\": \"open\",\n      \"name\": \"My Entry\",\n      \"whitelisted\": true,\n      \"fiat\": true,\n      \"agent\": {\n        \"account\": \"string\",\n        \"address\": \"string\",\n        \"code\": \"string\",\n        \"country\": \"string\",\n        \"name\": \"string\",\n        \"recipient\": \"string\",\n        \"routingNumber\": \"string\"\n      }\n    },\n    {\n      \"id\": \"21745988181\",\n      \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n      \"currency\": \"BTC\",\n      \"state\": \"open\",\n      \"name\": \"My Entry\",\n      \"whitelisted\": true,\n      \"fiat\": true,\n      \"agent\": {\n        \"account\": \"string\",\n        \"address\": \"string\",\n        \"code\": \"string\",\n        \"country\": \"string\",\n        \"name\": \"string\",\n        \"recipient\": \"string\",\n        \"routingNumber\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4496b7c3-4bd6-4653-9421-f1283ada163d",
+          "name": "Blockchain.com List Whitelist by Currency",
+          "request": {
+            "name": "Blockchain.com List Whitelist by Currency",
+            "description": {
+              "content": "Returns the user's whitelisted beneficiaries for a specific currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "whitelist",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b9463e1-eb8f-4f32-b0d8-8df0dbd1ce99",
+              "name": "Whitelist entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "whitelist",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"21745988181\",\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"currency\": \"BTC\",\n    \"state\": \"open\",\n    \"name\": \"My Entry\",\n    \"whitelisted\": true,\n    \"fiat\": true,\n    \"agent\": {\n      \"account\": \"string\",\n      \"address\": \"string\",\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"name\": \"string\",\n      \"recipient\": \"string\",\n      \"routingNumber\": \"string\"\n    }\n  },\n  {\n    \"id\": \"21745988181\",\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"currency\": \"BTC\",\n    \"state\": \"open\",\n    \"name\": \"My Entry\",\n    \"whitelisted\": true,\n    \"fiat\": true,\n    \"agent\": {\n      \"account\": \"string\",\n      \"address\": \"string\",\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"name\": \"string\",\n      \"recipient\": \"string\",\n      \"routingNumber\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.com/v3/exchange",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bac029ec-88ce-43bb-8612-0b1d19c0265e",
+    "name": "Blockchain.com Exchange REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Blockchain.com Exchange (`api.blockchain.com/v3/exchange`). Covers market\ndata (symbols, tickers, L2/L3 order books), trading (orders, trades, fills, fees) and payments\n(accounts/balances, deposits, withdrawals, whitelist). Authenticated endpoints require an\n`X-API-Token` header carrying the user's API key.\n\nGenerated from https://exchange.blockchain.com/api/ and the upstream Slate documentation in\nhttps://github.com/blockchain/docs-exchange-api (archived) plus the live REST surface at\nhttps://api.blockchain.com/v3/exchange.\n\n\nContact Support:\n Name: Blockchain.com Exchange",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,388 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Blockchain Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/rawblock/:block_hash",
+            "params": [
+              {
+                "name": "block_hash",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin block hash (64-character hex)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "If set to `hex`, returns the raw block as a binary hex string."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific block identified by its hash."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Blocks at a Height",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/block-height/:block_height",
+            "params": [
+              {
+                "name": "block_height",
+                "value": "",
+                "type": "path",
+                "description": "Block height (non-negative integer)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Must be `json` to return JSON."
+              }
+            ]
+          },
+          "docs": "Returns the array of blocks at the specified blockchain height."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get the Latest Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/latestblock"
+          },
+          "docs": "Returns the most recent block on the longest chain."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/rawtx/:tx_hash",
+            "params": [
+              {
+                "name": "tx_hash",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin transaction hash (64-character hex)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "If set to `hex`, returns the raw transaction as a binary hex string."
+              }
+            ]
+          },
+          "docs": "Returns a specific transaction with its inputs, outputs, fees, and block height."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/rawaddr/:bitcoin_address",
+            "params": [
+              {
+                "name": "bitcoin_address",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin address (Base58 or Bech32)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of transactions to return (default 50)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip for pagination (multiples of 50)."
+              }
+            ]
+          },
+          "docs": "Returns information about a Bitcoin address including total received, total sent, final\nbalance, and transactions (paginated).\n"
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Multi-address Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/multiaddr",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-delimited Bitcoin addresses (e.g. `addr1|addr2|addr3`)."
+              },
+              {
+                "name": "n",
+                "value": "",
+                "type": "query",
+                "description": "Number of recent transactions to return across all addresses (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Returns balance and recent transactions for up to multiple addresses at once."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Unspent Outputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/unspent",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-delimited Bitcoin addresses."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of UTXOs to return (default 250, max 1000)."
+              },
+              {
+                "name": "confirmations",
+                "value": "",
+                "type": "query",
+                "description": "Minimum confirmations a UTXO must have to be returned."
+              }
+            ]
+          },
+          "docs": "Returns the unspent transaction outputs (UTXOs) for one or more addresses."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Current Difficulty",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/getdifficulty"
+          },
+          "docs": "Current mining difficulty target as a decimal number."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Current Block Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/getblockcount"
+          },
+          "docs": "Current block height in the longest chain."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get the Latest Block Hash",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/latesthash"
+          },
+          "docs": "Hash of the most recent block on the longest chain."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get the Current Block Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/bcperblock"
+          },
+          "docs": "Current block reward in BTC."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Total Bitcoins in Circulation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/totalbc"
+          },
+          "docs": "Total Bitcoins in circulation (delayed by up to 1 hour), in Satoshi."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Block Solve Probability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/probability"
+          },
+          "docs": "Probability of a single hash attempt solving the next block."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Hashes Needed to Solve a Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/hashestowin"
+          },
+          "docs": "Average number of hashes required to solve a single block."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Next Difficulty Retarget Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/nextretarget"
+          },
+          "docs": "Block height of the next difficulty re-target event."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Average Transaction Size",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/avgtxsize",
+            "params": [
+              {
+                "name": "blocks",
+                "value": "",
+                "type": "query",
+                "description": "Number of trailing blocks to average over."
+              }
+            ]
+          },
+          "docs": "Average transaction size in bytes across the most recent blocks (configurable)."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Average Transaction Value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/avgtxvalue",
+            "params": [
+              {
+                "name": "blocks",
+                "value": "",
+                "type": "query",
+                "description": "Number of trailing blocks to average over (default 1000)."
+              }
+            ]
+          },
+          "docs": "Average transaction value in Satoshi across the most recent blocks (configurable)."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Average Interval Between Blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/interval"
+          },
+          "docs": "Average time between blocks in seconds."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get ETA of the Next Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/eta"
+          },
+          "docs": "Estimated number of seconds until the next block is mined."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Average Transactions Per Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://blockchain.info/q/avgtxnumber",
+            "params": [
+              {
+                "name": "blocks",
+                "value": "",
+                "type": "query",
+                "description": "Number of trailing blocks to average over."
+              }
+            ]
+          },
+          "docs": "Average number of transactions per block over the most recent blocks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
