@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/blockchain-exchange-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiToken
+  type: apiKey
+  in: header
+  parameter: X-API-Token
+  description: API key minted in the Exchange API settings panel; required on authenticated
+    endpoints.
+  sources:
+  - openapi/blockchain-exchange-openapi.yml

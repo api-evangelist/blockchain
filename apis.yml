@@ -118,6 +118,12 @@ apis:
       - type: Documentation
         url: https://docs.blockchain.com/pay/api
 common:
+  - type: VulnerabilityDisclosure
+    url: security/blockchain-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/blockchain-domain-security.yml
+  - type: Authentication
+    url: authentication/blockchain-authentication.yml
   - type: Website
     url: https://www.blockchain.com/api
   - type: GitHubOrganization
