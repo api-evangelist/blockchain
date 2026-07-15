@@ -118,6 +118,8 @@ apis:
       - type: Documentation
         url: https://docs.blockchain.com/pay/api
 common:
+  - type: AgenticAccess
+    url: agentic-access/blockchain-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/blockchain-vulnerability-disclosure.yml
   - type: DomainSecurity
