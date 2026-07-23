@@ -1,0 +1,463 @@
+openapi: 3.0.3
+info:
+  title: Blockchain.com Charts, Stats & Market Data Addresses Payments API
+  description: 'Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
+
+    mining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated
+
+    from https://www.blockchain.com/explorer/api/charts_api and
+
+    https://www.blockchain.com/explorer/api/exchange_rates_api.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Blockchain.com
+    url: https://www.blockchain.com/api
+  license:
+    name: Blockchain.com API Terms of Service
+    url: https://www.blockchain.com/legal/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://api.blockchain.info
+  description: Blockchain.com aggregated data host (charts, stats, pools).
+- url: https://blockchain.info
+  description: Blockchain.info explorer host (ticker, fiat-to-BTC conversion).
+tags:
+- name: Payments
+  description: Authenticated account balances, deposits, withdrawals, beneficiaries.
+paths:
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: Blockchain.com List Account Balances
+      description: Returns balances across all currencies and account types.
+      tags:
+      - Payments
+      responses:
+        '200':
+          description: Account balances.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /accounts/{account}/{currency}:
+    get:
+      operationId: getAccountBalance
+      summary: Blockchain.com Get Account Balance
+      description: Returns the balance for a specific account type and currency.
+      tags:
+      - Payments
+      parameters:
+      - name: account
+        in: path
+        required: true
+        description: Account type (e.g. `primary`).
+        schema:
+          type: string
+      - name: currency
+        in: path
+        required: true
+        description: Currency ticker (e.g. `BTC`).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account balance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /deposits:
+    get:
+      operationId: listDeposits
+      summary: Blockchain.com List Deposits
+      description: Returns deposit history.
+      tags:
+      - Payments
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Deposits.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Deposit'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /deposits/{depositId}:
+    get:
+      operationId: getDeposit
+      summary: Blockchain.com Get a Single Deposit
+      description: Returns the status of one deposit.
+      tags:
+      - Payments
+      parameters:
+      - name: depositId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deposit detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deposit'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /deposits/{currency}/address:
+    post:
+      operationId: createDepositAddress
+      summary: Blockchain.com Create a Deposit Address
+      description: Generates a new deposit address for the specified currency.
+      tags:
+      - Payments
+      parameters:
+      - name: currency
+        in: path
+        required: true
+        description: Currency ticker (e.g. `BTC`).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: New deposit address.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositAddress'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /withdrawals:
+    get:
+      operationId: listWithdrawals
+      summary: Blockchain.com List Withdrawals
+      description: Returns withdrawal history.
+      tags:
+      - Payments
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Withdrawals.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Withdrawal'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createWithdrawal
+      summary: Blockchain.com Create a Withdrawal
+      description: Submits a withdrawal to a whitelisted beneficiary.
+      tags:
+      - Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWithdrawalRequest'
+      responses:
+        '200':
+          description: Withdrawal accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /withdrawals/{withdrawalId}:
+    get:
+      operationId: getWithdrawal
+      summary: Blockchain.com Get a Single Withdrawal
+      description: Returns the status of one withdrawal.
+      tags:
+      - Payments
+      parameters:
+      - name: withdrawalId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Withdrawal detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /whitelist:
+    get:
+      operationId: listWhitelist
+      summary: Blockchain.com List Whitelisted Beneficiaries
+      description: Returns the user's whitelisted withdrawal beneficiaries.
+      tags:
+      - Payments
+      responses:
+        '200':
+          description: Whitelist entries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Whitelist'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /whitelist/{currency}:
+    get:
+      operationId: listWhitelistByCurrency
+      summary: Blockchain.com List Whitelist by Currency
+      description: Returns the user's whitelisted beneficiaries for a specific currency.
+      tags:
+      - Payments
+      parameters:
+      - name: currency
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Whitelist entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Beneficiary'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CreateWithdrawalRequest:
+      type: object
+      required:
+      - currency
+      - amount
+      - beneficiary
+      description: Payload for submitting a withdrawal.
+      properties:
+        currency:
+          type: string
+          description: Currency ticker.
+          example: BTC
+        amount:
+          type: string
+          description: Amount to withdraw (decimal string).
+          example: '0.0001'
+        beneficiary:
+          type: string
+          description: Beneficiary id (from `/whitelist`).
+    Beneficiary:
+      type: object
+      description: A whitelisted withdrawal destination.
+      properties:
+        id:
+          type: string
+          example: '21745988181'
+        address:
+          type: string
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+        currency:
+          type: string
+          example: BTC
+        state:
+          type: string
+          description: Beneficiary state — `ACTIVE`, `PENDING`, `REJECTED`.
+          example: open
+        name:
+          type: string
+          example: My Entry
+        whitelisted:
+          type: boolean
+          example: true
+        fiat:
+          type: boolean
+          example: true
+        agent:
+          type: object
+          description: Routing details for fiat beneficiaries.
+          properties:
+            account:
+              type: string
+            address:
+              type: string
+            code:
+              type: string
+            country:
+              type: string
+            name:
+              type: string
+            recipient:
+              type: string
+            routingNumber:
+              type: string
+    WhitelistCapability:
+      type: object
+      description: Per-currency capability flags for the whitelist.
+      properties:
+        currency:
+          type: string
+          example: BTC
+        address:
+          type: boolean
+          example: true
+        xpub:
+          type: boolean
+          example: true
+        existingBeneficiaryOnly:
+          type: boolean
+          example: true
+        fiat:
+          type: boolean
+          example: true
+    Deposit:
+      type: object
+      description: A deposit record.
+      properties:
+        id:
+          type: string
+          example: '21745988181'
+        amount:
+          type: number
+        amount_local:
+          type: number
+        currency:
+          type: string
+          example: BTC
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+        address:
+          type: string
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+        txHash:
+          type: string
+          example: 00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21
+        state:
+          type: string
+          description: Deposit state — `PENDING`, `CONFIRMED`, `REJECTED`.
+          example: open
+    Withdrawal:
+      type: object
+      description: A withdrawal record.
+      properties:
+        withdrawalId:
+          type: string
+          example: '21745988181'
+        amount:
+          type: number
+        currency:
+          type: string
+          example: BTC
+        beneficiary:
+          type: string
+        state:
+          type: string
+          description: Withdrawal state — `NONE`, `IN_PROGRESS`, `COMPLETE`, `REJECTED`.
+          example: open
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+        fee:
+          type: number
+    DepositAddress:
+      type: object
+      description: A newly generated deposit address.
+      properties:
+        currency:
+          type: string
+          example: BTC
+        address:
+          type: string
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    Whitelist:
+      type: object
+      description: Whitelist response listing capabilities and active beneficiaries.
+      properties:
+        capabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhitelistCapability'
+        enabled:
+          type: boolean
+          example: true
+        enabledAt:
+          type: string
+          format: date-time
+          example: '2026-05-30T14:30:00Z'
+        whitelisted:
+          type: array
+          items:
+            $ref: '#/components/schemas/Beneficiary'
+    Account:
+      type: object
+      description: Balance for a single account/currency.
+      properties:
+        primary:
+          type: string
+        name:
+          type: string
+          example: My Entry
+        currency:
+          type: string
+          example: BTC
+        balance:
+          type: number
+        available:
+          type: number
+        balance_local:
+          type: number
+        available_local:
+          type: number
+        rate:
+          type: number
+          example: 72525.0
+        type:
+          type: string

@@ -1,0 +1,432 @@
+openapi: 3.0.3
+info:
+  title: Blockchain.com Charts, Stats & Market Data Addresses Trading API
+  description: 'Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
+
+    mining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated
+
+    from https://www.blockchain.com/explorer/api/charts_api and
+
+    https://www.blockchain.com/explorer/api/exchange_rates_api.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Blockchain.com
+    url: https://www.blockchain.com/api
+  license:
+    name: Blockchain.com API Terms of Service
+    url: https://www.blockchain.com/legal/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://api.blockchain.info
+  description: Blockchain.com aggregated data host (charts, stats, pools).
+- url: https://blockchain.info
+  description: Blockchain.info explorer host (ticker, fiat-to-BTC conversion).
+tags:
+- name: Trading
+  description: Authenticated order management and trade history.
+paths:
+  /fees:
+    get:
+      operationId: getFees
+      summary: Blockchain.com Get Maker/taker Fees
+      description: Returns the current maker and taker fee rates for the authenticated user.
+      tags:
+      - Trading
+      responses:
+        '200':
+          description: Fee schedule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fees'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders:
+    get:
+      operationId: listOrders
+      summary: Blockchain.com List Orders
+      description: Returns live and historic orders filtered by symbol, status, and time range.
+      tags:
+      - Trading
+      parameters:
+      - name: symbol
+        in: query
+        description: Trading symbol filter.
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Filter by orders created on or after this Unix timestamp (ms).
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        description: Filter by orders created on or before this Unix timestamp (ms).
+        schema:
+          type: integer
+          format: int64
+      - name: status
+        in: query
+        description: Order status filter (e.g. `open`, `filled`, `cancelled`).
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results to return.
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createOrder
+      summary: Blockchain.com Create a New Order
+      description: 'Submits a new order. Supports LIMIT, MARKET, STOP, and STOPLIMIT order types.
+
+        '
+      tags:
+      - Trading
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '200':
+          description: Order accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: cancelAllOrders
+      summary: Blockchain.com Cancel All Open Orders
+      description: Cancels every open order, optionally filtered by symbol.
+      tags:
+      - Trading
+      parameters:
+      - name: symbol
+        in: query
+        description: If supplied, only cancel orders for this symbol.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cancellation accepted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      summary: Blockchain.com Get a Single Order
+      description: Returns the current state of one order.
+      tags:
+      - Trading
+      parameters:
+      - $ref: '#/components/parameters/OrderIdPath'
+      responses:
+        '200':
+          description: Order detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: cancelOrder
+      summary: Blockchain.com Cancel a Single Order
+      description: Cancels an open order.
+      tags:
+      - Trading
+      parameters:
+      - $ref: '#/components/parameters/OrderIdPath'
+      responses:
+        '200':
+          description: Cancellation accepted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /trades:
+    get:
+      operationId: listTrades
+      summary: Blockchain.com List Trades
+      description: Returns historical filled orders (including partial fills).
+      tags:
+      - Trading
+      parameters:
+      - name: symbol
+        in: query
+        schema:
+          type: string
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Trades.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trade'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /fills:
+    get:
+      operationId: listFills
+      summary: Blockchain.com List Fills
+      description: Returns individual fill executions including fees.
+      tags:
+      - Trading
+      parameters:
+      - name: symbol
+        in: query
+        schema:
+          type: string
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Fills.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fill'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Fill:
+      type: object
+      description: A single execution leg, including fees.
+      properties:
+        execId:
+          type: string
+          example: '21745988181'
+        orderId:
+          type: integer
+          format: int64
+        symbol:
+          type: string
+          example: BTC-USD
+        side:
+          type: string
+          example: buy
+        price:
+          type: number
+          example: 72525.0
+        qty:
+          type: number
+          example: 0.5
+        fee:
+          type: number
+        feeCurrency:
+          type: string
+          example: BTC
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+    CreateOrderRequest:
+      type: object
+      required:
+      - clOrdId
+      - ordType
+      - symbol
+      - side
+      - orderQty
+      description: Payload for submitting a new order.
+      properties:
+        clOrdId:
+          type: string
+          description: Client-supplied order identifier.
+          example: '21745988181'
+        ordType:
+          type: string
+          enum:
+          - limit
+          - market
+          - stop
+          - stopLimit
+          example: limit
+        timeInForce:
+          type: string
+          enum:
+          - GTC
+          - IOC
+          - FOK
+          - GTD
+          example: GTC
+        symbol:
+          type: string
+          example: BTC-USD
+        side:
+          type: string
+          enum:
+          - buy
+          - sell
+          example: buy
+        orderQty:
+          type: number
+          example: 0.5
+        price:
+          type: number
+          example: 72525.0
+        stopPx:
+          type: number
+        minQty:
+          type: number
+          example: 0.5
+        expireDate:
+          type: integer
+    Fees:
+      type: object
+      description: Maker/taker fee schedule.
+      properties:
+        makerRate:
+          type: number
+          description: Maker fee rate.
+          example: 72525.0
+        takerRate:
+          type: number
+          description: Taker fee rate.
+          example: 72525.0
+        volumeInUSD:
+          type: number
+          description: 30-day trading volume in USD used to compute the rate tier.
+          example: 0.5
+    Order:
+      type: object
+      description: An order submitted to the matching engine.
+      properties:
+        orderId:
+          type: integer
+          format: int64
+        gwOrderId:
+          type: integer
+          format: int64
+        clOrdId:
+          type: string
+          example: '21745988181'
+        symbol:
+          type: string
+          example: BTC-USD
+        ordType:
+          type: string
+          description: Order type — `limit`, `market`, `stop`, `stopLimit`.
+        timeInForce:
+          type: string
+          description: Time in force — `GTC`, `IOC`, `FOK`, `GTD`.
+        side:
+          type: string
+          description: '`buy` or `sell`.'
+          example: buy
+        orderQty:
+          type: number
+          example: 0.5
+        minQty:
+          type: number
+          example: 0.5
+        cumQty:
+          type: number
+          example: 0.5
+        price:
+          type: number
+          example: 72525.0
+        stopPx:
+          type: number
+        ordStatus:
+          type: string
+          description: Status — `pending`, `open`, `filled`, `partial`, `cancelled`, `rejected`, `expired`.
+          example: open
+        expireDate:
+          type: integer
+        execID:
+          type: string
+          example: '21745988181'
+        avgPx:
+          type: number
+    Trade:
+      type: object
+      description: A filled order or partial fill.
+      properties:
+        exOrdId:
+          type: integer
+          format: int64
+        clOrdId:
+          type: string
+          example: '21745988181'
+        symbol:
+          type: string
+          example: BTC-USD
+        side:
+          type: string
+          example: buy
+        price:
+          type: number
+          example: 72525.0
+        qty:
+          type: number
+          example: 0.5
+        fee:
+          type: number
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+  parameters:
+    OrderIdPath:
+      name: orderId
+      in: path
+      required: true
+      description: Order identifier.
+      schema:
+        type: string
+        example: '21745988181'
