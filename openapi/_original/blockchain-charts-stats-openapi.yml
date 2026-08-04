@@ -1,0 +1,378 @@
+openapi: 3.0.3
+info:
+  title: Blockchain.com Charts, Stats & Market Data API
+  description: |
+    Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
+    mining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated
+    from https://www.blockchain.com/explorer/api/charts_api and
+    https://www.blockchain.com/explorer/api/exchange_rates_api.
+  version: '1.0.0'
+  contact:
+    name: Blockchain.com
+    url: https://www.blockchain.com/api
+  license:
+    name: Blockchain.com API Terms of Service
+    url: https://www.blockchain.com/legal/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+
+servers:
+- url: https://api.blockchain.info
+  description: Blockchain.com aggregated data host (charts, stats, pools).
+- url: https://blockchain.info
+  description: Blockchain.info explorer host (ticker, fiat-to-BTC conversion).
+
+tags:
+- name: Charts
+  description: Historical time-series datasets for Bitcoin network metrics.
+- name: Stats
+  description: Real-time blockchain statistics.
+- name: Pools
+  description: Mining pool distribution.
+- name: Market Data
+  description: Bitcoin exchange rates and fiat conversion.
+
+paths:
+
+  /charts/{chartName}:
+    get:
+      operationId: getChart
+      summary: Blockchain.com Get a Chart Time-series
+      description: |
+        Returns a time-series dataset for the requested chart name. Common chart names include
+        `transactions-per-second`, `market-price`, `hash-rate`, `difficulty`, `miners-revenue`,
+        `mempool-size`, `n-transactions`, `total-bitcoins`, `avg-block-size`, `mempool-count`,
+        `cost-per-transaction`, and many others.
+      tags: [Charts]
+      servers:
+      - url: https://api.blockchain.info
+      parameters:
+      - name: chartName
+        in: path
+        required: true
+        description: Chart identifier (kebab-case).
+        schema:
+          type: string
+          example: market-price
+      - name: timespan
+        in: query
+        required: false
+        description: Duration spanned by the dataset (e.g. `5weeks`, `1year`, `all`). Default `1year`.
+        schema:
+          type: string
+          default: 1year
+      - name: rollingAverage
+        in: query
+        required: false
+        description: Smoothing window applied to the time series (e.g. `8hours`, `7days`).
+        schema:
+          type: string
+      - name: start
+        in: query
+        required: false
+        description: Custom start date in `YYYY-MM-DD` format.
+        schema:
+          type: string
+          format: date
+      - name: format
+        in: query
+        required: false
+        description: Response format (`json` or `csv`). Default `json`.
+        schema:
+          type: string
+          enum: [json, csv]
+          default: json
+      - name: sampled
+        in: query
+        required: false
+        description: If true, downsample to ~1.5k points for performance.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Chart time-series.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chart'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /stats:
+    get:
+      operationId: getStats
+      summary: Blockchain.com Get Bitcoin Network Statistics
+      description: Real-time blockchain statistics — price, hash rate, transaction counts, mining economics.
+      tags: [Stats]
+      servers:
+      - url: https://api.blockchain.info
+      responses:
+        '200':
+          description: Network statistics snapshot.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /pools:
+    get:
+      operationId: getPools
+      summary: Blockchain.com Get Mining Pool Distribution
+      description: Returns block counts attributed to known mining pools over a rolling window.
+      tags: [Pools]
+      servers:
+      - url: https://api.blockchain.info
+      parameters:
+      - name: timespan
+        in: query
+        required: false
+        description: Duration window in days (max 10, default 4).
+        schema:
+          type: string
+          default: 4days
+      responses:
+        '200':
+          description: Mapping of pool name to block count.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoolDistribution'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /ticker:
+    get:
+      operationId: getTicker
+      summary: Blockchain.com Get Exchange-rate Ticker
+      description: Returns a map of currency codes to current Bitcoin price data.
+      tags: [Market Data]
+      servers:
+      - url: https://blockchain.info
+      parameters:
+      - name: cors
+        in: query
+        required: false
+        description: If true, the response will include CORS headers.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Ticker map keyed by ISO currency code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticker'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /tobtc:
+    get:
+      operationId: convertToBtc
+      summary: Blockchain.com Convert Fiat to BTC
+      description: Converts a fiat amount to its current BTC equivalent.
+      tags: [Market Data]
+      servers:
+      - url: https://blockchain.info
+      parameters:
+      - name: currency
+        in: query
+        required: true
+        description: ISO currency code (e.g. `USD`, `EUR`, `GBP`).
+        schema:
+          type: string
+          example: USD
+      - name: value
+        in: query
+        required: true
+        description: Amount of fiat to convert.
+        schema:
+          type: number
+          example: 500
+      responses:
+        '200':
+          description: BTC equivalent value.
+          content:
+            application/json:
+              schema:
+                type: number
+                example: 0.00702345
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+
+    Chart:
+      type: object
+      description: Time-series dataset returned by the Charts API.
+      properties:
+        status:
+          type: string
+          description: Response status (e.g. `ok`).
+          example: ok
+        name:
+          type: string
+          description: Chart name.
+          example: Market Price (USD)
+        unit:
+          type: string
+          description: Unit of measure for `y` values.
+          example: USD
+        period:
+          type: string
+          description: Sampling period (e.g. `day`).
+        description:
+          type: string
+          description: Human-readable description of what the chart represents.
+        values:
+          type: array
+          description: Time-series data points.
+          items:
+            $ref: '#/components/schemas/ChartPoint'
+
+    ChartPoint:
+      type: object
+      description: Single time-series sample.
+      properties:
+        x:
+          type: integer
+          format: int64
+          description: Timestamp in Unix seconds.
+          example: 1
+        y:
+          type: number
+          description: Measured value at `x`.
+
+          example: 1.0
+    Stats:
+      type: object
+      description: Real-time blockchain statistics snapshot.
+      properties:
+        market_price_usd:
+          type: number
+          description: BTC price in USD.
+          example: 72525.0
+        hash_rate:
+          type: number
+          description: Network hash rate (GH/s).
+          example: 72525.0
+        total_fees_btc:
+          type: integer
+          format: int64
+          description: Total fees in Satoshi over the period.
+          example: 1
+        n_btc_mined:
+          type: integer
+          format: int64
+          description: New BTC mined over the period (Satoshi).
+          example: 1
+        n_tx:
+          type: integer
+          description: Number of transactions over the period.
+          example: 1
+        n_blocks_mined:
+          type: integer
+          description: Number of blocks mined over the period.
+          example: 1
+        minutes_between_blocks:
+          type: number
+          description: Average minutes between blocks.
+          example: 1.0
+        totalbc:
+          type: integer
+          format: int64
+          description: Total Bitcoins in circulation (Satoshi).
+          example: 1
+        n_blocks_total:
+          type: integer
+          description: Chain height.
+          example: 1
+        estimated_transaction_volume_usd:
+          type: number
+          description: Estimated transaction volume in USD over the period.
+          example: 0.5
+        miners_revenue_usd:
+          type: number
+          description: Miners revenue in USD over the period.
+          example: 1.0
+        miners_revenue_btc:
+          type: integer
+          format: int64
+          description: Miners revenue in Satoshi over the period.
+          example: 1
+        difficulty:
+          type: number
+          description: Current difficulty target.
+          example: 1.0
+        estimated_btc_sent:
+          type: integer
+          format: int64
+          description: Estimated BTC sent (Satoshi).
+          example: 1
+        total_btc_sent:
+          type: integer
+          format: int64
+          description: Total BTC sent (Satoshi).
+          example: 1
+        trade_volume_btc:
+          type: number
+          description: Trading volume in BTC.
+          example: 0.5
+        trade_volume_usd:
+          type: number
+          description: Trading volume in USD.
+          example: 0.5
+        nextretarget:
+          type: integer
+          description: Block height of the next difficulty retarget.
+          example: 1
+        timestamp:
+          type: integer
+          format: int64
+          description: Unix timestamp of the snapshot.
+
+          example: 1748609400000
+    PoolDistribution:
+      type: object
+      description: Mapping of mining pool name to block count over the requested window.
+      additionalProperties:
+        type: integer
+
+    Ticker:
+      type: object
+      description: Map of currency code to Bitcoin price data.
+      additionalProperties:
+        $ref: '#/components/schemas/TickerEntry'
+
+    TickerEntry:
+      type: object
+      description: Current BTC pricing in a single fiat currency.
+      properties:
+        15m:
+          type: number
+          description: 15-minute delayed market price.
+          example: 1.0
+        last:
+          type: number
+          description: Most recent market price.
+          example: 1.0
+        buy:
+          type: number
+          description: Current buy price.
+          example: 1.0
+        sell:
+          type: number
+          description: Current sell price.
+          example: 1.0
+        symbol:
+          type: string
+          description: Currency symbol (e.g. `$`, `€`, `£`).
+          example: BTC-USD

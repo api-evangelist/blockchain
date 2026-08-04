@@ -1,0 +1,32 @@
+{
+  "provider": "blockchain",
+  "sources": [
+    "blockchain-addresses-api-openapi.yml",
+    "blockchain-blocks-api-openapi.yml",
+    "blockchain-charts-api-openapi.yml",
+    "blockchain-market-data-api-openapi.yml",
+    "blockchain-network-api-openapi.yml",
+    "blockchain-payments-api-openapi.yml",
+    "blockchain-pools-api-openapi.yml",
+    "blockchain-stats-api-openapi.yml",
+    "blockchain-trading-api-openapi.yml",
+    "blockchain-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "blockchain-addresses-api-openapi.yml",
+    "blockchain-blocks-api-openapi.yml",
+    "blockchain-charts-api-openapi.yml",
+    "blockchain-market-data-api-openapi.yml",
+    "blockchain-network-api-openapi.yml",
+    "blockchain-payments-api-openapi.yml",
+    "blockchain-pools-api-openapi.yml",
+    "blockchain-stats-api-openapi.yml",
+    "blockchain-trading-api-openapi.yml",
+    "blockchain-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
