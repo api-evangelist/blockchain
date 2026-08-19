@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Addresses Market Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Exchange-rate Ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/ticker",
+            "params": [
+              {
+                "name": "cors",
+                "value": "",
+                "type": "query",
+                "description": "If true, the response will include CORS headers."
+              }
+            ]
+          },
+          "docs": "Returns a map of currency codes to current Bitcoin price data."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Convert Fiat to BTC",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/tobtc",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "ISO currency code (e.g. `USD`, `EUR`, `GBP`)."
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "Amount of fiat to convert."
+              }
+            ]
+          },
+          "docs": "Converts a fiat amount to its current BTC equivalent."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Trading Symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/symbols"
+          },
+          "docs": "Returns the full set of trading symbols and their metadata."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/symbols/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific trading symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Tickers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/tickers"
+          },
+          "docs": "Returns current price and 24-hour metrics for all trading pairs."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/tickers/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the current price and 24-hour metrics for one trading pair."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Level-2 Order Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/l2/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the aggregated price-level order book for a symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Level-3 Order Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/l3/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "Trading pair symbol (e.g. `BTC-USD`)."
+              }
+            ]
+          },
+          "docs": "Returns the full per-order book for a symbol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

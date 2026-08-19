@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "17307c8e-6992-48bb-bd9d-bd5cbccb2a82",
+      "name": "Charts",
+      "description": {
+        "content": "Historical time-series datasets for Bitcoin network metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8152299-fb8f-4a27-ade6-67c5bf4cf75e",
+          "name": "Blockchain.com Get a Chart Time-series",
+          "request": {
+            "name": "Blockchain.com Get a Chart Time-series",
+            "description": {
+              "content": "Returns a time-series dataset for the requested chart name. Common chart names include\n`transactions-per-second`, `market-price`, `hash-rate`, `difficulty`, `miners-revenue`,\n`mempool-size`, `n-transactions`, `total-bitcoins`, `avg-block-size`, `mempool-count`,\n`cost-per-transaction`, and many others.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "charts",
+                ":chartName"
+              ],
+              "host": [
+                "api",
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "1year",
+                  "description": "Duration spanned by the dataset (e.g. `5weeks`, `1year`, `all`). Default `1year`."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollingAverage",
+                  "value": "<string>",
+                  "description": "Smoothing window applied to the time series (e.g. `8hours`, `7days`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<date>",
+                  "description": "Custom start date in `YYYY-MM-DD` format."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format (`json` or `csv`). Default `json`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sampled",
+                  "value": "false",
+                  "description": "If true, downsample to ~1.5k points for performance."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chartName",
+                  "description": "(Required) Chart identifier (kebab-case)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20dc123a-833c-41ba-845b-db081230144b",
+              "name": "Chart time-series.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "charts",
+                    ":chartName"
+                  ],
+                  "host": [
+                    "api",
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "1year"
+                    },
+                    {
+                      "key": "rollingAverage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "sampled",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chartName",
+                      "description": "(Required) Chart identifier (kebab-case)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"name\": \"Market Price (USD)\",\n  \"unit\": \"USD\",\n  \"period\": \"string\",\n  \"description\": \"string\",\n  \"values\": [\n    {\n      \"x\": 1,\n      \"y\": 1\n    },\n    {\n      \"x\": 1,\n      \"y\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8aa9db6f-5c00-4f24-8619-598bcc1207a4",
+    "name": "Blockchain.com , Stats & Market Data Addresses Charts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

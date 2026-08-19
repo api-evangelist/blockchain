@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Blocks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/rawblock/:block_hash",
+            "params": [
+              {
+                "name": "block_hash",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin block hash (64-character hex)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "If set to `hex`, returns the raw block as a binary hex string."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific block identified by its hash."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Blocks at a Height",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/block-height/:block_height",
+            "params": [
+              {
+                "name": "block_height",
+                "value": "",
+                "type": "path",
+                "description": "Block height (non-negative integer)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Must be `json` to return JSON."
+              }
+            ]
+          },
+          "docs": "Returns the array of blocks at the specified blockchain height."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get the Latest Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/latestblock"
+          },
+          "docs": "Returns the most recent block on the longest chain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

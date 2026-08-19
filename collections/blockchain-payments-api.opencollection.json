@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Payments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com List Account Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/accounts"
+          },
+          "docs": "Returns balances across all currencies and account types."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Account Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/accounts/:account/:currency",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path",
+                "description": "Account type (e.g. `primary`)."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency ticker (e.g. `BTC`)."
+              }
+            ]
+          },
+          "docs": "Returns the balance for a specific account type and currency."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Deposits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/deposits",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns deposit history."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/deposits/:depositId",
+            "params": [
+              {
+                "name": "depositId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status of one deposit."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a Deposit Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.info/deposits/:currency/address",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency ticker (e.g. `BTC`)."
+              }
+            ]
+          },
+          "docs": "Generates a new deposit address for the specified currency."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Withdrawals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/withdrawals",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns withdrawal history."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a Withdrawal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.info/withdrawals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a withdrawal to a whitelisted beneficiary."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Withdrawal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/withdrawals/:withdrawalId",
+            "params": [
+              {
+                "name": "withdrawalId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status of one withdrawal."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Whitelisted Beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/whitelist"
+          },
+          "docs": "Returns the user's whitelisted withdrawal beneficiaries."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Whitelist by Currency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/whitelist/:currency",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the user's whitelisted beneficiaries for a specific currency."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

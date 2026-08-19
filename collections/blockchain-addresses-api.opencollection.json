@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/rawaddr/:bitcoin_address",
+            "params": [
+              {
+                "name": "bitcoin_address",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin address (Base58 or Bech32)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of transactions to return (default 50)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip for pagination (multiples of 50)."
+              }
+            ]
+          },
+          "docs": "Returns information about a Bitcoin address including total received, total sent, final\nbalance, and transactions (paginated).\n"
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Multi-address Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/multiaddr",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-delimited Bitcoin addresses (e.g. `addr1|addr2|addr3`)."
+              },
+              {
+                "name": "n",
+                "value": "",
+                "type": "query",
+                "description": "Number of recent transactions to return across all addresses (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Returns balance and recent transactions for up to multiple addresses at once."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get Unspent Outputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/unspent",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Pipe-delimited Bitcoin addresses."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of UTXOs to return (default 250, max 1000)."
+              },
+              {
+                "name": "confirmations",
+                "value": "",
+                "type": "query",
+                "description": "Minimum confirmations a UTXO must have to be returned."
+              }
+            ]
+          },
+          "docs": "Returns the unspent transaction outputs (UTXOs) for one or more addresses."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

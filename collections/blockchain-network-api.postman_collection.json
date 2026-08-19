@@ -1,0 +1,1004 @@
+{
+  "item": [
+    {
+      "id": "858b70ee-fc04-44ff-a651-1c1fc60224d9",
+      "name": "Network",
+      "description": {
+        "content": "Simple network metrics — difficulty, block height, supply, ETA, averages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21b80c73-8c22-42fa-a4db-ea24240dcbd6",
+          "name": "Blockchain.com Get Current Difficulty",
+          "request": {
+            "name": "Blockchain.com Get Current Difficulty",
+            "description": {
+              "content": "Current mining difficulty target as a decimal number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "getdifficulty"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31d3b309-da83-4b5d-8575-aac6be177458",
+              "name": "Difficulty value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "getdifficulty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "92671248843810.34",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33973388-8a6f-4370-8424-e4e46c2d1edc",
+          "name": "Blockchain.com Get Current Block Count",
+          "request": {
+            "name": "Blockchain.com Get Current Block Count",
+            "description": {
+              "content": "Current block height in the longest chain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "getblockcount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8a8bc18-f071-40bc-b9e6-06116a4e99d4",
+              "name": "Block height.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "getblockcount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8176fa1d-6b93-4fcf-9163-b3a7295bcf2e",
+          "name": "Blockchain.com Get the Latest Block Hash",
+          "request": {
+            "name": "Blockchain.com Get the Latest Block Hash",
+            "description": {
+              "content": "Hash of the most recent block on the longest chain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "latesthash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e825e4d-eb48-489c-a6e2-850afff65ee3",
+              "name": "Latest block hash.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "latesthash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "00000000000000000004f4e7a1...",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "658f19c2-1be9-4ed3-86d3-6d22701da55c",
+          "name": "Blockchain.com Get the Current Block Reward",
+          "request": {
+            "name": "Blockchain.com Get the Current Block Reward",
+            "description": {
+              "content": "Current block reward in BTC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "bcperblock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddcb9218-156a-4644-a05e-b527fe086237",
+              "name": "Block reward in BTC.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "bcperblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89530073-a44a-49cf-b3d6-f3bafe4f7736",
+          "name": "Blockchain.com Get Total Bitcoins in Circulation",
+          "request": {
+            "name": "Blockchain.com Get Total Bitcoins in Circulation",
+            "description": {
+              "content": "Total Bitcoins in circulation (delayed by up to 1 hour), in Satoshi.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "totalbc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e38379b-783a-416a-96f4-ab12d1db8f96",
+              "name": "Total supply in Satoshi.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "totalbc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aa6ba7c-84bc-476a-9a26-af5774df91d6",
+          "name": "Blockchain.com Get Block Solve Probability",
+          "request": {
+            "name": "Blockchain.com Get Block Solve Probability",
+            "description": {
+              "content": "Probability of a single hash attempt solving the next block.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "probability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7658ce3-ade6-4c60-be74-eb3f0f736869",
+              "name": "Probability value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "probability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8713a2e-7c1c-45de-9931-085a269cd500",
+          "name": "Blockchain.com Get Hashes Needed to Solve a Block",
+          "request": {
+            "name": "Blockchain.com Get Hashes Needed to Solve a Block",
+            "description": {
+              "content": "Average number of hashes required to solve a single block.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "hashestowin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c4c38c5-e56b-4a3b-85e4-5b7f8f1ae32a",
+              "name": "Hashes-to-win value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "hashestowin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6b8cf28-63cf-40e5-b4b4-122c02e747cc",
+          "name": "Blockchain.com Get Next Difficulty Retarget Block",
+          "request": {
+            "name": "Blockchain.com Get Next Difficulty Retarget Block",
+            "description": {
+              "content": "Block height of the next difficulty re-target event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "nextretarget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0049e9a0-5a56-492e-9726-e36421bf760a",
+              "name": "Block height.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "nextretarget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bea829a-bd14-4c9b-91ce-7ea858429003",
+          "name": "Blockchain.com Get Average Transaction Size",
+          "request": {
+            "name": "Blockchain.com Get Average Transaction Size",
+            "description": {
+              "content": "Average transaction size in bytes across the most recent blocks (configurable).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "avgtxsize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blocks",
+                  "value": "1000",
+                  "description": "Number of trailing blocks to average over."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c07393b0-c4c7-420b-a821-482277e47246",
+              "name": "Average transaction size in bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "avgtxsize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blocks",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62c62d79-66f0-4630-bad3-22b7db28c51d",
+          "name": "Blockchain.com Get Average Transaction Value",
+          "request": {
+            "name": "Blockchain.com Get Average Transaction Value",
+            "description": {
+              "content": "Average transaction value in Satoshi across the most recent blocks (configurable).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "avgtxvalue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blocks",
+                  "value": "1000",
+                  "description": "Number of trailing blocks to average over (default 1000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "203a0ea8-de0a-4f18-9c67-3a171785dc22",
+              "name": "Average transaction value in Satoshi.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "avgtxvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blocks",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab3c032-8aa6-41ed-9a65-c420a990b82d",
+          "name": "Blockchain.com Get Average Interval Between Blocks",
+          "request": {
+            "name": "Blockchain.com Get Average Interval Between Blocks",
+            "description": {
+              "content": "Average time between blocks in seconds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "interval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "120734d2-41ab-4091-9e2e-765356c213a4",
+              "name": "Interval in seconds.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "interval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb5c2704-0aaa-4ed9-a407-e57c19a5dbaa",
+          "name": "Blockchain.com Get ETA of the Next Block",
+          "request": {
+            "name": "Blockchain.com Get ETA of the Next Block",
+            "description": {
+              "content": "Estimated number of seconds until the next block is mined.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "eta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e93fb8b-d9e3-47ab-99d5-81b47645f6c7",
+              "name": "ETA in seconds.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "eta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e18b95-26d8-4d71-ad56-a5e16464a954",
+          "name": "Blockchain.com Get Average Transactions Per Block",
+          "request": {
+            "name": "Blockchain.com Get Average Transactions Per Block",
+            "description": {
+              "content": "Average number of transactions per block over the most recent blocks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "q",
+                "avgtxnumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blocks",
+                  "value": "1000",
+                  "description": "Number of trailing blocks to average over."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46e05da0-5e38-4c59-b578-d7661d328d0a",
+              "name": "Average transactions per block.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "q",
+                    "avgtxnumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blocks",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "67689a23-3d08-4c25-8e4f-98b4fb16b08e",
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,706 @@
+{
+  "item": [
+    {
+      "id": "12735c97-c202-4360-bafd-15c98951263e",
+      "name": "Market Data",
+      "description": {
+        "content": "Bitcoin exchange rates and fiat conversion.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50d09e32-2a29-4a73-ab00-41b83a9be9fa",
+          "name": "Blockchain.com Get Exchange-rate Ticker",
+          "request": {
+            "name": "Blockchain.com Get Exchange-rate Ticker",
+            "description": {
+              "content": "Returns a map of currency codes to current Bitcoin price data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ticker"
+              ],
+              "host": [
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cors",
+                  "value": "<boolean>",
+                  "description": "If true, the response will include CORS headers."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e76e98bd-8aa7-47bb-9345-7cb5e7a5f455",
+              "name": "Ticker map keyed by ISO currency code.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ticker"
+                  ],
+                  "host": [
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "cors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  },\n  \"key_1\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  },\n  \"key_2\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  },\n  \"key_3\": {\n    \"15m\": 1,\n    \"last\": 1,\n    \"buy\": 1,\n    \"sell\": 1,\n    \"symbol\": \"BTC-USD\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f21cd9dc-f2c6-4584-bfc0-42ec15d1fea2",
+          "name": "Blockchain.com Convert Fiat to BTC",
+          "request": {
+            "name": "Blockchain.com Convert Fiat to BTC",
+            "description": {
+              "content": "Converts a fiat amount to its current BTC equivalent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "tobtc"
+              ],
+              "host": [
+                "blockchain",
+                "info"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "(Required) ISO currency code (e.g. `USD`, `EUR`, `GBP`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<number>",
+                  "description": "(Required) Amount of fiat to convert."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "691fc64b-15aa-4a6a-a066-6c258eb1b3f7",
+              "name": "BTC equivalent value.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "tobtc"
+                  ],
+                  "host": [
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "value",
+                      "value": "500"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "0.00702345",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f293990c-976d-4059-99c7-d947ab566938",
+          "name": "Blockchain.com List Trading Symbols",
+          "request": {
+            "name": "Blockchain.com List Trading Symbols",
+            "description": {
+              "content": "Returns the full set of trading symbols and their metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ca0694a-5899-4f5d-83d2-50b2aad2f7ba",
+              "name": "Map of symbol code to symbol metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"base_currency\": \"BTC\",\n    \"base_currency_scale\": 8,\n    \"counter_currency\": \"USD\",\n    \"counter_currency_scale\": 2,\n    \"min_price_increment\": 72525,\n    \"min_price_increment_scale\": 8,\n    \"min_order_size\": 3495,\n    \"min_order_size_scale\": 8,\n    \"max_order_size\": 5064,\n    \"max_order_size_scale\": 8,\n    \"lot_size\": 9754,\n    \"lot_size_scale\": 8,\n    \"status\": \"open\",\n    \"id\": 8891,\n    \"auction_price\": 72525,\n    \"auction_size\": 6780.079057917264,\n    \"auction_time\": 1748609400000,\n    \"imbalance\": 2094.0627811288173\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86ed8267-7a60-4fdc-9738-0ee2692b3b5b",
+          "name": "Blockchain.com Get a Single Symbol",
+          "request": {
+            "name": "Blockchain.com Get a Single Symbol",
+            "description": {
+              "content": "Returns metadata for a specific trading symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7976be67-3053-410c-a1a4-3985acc2efcb",
+              "name": "Symbol metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base_currency\": \"BTC\",\n  \"base_currency_scale\": 8,\n  \"counter_currency\": \"USD\",\n  \"counter_currency_scale\": 2,\n  \"min_price_increment\": 72525,\n  \"min_price_increment_scale\": 8,\n  \"min_order_size\": 3738,\n  \"min_order_size_scale\": 8,\n  \"max_order_size\": 7121,\n  \"max_order_size_scale\": 8,\n  \"lot_size\": 9042,\n  \"lot_size_scale\": 8,\n  \"status\": \"open\",\n  \"id\": 7788,\n  \"auction_price\": 72525,\n  \"auction_size\": 3279.8642732937255,\n  \"auction_time\": 1748609400000,\n  \"imbalance\": 7120.530578854042\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a25ee72f-ff1e-44f9-99ab-3d2b7adf94cf",
+          "name": "Blockchain.com List Tickers",
+          "request": {
+            "name": "Blockchain.com List Tickers",
+            "description": {
+              "content": "Returns current price and 24-hour metrics for all trading pairs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ee014aa-5713-4f56-b312-24f99b4f1d4e",
+              "name": "Array of tickers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"symbol\": \"BTC-USD\",\n    \"price_24h\": 72525,\n    \"volume_24h\": 0.5,\n    \"last_trade_price\": 72525\n  },\n  {\n    \"symbol\": \"BTC-USD\",\n    \"price_24h\": 72525,\n    \"volume_24h\": 0.5,\n    \"last_trade_price\": 72525\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "630fd4f5-2936-432c-a994-c22ea8e4e3f5",
+          "name": "Blockchain.com Get a Single Ticker",
+          "request": {
+            "name": "Blockchain.com Get a Single Ticker",
+            "description": {
+              "content": "Returns the current price and 24-hour metrics for one trading pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickers",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb98c74-ef5f-4cda-94ec-de0851cfe8ec",
+              "name": "Single ticker.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickers",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"price_24h\": 72525,\n  \"volume_24h\": 0.5,\n  \"last_trade_price\": 72525\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ec1673e-2057-4d86-b992-1fbff8f9fd48",
+          "name": "Blockchain.com Get Level-2 Order Book",
+          "request": {
+            "name": "Blockchain.com Get Level-2 Order Book",
+            "description": {
+              "content": "Returns the aggregated price-level order book for a symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "l2",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fe7701b-aea2-4cfa-9d00-83d90cd60317",
+              "name": "L2 order book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "l2",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"bids\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 4695\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 4735\n    }\n  ],\n  \"asks\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 9678\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 4371\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6bc4d47-11f7-43ac-99b1-91728cbd52e5",
+          "name": "Blockchain.com Get Level-3 Order Book",
+          "request": {
+            "name": "Blockchain.com Get Level-3 Order Book",
+            "description": {
+              "content": "Returns the full per-order book for a symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "l3",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18396510-13bf-44a5-9832-3dc8b5318e1b",
+              "name": "L3 order book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "l3",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Trading pair symbol (e.g. `BTC-USD`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"BTC-USD\",\n  \"bids\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 4073\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 1306\n    }\n  ],\n  \"asks\": [\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 6798\n    },\n    {\n      \"px\": 72525,\n      \"qty\": 0.5,\n      \"num\": 2628\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "370bf05a-199c-455f-b1ce-dcdccec9f506",
+    "name": "Blockchain.com Charts, Stats & Addresses Market Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

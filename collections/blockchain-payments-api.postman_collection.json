@@ -1,0 +1,901 @@
+{
+  "item": [
+    {
+      "id": "254fc03f-b7d6-4df5-8555-b953912f40ac",
+      "name": "Payments",
+      "description": {
+        "content": "Authenticated account balances, deposits, withdrawals, beneficiaries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a0ccb3a-ce0f-43b2-bf35-9066bb69675f",
+          "name": "Blockchain.com List Account Balances",
+          "request": {
+            "name": "Blockchain.com List Account Balances",
+            "description": {
+              "content": "Returns balances across all currencies and account types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09d48b4c-4c78-498f-880b-7f6b3138e780",
+              "name": "Account balances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"primary\": \"string\",\n    \"name\": \"My Entry\",\n    \"currency\": \"BTC\",\n    \"balance\": 3148.853740218026,\n    \"available\": 1870.0984833130562,\n    \"balance_local\": 9294.688952259166,\n    \"available_local\": 4798.906917000396,\n    \"rate\": 72525,\n    \"type\": \"string\"\n  },\n  {\n    \"primary\": \"string\",\n    \"name\": \"My Entry\",\n    \"currency\": \"BTC\",\n    \"balance\": 2958.7592942442407,\n    \"available\": 9172.969445587689,\n    \"balance_local\": 852.8568194699926,\n    \"available_local\": 827.1837248853864,\n    \"rate\": 72525,\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d81a8f0-043e-4748-a160-b9ca60091df4",
+          "name": "Blockchain.com Get Account Balance",
+          "request": {
+            "name": "Blockchain.com Get Account Balance",
+            "description": {
+              "content": "Returns the balance for a specific account type and currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) Account type (e.g. `primary`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) Currency ticker (e.g. `BTC`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a05fd08-c241-4f95-bcd2-5b67d93912bb",
+              "name": "Account balance.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) Account type (e.g. `primary`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency ticker (e.g. `BTC`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primary\": \"string\",\n  \"name\": \"My Entry\",\n  \"currency\": \"BTC\",\n  \"balance\": 2693.13706302733,\n  \"available\": 6939.1844549519665,\n  \"balance_local\": 374.8347304708699,\n  \"available_local\": 8760.41171838332,\n  \"rate\": 72525,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c7f7a82-0f8f-45fa-91eb-feab7b164822",
+          "name": "Blockchain.com List Deposits",
+          "request": {
+            "name": "Blockchain.com List Deposits",
+            "description": {
+              "content": "Returns deposit history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e91f648-9492-4fa6-8629-0dcf5ddebdf5",
+              "name": "Deposits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"21745988181\",\n    \"amount\": 8958.05252978887,\n    \"amount_local\": 4211.559230085357,\n    \"currency\": \"BTC\",\n    \"timestamp\": 1748609400000,\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n    \"state\": \"open\"\n  },\n  {\n    \"id\": \"21745988181\",\n    \"amount\": 6694.280885780594,\n    \"amount_local\": 9494.686827387608,\n    \"currency\": \"BTC\",\n    \"timestamp\": 1748609400000,\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n    \"state\": \"open\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66aa3e2f-a44b-401a-80a4-01bf56659c47",
+          "name": "Blockchain.com Get a Single Deposit",
+          "request": {
+            "name": "Blockchain.com Get a Single Deposit",
+            "description": {
+              "content": "Returns the status of one deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits",
+                ":depositId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "depositId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e78b5443-b494-450e-ae1b-834b6df3cae7",
+              "name": "Deposit detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits",
+                    ":depositId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "depositId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"21745988181\",\n  \"amount\": 3652.475959974607,\n  \"amount_local\": 3777.013602728775,\n  \"currency\": \"BTC\",\n  \"timestamp\": 1748609400000,\n  \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n  \"txHash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n  \"state\": \"open\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ec35983-b88f-4637-9014-ee05df9d6bbe",
+          "name": "Blockchain.com Create a Deposit Address",
+          "request": {
+            "name": "Blockchain.com Create a Deposit Address",
+            "description": {
+              "content": "Generates a new deposit address for the specified currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deposits",
+                ":currency",
+                "address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) Currency ticker (e.g. `BTC`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4e1f53f-1ec9-46d8-8277-a715f7a9b0d7",
+              "name": "New deposit address.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deposits",
+                    ":currency",
+                    "address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency ticker (e.g. `BTC`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"BTC\",\n  \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0182e7c4-35ce-4a06-8f24-fb1d95ffe1c1",
+          "name": "Blockchain.com List Withdrawals",
+          "request": {
+            "name": "Blockchain.com List Withdrawals",
+            "description": {
+              "content": "Returns withdrawal history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95d3a16d-4b87-41da-9cab-bfa3de2960df",
+              "name": "Withdrawals.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"withdrawalId\": \"21745988181\",\n    \"amount\": 3180.1817462662475,\n    \"currency\": \"BTC\",\n    \"beneficiary\": \"string\",\n    \"state\": \"open\",\n    \"timestamp\": 1748609400000,\n    \"fee\": 8997.993147904084\n  },\n  {\n    \"withdrawalId\": \"21745988181\",\n    \"amount\": 2494.2589114949565,\n    \"currency\": \"BTC\",\n    \"beneficiary\": \"string\",\n    \"state\": \"open\",\n    \"timestamp\": 1748609400000,\n    \"fee\": 5250.06051289316\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e91cbbb-648c-4b99-8f6a-c50431e060ab",
+          "name": "Blockchain.com Create a Withdrawal",
+          "request": {
+            "name": "Blockchain.com Create a Withdrawal",
+            "description": {
+              "content": "Submits a withdrawal to a whitelisted beneficiary.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"beneficiary\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad220023-888c-491c-9541-960167a53a8c",
+              "name": "Withdrawal accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"BTC\",\n  \"amount\": \"0.0001\",\n  \"beneficiary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"withdrawalId\": \"21745988181\",\n  \"amount\": 3817.060341184713,\n  \"currency\": \"BTC\",\n  \"beneficiary\": \"string\",\n  \"state\": \"open\",\n  \"timestamp\": 1748609400000,\n  \"fee\": 5111.864133359429\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e331b31-e378-41f0-bb06-450d3789515b",
+          "name": "Blockchain.com Get a Single Withdrawal",
+          "request": {
+            "name": "Blockchain.com Get a Single Withdrawal",
+            "description": {
+              "content": "Returns the status of one withdrawal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdrawals",
+                ":withdrawalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "withdrawalId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3bb629c-b882-4976-9341-369214269daa",
+              "name": "Withdrawal detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdrawals",
+                    ":withdrawalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "withdrawalId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"withdrawalId\": \"21745988181\",\n  \"amount\": 3817.060341184713,\n  \"currency\": \"BTC\",\n  \"beneficiary\": \"string\",\n  \"state\": \"open\",\n  \"timestamp\": 1748609400000,\n  \"fee\": 5111.864133359429\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3538f790-f998-4564-8fc3-f0c263733d9e",
+          "name": "Blockchain.com List Whitelisted Beneficiaries",
+          "request": {
+            "name": "Blockchain.com List Whitelisted Beneficiaries",
+            "description": {
+              "content": "Returns the user's whitelisted withdrawal beneficiaries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "whitelist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5592981f-4350-454b-a349-b1341c7ac783",
+              "name": "Whitelist entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "whitelist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilities\": [\n    {\n      \"currency\": \"BTC\",\n      \"address\": true,\n      \"xpub\": true,\n      \"existingBeneficiaryOnly\": true,\n      \"fiat\": true\n    },\n    {\n      \"currency\": \"BTC\",\n      \"address\": true,\n      \"xpub\": true,\n      \"existingBeneficiaryOnly\": true,\n      \"fiat\": true\n    }\n  ],\n  \"enabled\": true,\n  \"enabledAt\": \"2026-05-30T14:30:00Z\",\n  \"whitelisted\": [\n    {\n      \"id\": \"21745988181\",\n      \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n      \"currency\": \"BTC\",\n      \"state\": \"open\",\n      \"name\": \"My Entry\",\n      \"whitelisted\": true,\n      \"fiat\": true,\n      \"agent\": {\n        \"account\": \"string\",\n        \"address\": \"string\",\n        \"code\": \"string\",\n        \"country\": \"string\",\n        \"name\": \"string\",\n        \"recipient\": \"string\",\n        \"routingNumber\": \"string\"\n      }\n    },\n    {\n      \"id\": \"21745988181\",\n      \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n      \"currency\": \"BTC\",\n      \"state\": \"open\",\n      \"name\": \"My Entry\",\n      \"whitelisted\": true,\n      \"fiat\": true,\n      \"agent\": {\n        \"account\": \"string\",\n        \"address\": \"string\",\n        \"code\": \"string\",\n        \"country\": \"string\",\n        \"name\": \"string\",\n        \"recipient\": \"string\",\n        \"routingNumber\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66f99ab5-95a4-4625-b0a2-b8b1858e2b2c",
+          "name": "Blockchain.com List Whitelist by Currency",
+          "request": {
+            "name": "Blockchain.com List Whitelist by Currency",
+            "description": {
+              "content": "Returns the user's whitelisted beneficiaries for a specific currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "whitelist",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98f63012-e54c-458b-b661-35ca5a9687f1",
+              "name": "Whitelist entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "whitelist",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"21745988181\",\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"currency\": \"BTC\",\n    \"state\": \"open\",\n    \"name\": \"My Entry\",\n    \"whitelisted\": true,\n    \"fiat\": true,\n    \"agent\": {\n      \"account\": \"string\",\n      \"address\": \"string\",\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"name\": \"string\",\n      \"recipient\": \"string\",\n      \"routingNumber\": \"string\"\n    }\n  },\n  {\n    \"id\": \"21745988181\",\n    \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n    \"currency\": \"BTC\",\n    \"state\": \"open\",\n    \"name\": \"My Entry\",\n    \"whitelisted\": true,\n    \"fiat\": true,\n    \"agent\": {\n      \"account\": \"string\",\n      \"address\": \"string\",\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"name\": \"string\",\n      \"recipient\": \"string\",\n      \"routingNumber\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1b65ddd-8da2-4f66-a924-b85ea717825a",
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

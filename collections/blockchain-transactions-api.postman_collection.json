@@ -1,0 +1,132 @@
+{
+  "item": [
+    {
+      "id": "706a964e-dbbd-48b3-80ab-0691ee406e26",
+      "name": "Transactions",
+      "description": {
+        "content": "Bitcoin transaction lookups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9462137-fa96-48ff-a5b6-8f00c413e300",
+          "name": "Blockchain.com Get a Single Transaction",
+          "request": {
+            "name": "Blockchain.com Get a Single Transaction",
+            "description": {
+              "content": "Returns a specific transaction with its inputs, outputs, fees, and block height.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rawtx",
+                ":tx_hash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "If set to `hex`, returns the raw transaction as a binary hex string."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tx_hash",
+                  "description": "(Required) Bitcoin transaction hash (64-character hex)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81cd805f-1913-4bb1-956c-8863b4217972",
+              "name": "Transaction detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rawtx",
+                    ":tx_hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tx_hash",
+                      "description": "(Required) Bitcoin transaction hash (64-character hex)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n  \"ver\": 1,\n  \"vin_sz\": 1,\n  \"vout_sz\": 1,\n  \"size\": 1,\n  \"weight\": 1,\n  \"fee\": 1,\n  \"relayed_by\": \"string\",\n  \"lock_time\": 1748609400000,\n  \"tx_index\": 1,\n  \"double_spend\": true,\n  \"time\": 1748609400000,\n  \"block_index\": 1,\n  \"block_height\": 851234,\n  \"inputs\": [\n    {\n      \"sequence\": 1,\n      \"witness\": \"string\",\n      \"script\": \"string\",\n      \"prev_out\": {\n        \"type\": 1,\n        \"spent\": true,\n        \"value\": 100000,\n        \"spending_outpoints\": [\n          {\n            \"tx_index\": 2641,\n            \"n\": 813\n          },\n          {\n            \"tx_index\": 7529,\n            \"n\": 8408\n          }\n        ],\n        \"n\": 1,\n        \"tx_index\": 1,\n        \"script\": \"string\",\n        \"addr\": \"string\"\n      }\n    },\n    {\n      \"sequence\": 1,\n      \"witness\": \"string\",\n      \"script\": \"string\",\n      \"prev_out\": {\n        \"type\": 1,\n        \"spent\": true,\n        \"value\": 100000,\n        \"spending_outpoints\": [\n          {\n            \"tx_index\": 1219,\n            \"n\": 953\n          },\n          {\n            \"tx_index\": 1178,\n            \"n\": 6049\n          }\n        ],\n        \"n\": 1,\n        \"tx_index\": 1,\n        \"script\": \"string\",\n        \"addr\": \"string\"\n      }\n    }\n  ],\n  \"out\": [\n    {\n      \"type\": 1,\n      \"spent\": true,\n      \"value\": 100000,\n      \"spending_outpoints\": [\n        {\n          \"tx_index\": 4103,\n          \"n\": 4981\n        },\n        {\n          \"tx_index\": 2898,\n          \"n\": 5229\n        }\n      ],\n      \"n\": 1,\n      \"tx_index\": 1,\n      \"script\": \"string\",\n      \"addr\": \"string\"\n    },\n    {\n      \"type\": 1,\n      \"spent\": true,\n      \"value\": 100000,\n      \"spending_outpoints\": [\n        {\n          \"tx_index\": 562,\n          \"n\": 4418\n        },\n        {\n          \"tx_index\": 2771,\n          \"n\": 6492\n        }\n      ],\n      \"n\": 1,\n      \"tx_index\": 1,\n      \"script\": \"string\",\n      \"addr\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "515d6c79-3ad5-4c0b-bb32-575d1a5c4c63",
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

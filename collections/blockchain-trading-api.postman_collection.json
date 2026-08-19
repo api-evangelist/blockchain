@@ -1,0 +1,756 @@
+{
+  "item": [
+    {
+      "id": "3b536c92-edc2-46c7-b48c-b830085e436b",
+      "name": "Trading",
+      "description": {
+        "content": "Authenticated order management and trade history.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7da1dd28-5775-4eae-ac93-143bd49851dc",
+          "name": "Blockchain.com Get Maker/taker Fees",
+          "request": {
+            "name": "Blockchain.com Get Maker/taker Fees",
+            "description": {
+              "content": "Returns the current maker and taker fee rates for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70850525-fa3d-4dbc-b840-4863f5a56600",
+              "name": "Fee schedule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"makerRate\": 72525,\n  \"takerRate\": 72525,\n  \"volumeInUSD\": 0.5\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d2b294e-d2e5-4b06-9ee6-ab8e9e046270",
+          "name": "Blockchain.com List Orders",
+          "request": {
+            "name": "Blockchain.com List Orders",
+            "description": {
+              "content": "Returns live and historic orders filtered by symbol, status, and time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>",
+                  "description": "Trading symbol filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>",
+                  "description": "Filter by orders created on or after this Unix timestamp (ms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "Filter by orders created on or before this Unix timestamp (ms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Order status filter (e.g. `open`, `filled`, `cancelled`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of results to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88f8bfbe-6876-402c-81d9-9af9f24a099b",
+              "name": "Orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"orderId\": 8497,\n    \"gwOrderId\": 2046,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"ordType\": \"string\",\n    \"timeInForce\": \"string\",\n    \"side\": \"buy\",\n    \"orderQty\": 0.5,\n    \"minQty\": 0.5,\n    \"cumQty\": 0.5,\n    \"price\": 72525,\n    \"stopPx\": 1757.635172806532,\n    \"ordStatus\": \"open\",\n    \"expireDate\": 1952,\n    \"execID\": \"21745988181\",\n    \"avgPx\": 3051.6479243733575\n  },\n  {\n    \"orderId\": 9695,\n    \"gwOrderId\": 6398,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"ordType\": \"string\",\n    \"timeInForce\": \"string\",\n    \"side\": \"buy\",\n    \"orderQty\": 0.5,\n    \"minQty\": 0.5,\n    \"cumQty\": 0.5,\n    \"price\": 72525,\n    \"stopPx\": 6918.7084813582,\n    \"ordStatus\": \"open\",\n    \"expireDate\": 5969,\n    \"execID\": \"21745988181\",\n    \"avgPx\": 7993.465480861574\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a512d95-5045-43ad-bb2f-98ae271356bf",
+          "name": "Blockchain.com Create a New Order",
+          "request": {
+            "name": "Blockchain.com Create a New Order",
+            "description": {
+              "content": "Submits a new order. Supports LIMIT, MARKET, STOP, and STOPLIMIT order types.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clOrdId\": \"<string>\",\n  \"ordType\": \"<string>\",\n  \"symbol\": \"<string>\",\n  \"side\": \"<string>\",\n  \"orderQty\": \"<number>\",\n  \"timeInForce\": \"<string>\",\n  \"price\": \"<number>\",\n  \"stopPx\": \"<number>\",\n  \"minQty\": \"<number>\",\n  \"expireDate\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08833d62-7237-4967-9c1e-59c740330ba2",
+              "name": "Order accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clOrdId\": \"21745988181\",\n  \"ordType\": \"limit\",\n  \"symbol\": \"BTC-USD\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"timeInForce\": \"GTC\",\n  \"price\": 72525,\n  \"stopPx\": \"<number>\",\n  \"minQty\": 0.5,\n  \"expireDate\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": 449,\n  \"gwOrderId\": 5059,\n  \"clOrdId\": \"21745988181\",\n  \"symbol\": \"BTC-USD\",\n  \"ordType\": \"string\",\n  \"timeInForce\": \"string\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"minQty\": 0.5,\n  \"cumQty\": 0.5,\n  \"price\": 72525,\n  \"stopPx\": 2394.1605255250297,\n  \"ordStatus\": \"open\",\n  \"expireDate\": 8296,\n  \"execID\": \"21745988181\",\n  \"avgPx\": 7564.184757138015\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d657675-a373-493b-a1dc-2d9e8a3eb0ca",
+          "name": "Blockchain.com Cancel All Open Orders",
+          "request": {
+            "name": "Blockchain.com Cancel All Open Orders",
+            "description": {
+              "content": "Cancels every open order, optionally filtered by symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>",
+                  "description": "If supplied, only cancel orders for this symbol."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "823fd5a3-7052-4eec-855e-50448a56db26",
+              "name": "Cancellation accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37e86d02-b05f-49ac-9639-a598ed9bc736",
+          "name": "Blockchain.com Get a Single Order",
+          "request": {
+            "name": "Blockchain.com Get a Single Order",
+            "description": {
+              "content": "Returns the current state of one order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Order identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04059e74-9d91-4647-bb8e-e318909c9a2e",
+              "name": "Order detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Order identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": 449,\n  \"gwOrderId\": 5059,\n  \"clOrdId\": \"21745988181\",\n  \"symbol\": \"BTC-USD\",\n  \"ordType\": \"string\",\n  \"timeInForce\": \"string\",\n  \"side\": \"buy\",\n  \"orderQty\": 0.5,\n  \"minQty\": 0.5,\n  \"cumQty\": 0.5,\n  \"price\": 72525,\n  \"stopPx\": 2394.1605255250297,\n  \"ordStatus\": \"open\",\n  \"expireDate\": 8296,\n  \"execID\": \"21745988181\",\n  \"avgPx\": 7564.184757138015\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d75236d-f243-4583-9ec7-978a49441687",
+          "name": "Blockchain.com Cancel a Single Order",
+          "request": {
+            "name": "Blockchain.com Cancel a Single Order",
+            "description": {
+              "content": "Cancels an open order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Order identifier."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b33fe093-7acb-4688-8de0-05509ba7f127",
+              "name": "Cancellation accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Order identifier."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec669848-3fe8-41e4-a014-1d42112d0c43",
+          "name": "Blockchain.com List Trades",
+          "request": {
+            "name": "Blockchain.com List Trades",
+            "description": {
+              "content": "Returns historical filled orders (including partial fills).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96a6cb6c-76e8-4b8f-a556-36b16d3c3fe0",
+              "name": "Trades.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"exOrdId\": 7827,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 1523.3850054426612,\n    \"timestamp\": 1748609400000\n  },\n  {\n    \"exOrdId\": 7278,\n    \"clOrdId\": \"21745988181\",\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 691.6877020774236,\n    \"timestamp\": 1748609400000\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47d3d76b-19c0-4887-9555-4136e437350b",
+          "name": "Blockchain.com List Fills",
+          "request": {
+            "name": "Blockchain.com List Fills",
+            "description": {
+              "content": "Returns individual fill executions including fees.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0b88dc2-6bc7-4c85-9455-eece5d053889",
+              "name": "Fills.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"execId\": \"21745988181\",\n    \"orderId\": 4317,\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 2624.077018176255,\n    \"feeCurrency\": \"BTC\",\n    \"timestamp\": 1748609400000\n  },\n  {\n    \"execId\": \"21745988181\",\n    \"orderId\": 9616,\n    \"symbol\": \"BTC-USD\",\n    \"side\": \"buy\",\n    \"price\": 72525,\n    \"qty\": 0.5,\n    \"fee\": 2235.6211091687483,\n    \"feeCurrency\": \"BTC\",\n    \"timestamp\": 1748609400000\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d1a2c1e-971f-44f9-9be9-2b52e27d6021",
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Trading API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

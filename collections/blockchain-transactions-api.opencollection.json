@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Transactions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/rawtx/:tx_hash",
+            "params": [
+              {
+                "name": "tx_hash",
+                "value": "",
+                "type": "path",
+                "description": "Bitcoin transaction hash (64-character hex)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "If set to `hex`, returns the raw transaction as a binary hex string."
+              }
+            ]
+          },
+          "docs": "Returns a specific transaction with its inputs, outputs, fees, and block height."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

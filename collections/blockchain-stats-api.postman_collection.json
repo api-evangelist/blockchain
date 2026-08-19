@@ -1,0 +1,108 @@
+{
+  "item": [
+    {
+      "id": "22280f08-9367-4dc7-b797-b53bc156b701",
+      "name": "Stats",
+      "description": {
+        "content": "Real-time blockchain statistics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4f0d2de-4b89-45f5-9050-0c0d7959faee",
+          "name": "Blockchain.com Get Bitcoin Network Statistics",
+          "request": {
+            "name": "Blockchain.com Get Bitcoin Network Statistics",
+            "description": {
+              "content": "Real-time blockchain statistics — price, hash rate, transaction counts, mining economics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "stats"
+              ],
+              "host": [
+                "api",
+                "blockchain",
+                "info"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22f26cdb-9870-4b63-b832-ccd6e8eb948c",
+              "name": "Network statistics snapshot.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "stats"
+                  ],
+                  "host": [
+                    "api",
+                    "blockchain",
+                    "info"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"market_price_usd\": 72525,\n  \"hash_rate\": 72525,\n  \"total_fees_btc\": 1,\n  \"n_btc_mined\": 1,\n  \"n_tx\": 1,\n  \"n_blocks_mined\": 1,\n  \"minutes_between_blocks\": 1,\n  \"totalbc\": 1,\n  \"n_blocks_total\": 1,\n  \"estimated_transaction_volume_usd\": 0.5,\n  \"miners_revenue_usd\": 1,\n  \"miners_revenue_btc\": 1,\n  \"difficulty\": 1,\n  \"estimated_btc_sent\": 1,\n  \"total_btc_sent\": 1,\n  \"trade_volume_btc\": 0.5,\n  \"trade_volume_usd\": 0.5,\n  \"nextretarget\": 1,\n  \"timestamp\": 1748609400000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf5f08ab-828c-45ab-a5ce-b737a9b65698",
+    "name": "Blockchain.com Charts, & Market Data Addresses Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

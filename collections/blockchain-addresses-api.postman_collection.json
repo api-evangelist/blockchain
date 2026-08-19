@@ -1,0 +1,346 @@
+{
+  "item": [
+    {
+      "id": "22add41f-4860-497c-b41a-81f3b20f97d6",
+      "name": "Addresses",
+      "description": {
+        "content": "Bitcoin address summaries and unspent outputs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e24655d-3152-4727-ac19-a57a08c39f08",
+          "name": "Blockchain.com Get a Single Address",
+          "request": {
+            "name": "Blockchain.com Get a Single Address",
+            "description": {
+              "content": "Returns information about a Bitcoin address including total received, total sent, final\nbalance, and transactions (paginated).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rawaddr",
+                ":bitcoin_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of transactions to return (default 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of transactions to skip for pagination (multiples of 50)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bitcoin_address",
+                  "description": "(Required) Bitcoin address (Base58 or Bech32)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb0e77de-c1d3-437d-8f6e-9e7132588487",
+              "name": "Address detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rawaddr",
+                    ":bitcoin_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bitcoin_address",
+                      "description": "(Required) Bitcoin address (Base58 or Bech32)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hash160\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n  \"address\": \"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\",\n  \"n_tx\": 1,\n  \"n_unredeemed\": 1,\n  \"total_received\": 1,\n  \"total_sent\": 1,\n  \"final_balance\": 100000,\n  \"txs\": [\n    {\n      \"hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"ver\": 1,\n      \"vin_sz\": 1,\n      \"vout_sz\": 1,\n      \"size\": 1,\n      \"weight\": 1,\n      \"fee\": 1,\n      \"relayed_by\": \"string\",\n      \"lock_time\": 1748609400000,\n      \"tx_index\": 1,\n      \"double_spend\": true,\n      \"time\": 1748609400000,\n      \"block_index\": 1,\n      \"block_height\": 851234,\n      \"inputs\": [\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        },\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        }\n      ],\n      \"out\": [\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 5117,\n              \"n\": 4054\n            },\n            {\n              \"tx_index\": 974,\n              \"n\": 3330\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        },\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 6094,\n              \"n\": 3849\n            },\n            {\n              \"tx_index\": 1699,\n              \"n\": 5135\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        }\n      ]\n    },\n    {\n      \"hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"ver\": 1,\n      \"vin_sz\": 1,\n      \"vout_sz\": 1,\n      \"size\": 1,\n      \"weight\": 1,\n      \"fee\": 1,\n      \"relayed_by\": \"string\",\n      \"lock_time\": 1748609400000,\n      \"tx_index\": 1,\n      \"double_spend\": true,\n      \"time\": 1748609400000,\n      \"block_index\": 1,\n      \"block_height\": 851234,\n      \"inputs\": [\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        },\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        }\n      ],\n      \"out\": [\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 7198,\n              \"n\": 4147\n            },\n            {\n              \"tx_index\": 1813,\n              \"n\": 9685\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        },\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 9733,\n              \"n\": 9573\n            },\n            {\n              \"tx_index\": 3996,\n              \"n\": 8151\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510f3825-8f26-4b61-917d-43adb5a380eb",
+          "name": "Blockchain.com Get Multi-address Summary",
+          "request": {
+            "name": "Blockchain.com Get Multi-address Summary",
+            "description": {
+              "content": "Returns balance and recent transactions for up to multiple addresses at once.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "multiaddr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "(Required) Pipe-delimited Bitcoin addresses (e.g. `addr1|addr2|addr3`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "n",
+                  "value": "50",
+                  "description": "Number of recent transactions to return across all addresses (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of transactions to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e0659e5-f51f-4655-ab84-ff16e9386b51",
+              "name": "Multi-address response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multiaddr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "active",
+                      "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy"
+                    },
+                    {
+                      "key": "n",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"address\": \"string\",\n      \"n_tx\": 1983,\n      \"total_received\": 4663,\n      \"total_sent\": 6744,\n      \"final_balance\": 7177,\n      \"change_index\": 4827,\n      \"account_index\": 2515\n    },\n    {\n      \"address\": \"string\",\n      \"n_tx\": 1736,\n      \"total_received\": 1593,\n      \"total_sent\": 7110,\n      \"final_balance\": 6481,\n      \"change_index\": 1233,\n      \"account_index\": 295\n    }\n  ],\n  \"wallet\": {\n    \"n_tx\": 8823,\n    \"n_tx_filtered\": 1798,\n    \"total_received\": 2951,\n    \"total_sent\": 3901,\n    \"final_balance\": 5037\n  },\n  \"txs\": [\n    {\n      \"hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"ver\": 1,\n      \"vin_sz\": 1,\n      \"vout_sz\": 1,\n      \"size\": 1,\n      \"weight\": 1,\n      \"fee\": 1,\n      \"relayed_by\": \"string\",\n      \"lock_time\": 1748609400000,\n      \"tx_index\": 1,\n      \"double_spend\": true,\n      \"time\": 1748609400000,\n      \"block_index\": 1,\n      \"block_height\": 851234,\n      \"inputs\": [\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        },\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        }\n      ],\n      \"out\": [\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 5399,\n              \"n\": 7911\n            },\n            {\n              \"tx_index\": 7872,\n              \"n\": 973\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        },\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 5953,\n              \"n\": 3795\n            },\n            {\n              \"tx_index\": 5833,\n              \"n\": 8431\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        }\n      ]\n    },\n    {\n      \"hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"ver\": 1,\n      \"vin_sz\": 1,\n      \"vout_sz\": 1,\n      \"size\": 1,\n      \"weight\": 1,\n      \"fee\": 1,\n      \"relayed_by\": \"string\",\n      \"lock_time\": 1748609400000,\n      \"tx_index\": 1,\n      \"double_spend\": true,\n      \"time\": 1748609400000,\n      \"block_index\": 1,\n      \"block_height\": 851234,\n      \"inputs\": [\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        },\n        {\n          \"sequence\": 1,\n          \"witness\": \"string\",\n          \"script\": \"string\",\n          \"prev_out\": {\n            \"type\": 1,\n            \"spent\": true,\n            \"value\": 100000,\n            \"spending_outpoints\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"n\": 1,\n            \"tx_index\": 1,\n            \"script\": \"string\",\n            \"addr\": \"string\"\n          }\n        }\n      ],\n      \"out\": [\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 436,\n              \"n\": 1549\n            },\n            {\n              \"tx_index\": 5749,\n              \"n\": 9137\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        },\n        {\n          \"type\": 1,\n          \"spent\": true,\n          \"value\": 100000,\n          \"spending_outpoints\": [\n            {\n              \"tx_index\": 5581,\n              \"n\": 7591\n            },\n            {\n              \"tx_index\": 1342,\n              \"n\": 6286\n            }\n          ],\n          \"n\": 1,\n          \"tx_index\": 1,\n          \"script\": \"string\",\n          \"addr\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b9fdc3d-6706-4ee0-99d6-0b28b68859c4",
+          "name": "Blockchain.com Get Unspent Outputs",
+          "request": {
+            "name": "Blockchain.com Get Unspent Outputs",
+            "description": {
+              "content": "Returns the unspent transaction outputs (UTXOs) for one or more addresses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "unspent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "(Required) Pipe-delimited Bitcoin addresses."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "250",
+                  "description": "Maximum number of UTXOs to return (default 250, max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "confirmations",
+                  "value": "0",
+                  "description": "Minimum confirmations a UTXO must have to be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "210aa92b-ebe8-489b-89a6-49737b9a383d",
+              "name": "Unspent outputs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unspent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "active",
+                      "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "250"
+                    },
+                    {
+                      "key": "confirmations",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notice\": \"string\",\n  \"unspent_outputs\": [\n    {\n      \"tx_hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"tx_hash_big_endian\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"tx_output_n\": 1,\n      \"script\": \"string\",\n      \"value\": 100000,\n      \"value_hex\": \"string\",\n      \"confirmations\": 1,\n      \"tx_index\": 1\n    },\n    {\n      \"tx_hash\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"tx_hash_big_endian\": \"00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21\",\n      \"tx_output_n\": 1,\n      \"script\": \"string\",\n      \"value\": 100000,\n      \"value_hex\": \"string\",\n      \"confirmations\": 1,\n      \"tx_index\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blockchain.info",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "52a8390c-ced8-4c38-a986-1372bebf2205",
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,\nmining pool distribution, BTC exchange rates (ticker) and fiat-to-BTC conversion. Generated\nfrom https://www.blockchain.com/explorer/api/charts_api and\nhttps://www.blockchain.com/explorer/api/exchange_rates_api.\n\n\nContact Support:\n Name: Blockchain.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Blockchain.com Charts, Stats & Market Data Addresses Trading API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trading",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Blockchain.com Get Maker/taker Fees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/fees"
+          },
+          "docs": "Returns the current maker and taker fee rates for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/orders",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "Trading symbol filter."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter by orders created on or after this Unix timestamp (ms)."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter by orders created on or before this Unix timestamp (ms)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status filter (e.g. `open`, `filled`, `cancelled`)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              }
+            ]
+          },
+          "docs": "Returns live and historic orders filtered by symbol, status, and time range."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Create a New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.blockchain.info/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a new order. Supports LIMIT, MARKET, STOP, and STOPLIMIT order types.\n"
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Cancel All Open Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blockchain.info/orders",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, only cancel orders for this symbol."
+              }
+            ]
+          },
+          "docs": "Cancels every open order, optionally filtered by symbol."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Get a Single Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Order identifier."
+              }
+            ]
+          },
+          "docs": "Returns the current state of one order."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com Cancel a Single Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.blockchain.info/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Order identifier."
+              }
+            ]
+          },
+          "docs": "Cancels an open order."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/trades",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical filled orders (including partial fills)."
+        },
+        {
+          "info": {
+            "name": "Blockchain.com List Fills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blockchain.info/fills",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns individual fill executions including fees."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
