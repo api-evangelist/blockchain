@@ -276,6 +276,8 @@ apis:
   humanURL: https://www.blockchain.com/explorer/api/blockchain_api
   baseURL: https://blockchain.info
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
