@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Blockchain.com Charts, Stats & Addresses Market Data API
   description: 'Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
@@ -211,6 +211,40 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OrderBook:
+      type: object
+      description: Aggregated (L2) or per-order (L3) order book for a symbol.
+      properties:
+        symbol:
+          type: string
+          example: BTC-USD
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceLevel'
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceLevel'
+    Ticker_2:
+      type: object
+      description: Current price and 24-hour metrics for a single trading pair.
+      properties:
+        symbol:
+          type: string
+          example: BTC-USD
+        price_24h:
+          type: number
+          description: 24-hour reference price.
+          example: 72525.0
+        volume_24h:
+          type: number
+          description: Trading volume over the last 24 hours.
+          example: 0.5
+        last_trade_price:
+          type: number
+          description: Most recent trade price.
+          example: 72525.0
     TickerEntry:
       type: object
       description: Current BTC pricing in a single fiat currency.
@@ -235,45 +269,6 @@ components:
           type: string
           description: Currency symbol (e.g. `$`, `€`, `£`).
           example: BTC-USD
-    Ticker_2:
-      type: object
-      description: Current price and 24-hour metrics for a single trading pair.
-      properties:
-        symbol:
-          type: string
-          example: BTC-USD
-        price_24h:
-          type: number
-          description: 24-hour reference price.
-          example: 72525.0
-        volume_24h:
-          type: number
-          description: Trading volume over the last 24 hours.
-          example: 0.5
-        last_trade_price:
-          type: number
-          description: Most recent trade price.
-          example: 72525.0
-    OrderBook:
-      type: object
-      description: Aggregated (L2) or per-order (L3) order book for a symbol.
-      properties:
-        symbol:
-          type: string
-          example: BTC-USD
-        bids:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceLevel'
-        asks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceLevel'
-    Ticker:
-      type: object
-      description: Map of currency code to Bitcoin price data.
-      additionalProperties:
-        $ref: '#/components/schemas/TickerEntry'
     PriceLevel:
       type: object
       description: One side of the order book at a single price.
@@ -289,6 +284,11 @@ components:
         num:
           type: integer
           description: Number of orders at this price (L2 only).
+    Ticker:
+      type: object
+      description: Map of currency code to Bitcoin price data.
+      additionalProperties:
+        $ref: '#/components/schemas/TickerEntry'
     Symbol:
       type: object
       description: Metadata describing one trading pair on the Exchange.

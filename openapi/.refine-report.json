@@ -27,6 +27,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "blockchain-addresses-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-blocks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-charts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-market-data-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-network-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-payments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-pools-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-stats-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-trading-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "blockchain-transactions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

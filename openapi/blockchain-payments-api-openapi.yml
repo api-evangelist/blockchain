@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Blockchain.com Charts, Stats & Market Data Addresses Payments API
   description: 'Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
@@ -273,25 +273,112 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateWithdrawalRequest:
+    Deposit:
       type: object
-      required:
-      - currency
-      - amount
-      - beneficiary
-      description: Payload for submitting a withdrawal.
+      description: A deposit record.
+      properties:
+        id:
+          type: string
+          example: '21745988181'
+        amount:
+          type: number
+        amount_local:
+          type: number
+        currency:
+          type: string
+          example: BTC
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+        address:
+          type: string
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+        txHash:
+          type: string
+          example: 00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21
+        state:
+          type: string
+          description: Deposit state — `PENDING`, `CONFIRMED`, `REJECTED`.
+          example: open
+    DepositAddress:
+      type: object
+      description: A newly generated deposit address.
       properties:
         currency:
           type: string
-          description: Currency ticker.
           example: BTC
-        amount:
+        address:
           type: string
-          description: Amount to withdraw (decimal string).
-          example: '0.0001'
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    Account:
+      type: object
+      description: Balance for a single account/currency.
+      properties:
+        primary:
+          type: string
+        name:
+          type: string
+          example: My Entry
+        currency:
+          type: string
+          example: BTC
+        balance:
+          type: number
+        available:
+          type: number
+        balance_local:
+          type: number
+        available_local:
+          type: number
+        rate:
+          type: number
+          example: 72525.0
+        type:
+          type: string
+    Withdrawal:
+      type: object
+      description: A withdrawal record.
+      properties:
+        withdrawalId:
+          type: string
+          example: '21745988181'
+        amount:
+          type: number
+        currency:
+          type: string
+          example: BTC
         beneficiary:
           type: string
-          description: Beneficiary id (from `/whitelist`).
+        state:
+          type: string
+          description: Withdrawal state — `NONE`, `IN_PROGRESS`, `COMPLETE`, `REJECTED`.
+          example: open
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+        fee:
+          type: number
+    Whitelist:
+      type: object
+      description: Whitelist response listing capabilities and active beneficiaries.
+      properties:
+        capabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhitelistCapability'
+        enabled:
+          type: boolean
+          example: true
+        enabledAt:
+          type: string
+          format: date-time
+          example: '2026-05-30T14:30:00Z'
+        whitelisted:
+          type: array
+          items:
+            $ref: '#/components/schemas/Beneficiary'
     Beneficiary:
       type: object
       description: A whitelisted withdrawal destination.
@@ -336,6 +423,25 @@ components:
               type: string
             routingNumber:
               type: string
+    CreateWithdrawalRequest:
+      type: object
+      required:
+      - currency
+      - amount
+      - beneficiary
+      description: Payload for submitting a withdrawal.
+      properties:
+        currency:
+          type: string
+          description: Currency ticker.
+          example: BTC
+        amount:
+          type: string
+          description: Amount to withdraw (decimal string).
+          example: '0.0001'
+        beneficiary:
+          type: string
+          description: Beneficiary id (from `/whitelist`).
     WhitelistCapability:
       type: object
       description: Per-currency capability flags for the whitelist.
@@ -355,109 +461,3 @@ components:
         fiat:
           type: boolean
           example: true
-    Deposit:
-      type: object
-      description: A deposit record.
-      properties:
-        id:
-          type: string
-          example: '21745988181'
-        amount:
-          type: number
-        amount_local:
-          type: number
-        currency:
-          type: string
-          example: BTC
-        timestamp:
-          type: integer
-          format: int64
-          example: 1748609400000
-        address:
-          type: string
-          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
-        txHash:
-          type: string
-          example: 00000000000000000004f4e7a18a09b1f8e96d6fb01d9b6fce4d12cb3f8a7e21
-        state:
-          type: string
-          description: Deposit state — `PENDING`, `CONFIRMED`, `REJECTED`.
-          example: open
-    Withdrawal:
-      type: object
-      description: A withdrawal record.
-      properties:
-        withdrawalId:
-          type: string
-          example: '21745988181'
-        amount:
-          type: number
-        currency:
-          type: string
-          example: BTC
-        beneficiary:
-          type: string
-        state:
-          type: string
-          description: Withdrawal state — `NONE`, `IN_PROGRESS`, `COMPLETE`, `REJECTED`.
-          example: open
-        timestamp:
-          type: integer
-          format: int64
-          example: 1748609400000
-        fee:
-          type: number
-    DepositAddress:
-      type: object
-      description: A newly generated deposit address.
-      properties:
-        currency:
-          type: string
-          example: BTC
-        address:
-          type: string
-          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
-    Whitelist:
-      type: object
-      description: Whitelist response listing capabilities and active beneficiaries.
-      properties:
-        capabilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/WhitelistCapability'
-        enabled:
-          type: boolean
-          example: true
-        enabledAt:
-          type: string
-          format: date-time
-          example: '2026-05-30T14:30:00Z'
-        whitelisted:
-          type: array
-          items:
-            $ref: '#/components/schemas/Beneficiary'
-    Account:
-      type: object
-      description: Balance for a single account/currency.
-      properties:
-        primary:
-          type: string
-        name:
-          type: string
-          example: My Entry
-        currency:
-          type: string
-          example: BTC
-        balance:
-          type: number
-        available:
-          type: number
-        balance_local:
-          type: number
-        available_local:
-          type: number
-        rate:
-          type: number
-          example: 72525.0
-        type:
-          type: string

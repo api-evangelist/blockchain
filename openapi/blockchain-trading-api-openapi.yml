@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Blockchain.com Charts, Stats & Market Data Addresses Trading API
   description: 'Aggregated JSON endpoints covering Bitcoin network statistics, historical chart datasets,
@@ -243,37 +243,73 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Fill:
+    Order:
       type: object
-      description: A single execution leg, including fees.
+      description: An order submitted to the matching engine.
       properties:
-        execId:
-          type: string
-          example: '21745988181'
         orderId:
           type: integer
           format: int64
+        gwOrderId:
+          type: integer
+          format: int64
+        clOrdId:
+          type: string
+          example: '21745988181'
         symbol:
           type: string
           example: BTC-USD
+        ordType:
+          type: string
+          description: Order type — `limit`, `market`, `stop`, `stopLimit`.
+        timeInForce:
+          type: string
+          description: Time in force — `GTC`, `IOC`, `FOK`, `GTD`.
         side:
           type: string
+          description: '`buy` or `sell`.'
           example: buy
+        orderQty:
+          type: number
+          example: 0.5
+        minQty:
+          type: number
+          example: 0.5
+        cumQty:
+          type: number
+          example: 0.5
         price:
           type: number
           example: 72525.0
-        qty:
+        stopPx:
           type: number
-          example: 0.5
-        fee:
-          type: number
-        feeCurrency:
+        ordStatus:
           type: string
-          example: BTC
-        timestamp:
+          description: Status — `pending`, `open`, `filled`, `partial`, `cancelled`, `rejected`, `expired`.
+          example: open
+        expireDate:
           type: integer
-          format: int64
-          example: 1748609400000
+        execID:
+          type: string
+          example: '21745988181'
+        avgPx:
+          type: number
+    Fees:
+      type: object
+      description: Maker/taker fee schedule.
+      properties:
+        makerRate:
+          type: number
+          description: Maker fee rate.
+          example: 72525.0
+        takerRate:
+          type: number
+          description: Taker fee rate.
+          example: 72525.0
+        volumeInUSD:
+          type: number
+          description: 30-day trading volume in USD used to compute the rate tier.
+          example: 0.5
     CreateOrderRequest:
       type: object
       required:
@@ -326,73 +362,6 @@ components:
           example: 0.5
         expireDate:
           type: integer
-    Fees:
-      type: object
-      description: Maker/taker fee schedule.
-      properties:
-        makerRate:
-          type: number
-          description: Maker fee rate.
-          example: 72525.0
-        takerRate:
-          type: number
-          description: Taker fee rate.
-          example: 72525.0
-        volumeInUSD:
-          type: number
-          description: 30-day trading volume in USD used to compute the rate tier.
-          example: 0.5
-    Order:
-      type: object
-      description: An order submitted to the matching engine.
-      properties:
-        orderId:
-          type: integer
-          format: int64
-        gwOrderId:
-          type: integer
-          format: int64
-        clOrdId:
-          type: string
-          example: '21745988181'
-        symbol:
-          type: string
-          example: BTC-USD
-        ordType:
-          type: string
-          description: Order type — `limit`, `market`, `stop`, `stopLimit`.
-        timeInForce:
-          type: string
-          description: Time in force — `GTC`, `IOC`, `FOK`, `GTD`.
-        side:
-          type: string
-          description: '`buy` or `sell`.'
-          example: buy
-        orderQty:
-          type: number
-          example: 0.5
-        minQty:
-          type: number
-          example: 0.5
-        cumQty:
-          type: number
-          example: 0.5
-        price:
-          type: number
-          example: 72525.0
-        stopPx:
-          type: number
-        ordStatus:
-          type: string
-          description: Status — `pending`, `open`, `filled`, `partial`, `cancelled`, `rejected`, `expired`.
-          example: open
-        expireDate:
-          type: integer
-        execID:
-          type: string
-          example: '21745988181'
-        avgPx:
-          type: number
     Trade:
       type: object
       description: A filled order or partial fill.
@@ -417,6 +386,37 @@ components:
           example: 0.5
         fee:
           type: number
+        timestamp:
+          type: integer
+          format: int64
+          example: 1748609400000
+    Fill:
+      type: object
+      description: A single execution leg, including fees.
+      properties:
+        execId:
+          type: string
+          example: '21745988181'
+        orderId:
+          type: integer
+          format: int64
+        symbol:
+          type: string
+          example: BTC-USD
+        side:
+          type: string
+          example: buy
+        price:
+          type: number
+          example: 72525.0
+        qty:
+          type: number
+          example: 0.5
+        fee:
+          type: number
+        feeCurrency:
+          type: string
+          example: BTC
         timestamp:
           type: integer
           format: int64
